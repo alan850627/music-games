@@ -3,13 +3,13 @@
     <img src="./assets/logo.png" height="150px">
     <div>
       <h1>Open</h1>
-      <span v-for="question in unsolvedQuestions">
+      <span v-for="question in openQuestions">
         <question></question>
       </span>
     </div>
     <div>
       <h1>Closed</h1>
-      <span v-for="question in solvedQuestions">
+      <span v-for="question in closedQuestions">
         <question></question>
       </span>
     </div>
@@ -53,14 +53,14 @@
     },
 
     computed: {
-      solvedQuestions: function () {
+      openQuestions: function () {
         return this.questions.filter((question) => {
-          return question.open === true
+          return question.expireTime >== Date.now()
         })
       },
-      unsolvedQuestions: function () {
+      closedQuestions: function () {
         return this.questions.filter((question) => {
-          return question.open === false
+          return question.expireTime < Date.now()
         })
       }
     },
