@@ -1,3 +1,4 @@
+// These rules require authentication
 {
   "rules": {
     ".read": "auth != null",

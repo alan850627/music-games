@@ -79,7 +79,7 @@
     },
 
     mounted () {
-      this.login('guest@gmail.com', 'password')
+      this.login('default@gmail.com', 'password')
     }
   }
 </script>
