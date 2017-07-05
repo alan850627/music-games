@@ -1,44 +1,35 @@
-<!-- App.vue
-  This component is the root component for our Vue application. It is rendered
-  in the project root's index.html file with the <div id="app"> tag. The Firebase
-  instance exists only within this component.
--->
-
 <template>
   <div id="app">
     <img src="./assets/logo.png" height="150px">
-    <!-- Adding a new greeting; pretty much straight from the documentation! -->
-    <form id="form" v-on:submit.prevent="addGreeting">
-      <input type="text" v-model="newGreeting.lang" placeholder="Language Name">
-      <input type="text" v-model="newGreeting.text" placeholder="How do you say hello?">
-      <input type="submit" value="Add Greeting">
-    </form>
-    <!--
-      Here we are iterating through a very simply array of greetings in
-      different languages. To do this, we use the "v-for" directive. This
-      is linked to our demo Firebase instance, which is described below.
-    -->
-    <h1 v-for="greeting in greetings">{{ greeting.text }}</h1>
+    <div>
+      <h1>Unsolved</h1>
+      <span v-for="question in unsolvedQuestions">
+        <question></question>
+      </span>
+    </div>
+    <div>
+      <h1>Solved</h1>
+      <span v-for="question in solvedQuestions">
+        <question></question>
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
-  import Hello from './components/Hello'
+  import Question from './components/Question'
 
   // This line is new!
   import Firebase from 'firebase'
 
-  /*
-   * The config was copied and pasted straight from the Firebase Dashboard.
-   * Simply click "Add Firebase to Your Web App" to access yours.
-   */
-
+  // Initialize Firebase
   let config = {
-    apiKey: 'AIzaSyB3B6_lHNK5JXKNa8SIskj71aha6I9ZekA',
-    authDomain: 'vuefire-quickstart-demo.firebaseapp.com',
-    databaseURL: 'https://vuefire-quickstart-demo.firebaseio.com',
-    storageBucket: 'vuefire-quickstart-demo.appspot.com',
-    messagingSenderId: '248222879987'
+    apiKey: 'AIzaSyDm4x3mKWK4tAnKQlrsE8MaQgjZeSWvOCQ',
+    authDomain: 'music-games.firebaseapp.com',
+    databaseURL: 'https://music-games.firebaseio.com',
+    projectId: 'music-games',
+    storageBucket: 'music-games.appspot.com',
+    messagingSenderId: '792809265103'
   }
 
   // Here we are initializing the Firebase connection.
@@ -46,43 +37,37 @@
   let db = app.database()
 
   // Accessing the greetings reference; .ref() takes a URL as its parameter.
-  let greetingsRef = db.ref('greetings')
+  let questionsRef = db.ref('questions')
+  let playersRef = db.ref('players')
 
   export default {
     name: 'app',
 
-    /*
-     * This section is added to the original CLI-generated App component. This
-     * is where VueFire comes into play, allowing us to link our Vue app to
-     * Firebase data relatively simply. More information is on the GitHub page:
-     *
-     * https://github.com/vuejs/vuefire/
-     */
+    components: {
+      Question
+    },
 
     firebase: {
-      greetings: greetingsRef.limitToLast(5)
+      questions: questionsRef.orderByKey(),
+      players: playersRef.orderByKey()
+    },
+
+    computed: {
+      solvedQuestions: function () {
+        return this.questions.filter((question) => {
+          return question.solved === true
+        })
+      },
+      unsolvedQuestions: function () {
+        return this.questions.filter((question) => {
+          return question.solved === false
+        })
+      }
     },
 
     data () {
       return {
-        newGreeting: {
-          lang: '',
-          text: ''
-        }
       }
-    },
-
-    // We have added a simple method to add new greetings to our Firebase.
-    methods: {
-      addGreeting: function () {
-        greetingsRef.push(this.newGreeting)
-        this.newGreeting.lang = ''
-        this.newGreeting.text = ''
-      }
-    },
-
-    components: {
-      Hello
     }
   }
 </script>
@@ -92,8 +77,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
     color: #2c3e50;
-    margin-top: 60px;
   }
 </style>
