@@ -4,7 +4,7 @@ const prompt = require('prompt')
 const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 const _ = require('lodash');
-const accountSchema = {
+const schema = {
   properties: {
     questionFile: {
       description: 'Relative path to your question json file',
@@ -22,11 +22,8 @@ const app = firebase.initializeApp({
 const db = app.database()
 const questionsRef = db.ref('questions')
 
-/*
- * Authenticate
- */
 prompt.start()
-prompt.get(accountSchema, (err, result) => {
+prompt.get(schema, (err, result) => {
   let file = JSON.parse(fs.readFileSync(path.resolve(__dirname, result.questionFile), 'utf8'))
 
   for (let key in file) {
