@@ -55,7 +55,7 @@
     computed: {
       openQuestions: function () {
         return this.questions.filter((question) => {
-          return question.expireTime >== Date.now()
+          return question.expireTime >= Date.now()
         })
       },
       closedQuestions: function () {
