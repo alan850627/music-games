@@ -1,7 +1,6 @@
 <template>
   <span class="question">
     <form id="form" v-on:submit.prevent="addResponse">
-      <input type="text" v-model="newResponse.user" placeholder="Username">
       <input type="text" v-model="newResponse.response" placeholder="Your guess">
       <input type="submit" value="Add Guess">
     </form>
@@ -11,11 +10,18 @@
 <script>
 export default {
   props: {
-    imageLink: String,
-    answer: String,
+    link: String,
+    solution: String,
+    category: String,
     points: Number,
-    winner: String,
-    solved: Boolean
+    expireTime: Number,
+    reponses: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    user: String
   },
   name: 'question',
   data () {
@@ -29,9 +35,7 @@ export default {
 
   methods: {
     addResponse: function () {
-      // greetingsRef.push(this.newGreeting)
-      // this.newGreeting.lang = ''
-      // this.newGreeting.text = ''
+
     }
   }
 }

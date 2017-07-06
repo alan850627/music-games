@@ -1,18 +1,53 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" height="150px">
+    <md-card md-theme="green">
+      <md-card-header>
+        <md-layout md-row>
+          <img src="./assets/logo.png" />
+          <md-layout md-column>
+            <div class="md-title">Music Games</div>
+            <div class="md-subheading">Alan's game for /r/classicalmusic</div>
+          </md-layout>
+        </md-layout>
+      </md-card-header>
+    </md-card>
     <div>
       <h1>Open</h1>
-      <span v-for="question in openQuestions">
-        <question></question>
+      <span v-for="q in openQuestions">
+        <question
+          :link="q.link"
+          :solution="q.solution"
+          :category="q.category"
+          :points="q.points"
+          :expireTime="q.expireTime"
+          :responses="q.responses"
+          :user="username">
+        </question>
       </span>
     </div>
     <div>
       <h1>Closed</h1>
       <span v-for="question in closedQuestions">
-        <question></question>
+        <question
+          :link="q.link"
+          :solution="q.solution"
+          :category="q.category"
+          :points="q.points"
+          :expireTime="q.expireTime"
+          :responses="q.responses">
+        </question>
       </span>
     </div>
+
+    <md-dialog-prompt
+      md-title="Username"
+      md-ok-text="Ok"
+      md-cancel-text="prompt.cancel"
+      @open="onOpen"
+      @close="onClose"
+      v-model="username"
+      ref="dialogUsername">
+    </md-dialog-prompt>
   </div>
 </template>
 
@@ -33,12 +68,12 @@
   }
 
   // Here we are initializing the Firebase connection.
-  let app = Firebase.initializeApp(config)
+  const app = Firebase.initializeApp(config)
 
   // Accessing the data reference
-  let db = app.database()
-  let questionsRef = db.ref('questions')
-  let playersRef = db.ref('players')
+  const db = app.database()
+  const questionsRef = db.ref('questions')
+  const playersRef = db.ref('players')
 
   export default {
     name: 'app',
@@ -67,6 +102,7 @@
 
     data () {
       return {
+        username: ''
       }
     },
 
@@ -75,11 +111,27 @@
         Firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => {
           console.err(err.message)
         })
+      },
+      fetchUsers: () => {
+
+      },
+      openDialog (ref) {
+        this.$refs[ref].open()
+      },
+      closeDialog (ref) {
+        this.$refs[ref].close()
+      },
+      onOpen () {
+        console.log('Opened')
+      },
+      onClose (type) {
+        console.log('Closed', type)
       }
     },
 
     mounted () {
       this.login('default@gmail.com', 'password')
+      this.openDialog('dialogUsername')
     }
   }
 </script>

@@ -3,7 +3,8 @@
 
 import Vue from 'vue'
 import VueFire from 'vuefire'
-
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
 import App from './App'
 
 /*
@@ -13,6 +14,32 @@ import App from './App'
  */
 
 Vue.use(VueFire)
+Vue.use(VueMaterial)
+Vue.material.registerTheme('green', {
+  primary: {
+    color: 'black',
+    hue: 300
+  },
+  accent: {
+    color: 'red',
+    hue: 300
+  },
+  warn: {
+    color: 'red',
+    hue: 300
+  },
+  background: {
+    color: 'light-green',
+    hue: 200
+  }
+})
+
+Vue.material.registerTheme('question', {
+  primary: 'black',
+  accent: 'green',
+  warn: 'red',
+  background: 'white'
+})
 
 /* eslint-disable no-new */
 new Vue({
