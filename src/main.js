@@ -3,47 +3,29 @@
 
 import Vue from 'vue'
 import VueFire from 'vuefire'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
+import Vuetify from 'vuetify'
+import VueRouter from 'vue-router'
+import 'vuetify/dist/vuetify.min.css'
 import App from './App'
-
-/*
- * Because we installed VueFire via npm and imported it as a module, we have
- * to add this little snippet of code to 'install' it. If you include the lib
- * via typical <script> tags in your HTML document, this isn't required.
- */
+import Home from './components/Home'
+import Leaderboard from './components/Leaderboard'
 
 Vue.use(VueFire)
-Vue.use(VueMaterial)
-Vue.material.registerTheme('green', {
-  primary: {
-    color: 'black',
-    hue: 300
-  },
-  accent: {
-    color: 'red',
-    hue: 300
-  },
-  warn: {
-    color: 'red',
-    hue: 300
-  },
-  background: {
-    color: 'light-green',
-    hue: 200
-  }
-})
+Vue.use(Vuetify)
+Vue.use(VueRouter)
 
-Vue.material.registerTheme('question', {
-  primary: 'black',
-  accent: 'green',
-  warn: 'red',
-  background: 'white'
+const routes = [
+  { path: '/', name: 'home', component: Home },
+  { path: '/Leaderboard', name: 'leaderboard', component: Leaderboard }
+]
+
+const router = new VueRouter({
+  routes // short for `routes: routes`
 })
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  template: '<App/>',
+  router,
+  template: '<app></app>',
   components: { App }
-})
+}).$mount('#app')
