@@ -34,19 +34,8 @@
 import Question from './Question'
 import Firebase from 'firebase'
 // Initialize Firebase
-let config = {
-  apiKey: 'AIzaSyDm4x3mKWK4tAnKQlrsE8MaQgjZeSWvOCQ',
-  authDomain: 'music-games.firebaseapp.com',
-  databaseURL: 'https://music-games.firebaseio.com',
-  projectId: 'music-games',
-  storageBucket: 'music-games.appspot.com',
-  messagingSenderId: '792809265103'
-}
 
-// Here we are initializing the Firebase connection.
-const app = Firebase.initializeApp(config)
-
-// Accessing the data reference
+const app = Firebase.app()
 const db = app.database()
 const questionsRef = db.ref('questions')
 

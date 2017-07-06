@@ -23,7 +23,7 @@ export default {
     },
     user: String
   },
-  name: 'question',
+
   data () {
     return {
       newResponse: {
@@ -35,17 +35,10 @@ export default {
 
   methods: {
     addResponse: function () {
-
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#form {
-    width: 33.33%;
-    width: calc(100% / 3);
-    display: inline-block;
-}
 </style>
