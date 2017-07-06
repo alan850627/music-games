@@ -5,8 +5,11 @@
         <md-layout md-row>
           <img src="./assets/logo.png" />
           <md-layout md-column>
-            <div class="md-title">Music Games</div>
+            <div class="md-display-1">Music Games</div>
             <div class="md-subheading">Alan's game for /r/classicalmusic</div>
+            <p></p>
+            <span class="md-title">Welcome {{username}}!</span>
+            <div class=""
           </md-layout>
         </md-layout>
       </md-card-header>
@@ -41,8 +44,8 @@
 
     <md-dialog-prompt
       md-title="Username"
-      md-ok-text="Ok"
-      md-cancel-text="prompt.cancel"
+      md-ok-text="OK"
+      md-cancel-text="CANCEL"
       @open="onOpen"
       @close="onClose"
       v-model="username"
@@ -116,10 +119,14 @@
 
       },
       openDialog (ref) {
-        this.$refs[ref].open()
+        this.$nextTick(() => {
+          this.$refs[ref].open()
+        })
       },
       closeDialog (ref) {
-        this.$refs[ref].close()
+        this.$nextTick(() => {
+          this.$refs[ref].close()
+        })
       },
       onOpen () {
         console.log('Opened')
