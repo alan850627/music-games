@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <app-header :username="username"></app-header>
+    <app-header :username="username">
+      <v-text-field
+        slot="input"
+        label="Who are you?*"
+        hint="This name will show up on the leaderboard"
+        v-model="username">
+      </v-text-field>
+    </app-header>
     <router-view></router-view>
   </div>
 </template>
@@ -40,8 +47,7 @@
     },
 
     mounted () {
-      console.log(cookies.get('musicusername'))
-      this.uername = cookies.get('musicusername')
+      this.username = cookies.get('musicusername')
     }
   }
 </script>

@@ -11,21 +11,24 @@
         <v-btn flat v-on:click.native.stop="loginUser">Login</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-dialog v-model="loginDialog">
+    <v-dialog v-model="loginDialog" persistent>
       <v-card>
         <v-card-title>
           <span class="headline">Username</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field
-            label="Who are you?"
-            hint="This name will show up on the leaderboard"
-            v-model="username">
-          </v-text-field>
+          <slot name='input'></slot>
+          <small>
+            *Enable cookies on this site to save username.
+          </small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="blue--text darken-1" flat @click.native="dialogSave">Save</v-btn>
+          <v-btn
+            class="blue--text darken-1"
+            flat
+            @click.native="dialogSave">Save
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -38,8 +41,7 @@ import cookies from 'browser-cookies'
 export default {
   props: {
     username: {
-      type: String,
-      twoWay: true
+      type: String
     }
   },
 
