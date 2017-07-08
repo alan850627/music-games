@@ -31,7 +31,7 @@ prompt.get(schema, (err, result) => {
     let question = {
       link: file[key].link,
       solution: file[key].solution,
-      category: file[key].category,
+      description: file[key].description,
       points: file[key].points,
       expireTime: file[key].expireHours * 60 * 60 * 1000 + Date.now(),
       id: uuidv4(),

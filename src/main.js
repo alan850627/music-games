@@ -27,6 +27,6 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   router,
-  template: '<app></app>',
+  template: '<v-app><app></app></v-app>',
   components: { App }
 }).$mount('#app')

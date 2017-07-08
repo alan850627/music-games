@@ -16,7 +16,7 @@
     </div>
     <div>
       <h1>Closed</h1>
-      <span v-for="question in closedQuestions">
+      <span v-for="q in closedQuestions">
         <question
           :link="q.link"
           :solution="q.solution"
@@ -51,7 +51,10 @@ export default {
   },
 
   firebase: {
-    questions: questionsRef.orderByKey()
+    questions: {
+      source: questionsRef.orderByKey(),
+      default: []
+    }
   },
 
   computed: {
@@ -82,6 +85,7 @@ export default {
 
   mounted () {
     this.login('default@gmail.com', 'password')
+    this.$bindAsArray('questions', questionsRef.orderByKey())
   }
 }
 </script>

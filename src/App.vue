@@ -9,7 +9,7 @@
   import AppHeader from './components/AppHeader'
   import cookies from 'browser-cookies'
   import Firebase from 'firebase'
-  
+
   // Initialize Firebase
   let config = {
     apiKey: 'AIzaSyDm4x3mKWK4tAnKQlrsE8MaQgjZeSWvOCQ',
@@ -40,7 +40,8 @@
     },
 
     mounted () {
-      this.uername = cookies.get('username')
+      console.log(cookies.get('musicusername'))
+      this.uername = cookies.get('musicusername')
     }
   }
 </script>
