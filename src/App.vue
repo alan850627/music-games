@@ -4,7 +4,7 @@
       <v-text-field
         slot="input"
         label="Who are you?*"
-        hint="This name will show up on the leaderboard"
+        hint="This name will show up everywhere"
         v-model="username">
       </v-text-field>
     </app-header>

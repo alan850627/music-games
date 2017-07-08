@@ -19,7 +19,7 @@
         <v-card-text>
           <slot name='input'></slot>
           <small>
-            *Enable cookies on this site to save username.
+            *Enable cookies to save for next visit.
           </small>
         </v-card-text>
         <v-card-actions>
@@ -27,7 +27,7 @@
           <v-btn
             class="blue--text darken-1"
             flat
-            @click.native="dialogSave">Save
+            @click.native="dialogSave">DONE
           </v-btn>
         </v-card-actions>
       </v-card>
