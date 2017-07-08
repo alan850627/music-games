@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <h1>Open</h1>
       <span v-for="q in openQuestions">
         <question
           :link="q.link"
@@ -15,7 +14,6 @@
       </span>
     </div>
     <div>
-      <h1>Closed</h1>
       <span v-for="q in closedQuestions">
         <question
           :link="q.link"
