@@ -5,11 +5,12 @@
         <question
           :link="q.link"
           :solution="q.solution"
-          :category="q.category"
+          :description="q.description"
           :points="q.points"
           :expireTime="q.expireTime"
+          :isExpired="false"
           :responses="q.responses"
-          :user="username">
+          :username="username">
         </question>
       </span>
     </div>
@@ -18,10 +19,12 @@
         <question
           :link="q.link"
           :solution="q.solution"
-          :category="q.category"
+          :description="q.description"
           :points="q.points"
           :expireTime="q.expireTime"
-          :responses="q.responses">
+          :isExpired="true"
+          :responses="q.responses"
+          :username="username">
         </question>
       </span>
     </div>

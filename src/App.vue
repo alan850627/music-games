@@ -8,7 +8,7 @@
         v-model="username">
       </v-text-field>
     </app-header>
-    <router-view></router-view>
+    <router-view :username="username"></router-view>
   </div>
 </template>
 

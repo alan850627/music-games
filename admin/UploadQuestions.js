@@ -1,7 +1,6 @@
 const firebase = require('firebase-admin')
 const path = require('path')
 const prompt = require('prompt')
-const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 const _ = require('lodash');
 const schema = {
@@ -27,21 +26,16 @@ prompt.get(schema, (err, result) => {
   let file = JSON.parse(fs.readFileSync(path.resolve(__dirname, result.questionFile), 'utf8'))
 
   for (let key in file) {
-    console.log(`Uploading ${key}...`)
     let question = {
       link: file[key].link,
       solution: file[key].solution,
       description: file[key].description,
       points: file[key].points,
       expireTime: file[key].expireHours * 60 * 60 * 1000 + Date.now(),
-      id: uuidv4(),
       createdTime: Date.now(),
       responses: {}
     }
-    let newQuestionRef = questionsRef.push()
-    newQuestionRef.update(question)
+    console.log(`Uploading ${key}...`)
+    questionsRef.push().update(question)
   }
-
-  console.log('Upload Complete...')
-  process.exit()
 })
