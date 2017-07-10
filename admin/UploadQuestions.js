@@ -1,8 +1,9 @@
 const firebase = require('firebase-admin')
 const path = require('path')
 const prompt = require('prompt')
-const fs = require('fs');
-const _ = require('lodash');
+const fs = require('fs')
+const _ = require('lodash')
+const uuidv4 = require('uuid/v4')
 const schema = {
   properties: {
     questionFile: {
@@ -33,7 +34,8 @@ prompt.get(schema, (err, result) => {
       points: file[key].points,
       expireTime: file[key].expireHours * 60 * 60 * 1000 + Date.now(),
       createdTime: Date.now(),
-      responses: {}
+      responses: {},
+      id: uuidv4()
     }
     console.log(`Uploading ${key}...`)
     questionsRef.push().update(question)
