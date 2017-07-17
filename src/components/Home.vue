@@ -10,6 +10,7 @@
           :expireTime="q.expireTime"
           :isExpired="false"
           :responses="q.responses"
+          :id="q['.key']"
           :username="username">
         </question>
       </span>
@@ -24,6 +25,7 @@
           :expireTime="q.expireTime"
           :isExpired="true"
           :responses="q.responses"
+          :id="q['.key']"
           :username="username">
         </question>
       </span>
@@ -53,7 +55,7 @@ export default {
 
   firebase: {
     questions: {
-      source: questionsRef.orderByKey(),
+      source: questionsRef.orderByChild('expireTime'),
       default: []
     }
   },
@@ -86,7 +88,7 @@ export default {
 
   mounted () {
     this.login('default@gmail.com', 'password')
-    this.$bindAsArray('questions', questionsRef.orderByKey())
+    this.$bindAsArray('questions', questionsRef.orderByChild('expireTime'))
   }
 }
 </script>

@@ -47,12 +47,11 @@
 
 <script>
 import moment from 'moment'
-import * as search from 'youtube-search'
+import Firebase from 'firebase'
 
-const opts = {
-  maxResults: 10,
-  key: 'AIzaSyADtiS-UxkTMe6kpI920BURFww51d2YZY8'
-}
+// Accessing the data reference
+const app = Firebase.app()
+const db = app.database()
 
 export default {
   props: {
@@ -66,19 +65,25 @@ export default {
       type: Array,
       default: () => { return [] }
     },
-    username: String
+    username: String,
+    id: String
   },
 
   computed: {
     timeLeft: function () {
       return moment(this.expireTime).fromNow()
+    },
+    responseRef: function () {
+      return db.ref(`questions/${this.id}/responses`)
+    },
+    userRef: function () {
+      return db.ref(`users/${this.username}`)
     }
   },
 
   data () {
     return {
-      newResponse: '',
-      correctResults: null
+      newResponse: ''
     }
   },
 
@@ -92,15 +97,37 @@ export default {
       // Check for correctness
       // Change scores
       // Add user if necessary
-      if (!this.correctResults) {
-        search(this.solution, opts, function (err, results) {
-          if (err) {
-            console.log(err)
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // User exists, so we update.
+          let updateResponse = {}
+          updateResponse[this.id] = true
+          this.userRef.child('responses').update(updateResponse)
+          this.userRef.update({
+            'numGuesses': snapshot.val().numGuesses + 1
+          })
+        } else {
+          // User doesn't exist. Crazy way to create dyanmic keys.
+          let newuser = {}
+          newuser[this.username] = {
+            'score': 0,
+            'createdTime': Date.now(),
+            'numGuesses': 1,
+            'numCorrect': 0,
+            'responses': {}
           }
+          newuser[this.username].responses[this.id] = true
+          db.ref('users').set(newuser)
+        }
+      })
 
-          console.log(results)
-        })
+      let temp = {
+        'username': this.username,
+        'response': newRes,
+        'timestamp': Date.now()
       }
+      this.responseRef.push(temp)
+      this.newResponse = ''
     }
   }
 }
