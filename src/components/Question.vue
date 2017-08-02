@@ -1,47 +1,42 @@
 <template>
   <span class="question">
-    <v-layout>
-      <v-flex xs12 sm6 md4>
-        <v-card v-if="isExpired" class="teal lighten-4">
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">Question closed {{timeLeft}}</h3>
-            </div>
-          </v-card-title>
-          <img :src="link" height="100%" width="100%"/>
-          <v-card-text>
-            <h6 class="mb-0">{{description}}</h6>
-            <br />Total Guesses:
-            <br />Correct Guesses:
-          </v-card-text>
-          <v-card-actions>
-          </v-card-actions>
-        </v-card>
+    <v-card v-if="isExpired" class="teal lighten-4">
+      <v-card-title primary-title>
+        <div>
+          <h3 class="headline mb-0">Question closed {{timeLeft}}</h3>
+        </div>
+      </v-card-title>
+      <img :src="link" height="100%" width="100%"/>
+      <v-card-text>
+        <h6 class="mb-0">{{description}}</h6>
+        <br />Total Guesses:
+        <br />Correct Guesses:
+      </v-card-text>
+      <v-card-actions>
+      </v-card-actions>
+    </v-card>
 
-        <v-card v-else class="light-green lighten-4">
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">Question closing {{timeLeft}}</h3>
-            </div>
-          </v-card-title>
-          <img :src="link" height="100%" width="100%"/>
-          <v-card-text>
-            <h6 class="mb-0">{{description}}</h6>
-            <br />Total Guesses:
-            <br />Correct Guesses:
-          </v-card-text>
-          <v-card-actions>
-            <v-text-field
-              name="guess"
-              label="Your guess here"
-              v-model="newResponse">
-            </v-text-field>
-            <v-btn v-on:click.native="submitGuess(newResponse)" light>Submit</v-btn>
-          </v-card-actions>
-        </v-card>
-
-      </v-flex>
-    </v-layout>
+    <v-card v-else class="light-green lighten-4">
+      <v-card-title primary-title>
+        <div>
+          <h3 class="headline mb-0">Question closing {{timeLeft}}</h3>
+        </div>
+      </v-card-title>
+      <img :src="link" height="100%" width="100%"/>
+      <v-card-text>
+        <h6 class="mb-0">{{description}}</h6>
+        <br />Total Guesses:
+        <br />Correct Guesses:
+      </v-card-text>
+      <v-card-actions>
+        <v-text-field
+          name="guess"
+          label="Your guess here"
+          v-model="newResponse">
+        </v-text-field>
+        <v-btn v-on:click.native="submitGuess(newResponse)" light>Submit</v-btn>
+      </v-card-actions>
+    </v-card>
   </span>
 </template>
 

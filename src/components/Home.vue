@@ -1,19 +1,22 @@
 <template>
   <div>
     <div>
-      <span v-for="q in openQuestions">
-        <question
-          :link="q.link"
-          :solution="q.solution"
-          :description="q.description"
-          :points="q.points"
-          :expireTime="q.expireTime"
-          :isExpired="false"
-          :responses="q.responses"
-          :id="q['.key']"
-          :username="username">
-        </question>
-      </span>
+      <v-layout mr-5 ml-5 mt-3 row wrap>
+        <v-flex xs12 sm6 md4 pa-2 v-for="q in openQuestions">
+          <question
+            :link="q.link"
+            :solution="q.solution"
+            :description="q.description"
+            :points="q.points"
+            :expireTime="q.expireTime"
+            :isExpired="false"
+            :responses="q.responses"
+            :id="q['.key']"
+            :username="username">
+          </question>
+        </v-flex>
+      </v-layout>
+
     </div>
     <div>
       <span v-for="q in closedQuestions">
