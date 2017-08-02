@@ -101,7 +101,7 @@ export default {
         if (snapshot.exists()) {
           // User exists, so we update.
           let updateResponse = {}
-          updateResponse[this.id] = true
+          updateResponse[this.id] = false
           this.userRef.child('responses').update(updateResponse)
           this.userRef.update({
             'numGuesses': snapshot.val().numGuesses + 1
@@ -116,7 +116,7 @@ export default {
             'numCorrect': 0,
             'responses': {}
           }
-          newuser[this.username].responses[this.id] = true
+          newuser[this.username].responses[this.id] = false
           db.ref('users').set(newuser)
         }
       })
@@ -124,7 +124,8 @@ export default {
       let temp = {
         'username': this.username,
         'response': newRes,
-        'timestamp': Date.now()
+        'timestamp': Date.now(),
+        'status': 'pending'
       }
       this.responseRef.push(temp)
       this.newResponse = ''
