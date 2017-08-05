@@ -37,6 +37,12 @@
         <v-btn v-on:click.native="submitGuess(newResponse)" light>Submit</v-btn>
       </v-card-actions>
     </v-card>
+    <v-alert error dismissible v-model="usernamealert">
+      Username cannot be blank!
+    </v-alert>
+    <v-alert error dismissible v-model="responsealert">
+      Response cannot be blank!
+    </v-alert>
   </span>
 </template>
 
@@ -73,12 +79,18 @@ export default {
     },
     userRef: function () {
       return db.ref(`users/${this.username}`)
+    },
+    gotCorrectAlready: function () {
+      // TODO
+      return false
     }
   },
 
   data () {
     return {
-      newResponse: ''
+      newResponse: '',
+      usernamealert: false,
+      responsealert: false
     }
   },
 
@@ -92,6 +104,16 @@ export default {
       // Check for correctness
       // Change scores
       // Add user if necessary
+      if (newRes.trim().length === 0) {
+        // Responses cannot be empty
+        this.responsealert = true
+        return
+      }
+      if (this.username.legnth === 0) {
+        // Username Cannot be empty
+        this.usernamealert = true
+        return
+      }
       this.userRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
           // User exists, so we update.

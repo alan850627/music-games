@@ -5,7 +5,7 @@
         slot="input"
         label="Who are you?*"
         hint="This name will show up everywhere"
-        v-model="username">
+        v-model="rawUsername">
       </v-text-field>
     </app-header>
     <router-view :username="username"></router-view>
@@ -37,9 +37,15 @@
       AppHeader
     },
 
+    computed: {
+      username: function () {
+        return this.rawUsername.trim()
+      }
+    },
+
     data () {
       return {
-        username: ''
+        rawUsername: ''
       }
     },
 
@@ -47,7 +53,7 @@
     },
 
     mounted () {
-      this.username = cookies.get('musicusername')
+      this.rawUsername = cookies.get('musicusername')
     }
   }
 </script>
