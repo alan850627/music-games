@@ -49,6 +49,7 @@
 <script>
 import moment from 'moment'
 import Firebase from 'firebase'
+import _ from 'lodash'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -62,11 +63,14 @@ export default {
     points: Number,
     expireTime: Number,
     isExpired: Boolean,
-    reponses: {
-      type: Array,
-      default: () => { return [] }
+    responses: {
+      type: Object,
+      default: () => { return {} }
     },
-    username: String,
+    username: {
+      type: String,
+      default: ''
+    },
     id: String
   },
 
@@ -80,8 +84,17 @@ export default {
     userRef: function () {
       return db.ref(`users/${this.username}`)
     },
+    userResponses: function () {
+      return _.filter(this.responses, (response) => {
+        return response.username === this.username
+      })
+    },
     gotCorrectAlready: function () {
-      // TODO
+      for (let res in this.userResponses) {
+        if (res.status === 'correct') {
+          return true
+        }
+      }
       return false
     }
   },
@@ -104,14 +117,14 @@ export default {
       // Check for correctness
       // Change scores
       // Add user if necessary
+      if (this.username === '') {
+        // Username Cannot be empty
+        this.usernamealert = true
+        return
+      }
       if (newRes.trim().length === 0) {
         // Responses cannot be empty
         this.responsealert = true
-        return
-      }
-      if (this.username.legnth === 0) {
-        // Username Cannot be empty
-        this.usernamealert = true
         return
       }
       this.userRef.once('value').then((snapshot) => {
