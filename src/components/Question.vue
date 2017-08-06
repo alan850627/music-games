@@ -4,33 +4,126 @@
       <v-card-title primary-title>
         <div>
           <h3 class="headline mb-0">{{points}} point(s)</h3>
+          Question closed {{timeLeft}}
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
       <v-card-text>
         <h6 class="mb-0">{{description}}</h6>
-        <br />Total Guesses:
-        <br />Correct Guesses:
+
+        <div v-if="Object.keys(responses).length === 0">
+          <h6 class="">No Responses :(</h6>
+        </div>
+        <div v-else>
+          <v-layout row>
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Correct</b>
+                  <span v-if="correctResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in correctResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Incorrect</b>
+                  <span v-if="incorrectResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in incorrectResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Pending</b>
+                  <span v-if="pendingResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in pendingResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </div>
       </v-card-text>
-      <v-card-actions>
-        <h6 class="mb-0">Question closed {{timeLeft}}</h6>
-      </v-card-actions>
     </v-card>
 
     <v-card v-else class="elevation-15">
       <v-card-title primary-title>
         <div>
-          <h3 class="headline mb-0">{{points}} point(s)</h3>
+          <h3 class="headline pb-0 mb-0">{{points}} point(s)</h3>
+          Question closing {{timeLeft}}
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
       <v-card-text>
-        <h6 class="mb-0">{{description}}</h6>
-        <br />Total Guesses:
-        <br />Correct Guesses:
-        <h6 class="mb-0">Question closing {{timeLeft}}</h6>
+        <h6 class="">{{description}}</h6>
+
+        <div v-if="Object.keys(responses).length === 0">
+          <h6 class="">No Responses :(</h6>
+        </div>
+        <div v-else>
+          <v-layout row fluid>
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Correct</b>
+                  <span v-if="correctResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in correctResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Incorrect</b>
+                  <span v-if="incorrectResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in incorrectResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+
+            <v-flex xs-4>
+              <v-card class="elevation-0">
+                <v-card-text>
+                  <b>Pending</b>
+                  <span v-if="pendingResponses.length === 0">
+                    none
+                  </span>
+                  <div v-for="r in pendingResponses">
+                    {{r.username}}
+                  </div>
+                </v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </div>
+
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions v-if="!gotCorrectAlready">
         <v-flex xs9 pt-3>
           <v-text-field
             class="mt-0 mb-0"
@@ -43,7 +136,11 @@
           <v-btn v-on:click.native="submitGuess(newResponse)" flat right block class="orange--text">Submit</v-btn>
         </v-flex>
       </v-card-actions>
+      <v-card-actions v-else>
+        <h6>Correct!</h6>
+      </v-card-actions>
     </v-card>
+
     <v-alert error dismissible v-model="usernamealert">
       Username cannot be blank!
     </v-alert>
@@ -91,18 +188,26 @@ export default {
     userRef: function () {
       return db.ref(`users/${this.username}`)
     },
-    userResponses: function () {
+    correctResponses: function () {
       return _.filter(this.responses, (response) => {
-        return response.username === this.username
+        return response.status === 'correct'
+      })
+    },
+    incorrectResponses: function () {
+      return _.filter(this.responses, (response) => {
+        return response.status === 'incorrect'
+      })
+    },
+    pendingResponses: function () {
+      return _.filter(this.responses, (response) => {
+        return response.status === 'pending'
       })
     },
     gotCorrectAlready: function () {
-      for (let res in this.userResponses) {
-        if (res.status === 'correct') {
-          return true
-        }
-      }
-      return false
+      let arr = this.correctResponses.filter((res) => {
+        return res.username === this.username
+      })
+      return arr.length
     }
   },
 
