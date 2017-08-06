@@ -1,9 +1,9 @@
 <template>
   <span class="question">
-    <v-card v-if="isExpired" class="teal lighten-4">
+    <v-card v-if="isExpired" class="grey lighten-3">
       <v-card-title primary-title>
         <div>
-          <h3 class="headline mb-0">Question closed {{timeLeft}}</h3>
+          <h3 class="headline mb-0">{{points}} point(s)</h3>
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
@@ -13,13 +13,14 @@
         <br />Correct Guesses:
       </v-card-text>
       <v-card-actions>
+        <h6 class="mb-0">Question closed {{timeLeft}}</h6>
       </v-card-actions>
     </v-card>
 
-    <v-card v-else class="light-green lighten-4">
+    <v-card v-else class="elevation-15">
       <v-card-title primary-title>
         <div>
-          <h3 class="headline mb-0">Question closing {{timeLeft}}</h3>
+          <h3 class="headline mb-0">{{points}} point(s)</h3>
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
@@ -27,14 +28,20 @@
         <h6 class="mb-0">{{description}}</h6>
         <br />Total Guesses:
         <br />Correct Guesses:
+        <h6 class="mb-0">Question closing {{timeLeft}}</h6>
       </v-card-text>
       <v-card-actions>
-        <v-text-field
-          name="guess"
-          label="Your guess here"
-          v-model="newResponse">
-        </v-text-field>
-        <v-btn v-on:click.native="submitGuess(newResponse)" light>Submit</v-btn>
+        <v-flex xs9 pt-3>
+          <v-text-field
+            class="mt-0 mb-0"
+            name="guess"
+            label="Your guess here"
+            v-model="newResponse">
+          </v-text-field>
+        </v-flex>
+        <v-flex xs3>
+          <v-btn v-on:click.native="submitGuess(newResponse)" flat right block class="orange--text">Submit</v-btn>
+        </v-flex>
       </v-card-actions>
     </v-card>
     <v-alert error dismissible v-model="usernamealert">
