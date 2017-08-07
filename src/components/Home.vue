@@ -32,7 +32,8 @@
             :responses="q.responses"
             :id="q['.key']"
             :username="username"
-            :op="q.op">
+            :op="q.op"
+            :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
       </v-layout>
@@ -51,7 +52,8 @@
             :responses="q.responses"
             :id="q['.key']"
             :username="username"
-            :op="q.op">
+            :op="q.op"
+            :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
       </v-layout>
@@ -68,6 +70,7 @@ import _ from 'lodash'
 const app = Firebase.app()
 const db = app.database()
 const questionsRef = db.ref('questions')
+const usersRef = db.ref('users')
 
 export default {
   name: 'app',
@@ -84,6 +87,10 @@ export default {
     questions: {
       source: questionsRef.orderByChild('expireTime'),
       default: []
+    },
+    users: {
+      source: usersRef.orderByKey(),
+      default: []
     }
   },
 
@@ -99,6 +106,14 @@ export default {
         return question.expireTime < Date.now()
       })
       return _.sortBy(presort, 'expireTime')
+    },
+    userResponseData: function () {
+      let usr = _.find(this.users, { '.key': this.username })
+      if (!usr) {
+        return {}
+      } else {
+        return usr.responses
+      }
     }
   },
 

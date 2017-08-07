@@ -35,6 +35,8 @@ prompt.get(schema, (err, result) => {
       expireTime: file[key].expireHours * 60 * 60 * 1000 + Date.now(),
       createdTime: Date.now(),
       responses: {},
+      numRevealed: 0,
+      totalGuessTime: 0,
       id: uuidv4(),
       op: 'alanolen'
     }

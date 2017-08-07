@@ -193,12 +193,19 @@ export default {
       default: ''
     },
     id: String,
-    op: String
+    op: String,
+    userResponseData: {
+      type: Object,
+      default: () => { return {} }
+    }
   },
 
   computed: {
     timeLeft: function () {
       return moment(this.expireTime).fromNow()
+    },
+    questionRef: function () {
+      return db.ref(`questions/${this.id}`)
     },
     responseRef: function () {
       return db.ref(`questions/${this.id}/responses`)
@@ -244,12 +251,54 @@ export default {
     ellipsizeText: function (text, len) {
       return ellipsize(text, len)
     },
+    revealQuestion: function () {
+      if (this.username === '') {
+        // Username Cannot be empty
+        this.usernamealert = true
+        return
+      }
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // User exists, so we update.
+          let updateResponse = {}
+          updateResponse[this.id] = {
+            'revealTime': Date.now(),
+            'revealed': true,
+            'status': 'pending',
+            'numGuesses': 0
+          }
+          this.userRef.child('responses').update(updateResponse)
+        } else {
+          // User doesn't exist. Crazy way to create dyanmic keys.
+          let newuser = {}
+          newuser[this.username] = {
+            'score': 0,
+            'createdTime': Date.now(),
+            'lastUpdateTime': Date.now(),
+            'numGuesses': 0,
+            'numCorrect': 0,
+            'totalGuessTime': 0,
+            'responses': {}
+          }
+          newuser[this.username].responses[this.id] = {
+            'revealTime': Date.now(),
+            'revealed': true,
+            'status': 'pending',
+            'numGuesses': 0
+          }
+          db.ref('users').update(newuser)
+        }
+      })
+
+      this.questionRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          this.questionRef.update({
+            'numRevealed': snapshot.val().numRevealed + 1
+          })
+        }
+      })
+    },
     submitGuess: function (newRes) {
-      // Response cannot be empty
-      // Correct responses cannot be submitted again
-      // Check for correctness
-      // Change scores
-      // Add user if necessary
       if (this.username === '') {
         // Username Cannot be empty
         this.usernamealert = true
@@ -262,27 +311,23 @@ export default {
       }
       this.userRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
-          // User exists, so we update.
-          let updateResponse = {}
-          updateResponse[this.id] = true
-          this.userRef.child('responses').update(updateResponse)
+          // We assume user exists, so we update.
+          this.userRef.child(`responses/${this.id}`).update({
+            'numGuesses': snapshot.val().responses[this.id].numGuesses + 1,
+            'mostRecentGuessTime': Date.now()
+          })
           this.userRef.update({
             'numGuesses': snapshot.val().numGuesses + 1,
-            'lastUpdateTime': Date.now()
-          })
-        } else {
-          // User doesn't exist. Crazy way to create dyanmic keys.
-          let newuser = {}
-          newuser[this.username] = {
-            'score': 0,
-            'createdTime': Date.now(),
             'lastUpdateTime': Date.now(),
-            'numGuesses': 1,
-            'numCorrect': 0,
-            'responses': {}
-          }
-          newuser[this.username].responses[this.id] = true
-          db.ref('users').update(newuser)
+            'totalGuessTime': snapshot.val().totalGuessTime + (Date.now() - snapshot.val().responses[this.id].revealTime)
+          })
+        }
+      })
+      this.questionRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          this.questionRef.update({
+            'totalGuessTime': snapshot.val().totalGuessTime + (Date.now() - this.userResponseData.revealTime)
+          })
         }
       })
 
