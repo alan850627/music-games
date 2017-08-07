@@ -59,7 +59,7 @@ export default {
         },
         { text: 'Rank', value: 'rank' },
         { text: 'Score', value: 'score' },
-        { text: 'Correct Answers', value: 'numCorrect' },
+        { text: 'Correct Guesses', value: 'numCorrect' },
         { text: 'Total Guesses', value: 'numGuesses' },
         { text: 'Last Active', value: 'lastUpdateTime' }
       ]
