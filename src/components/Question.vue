@@ -1,7 +1,7 @@
 <template>
   <span class="question">
     <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
-      <v-card-title primary-title>
+      <v-card-title primary-title class="pt-1 pb-1">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
         </div>
@@ -67,7 +67,7 @@
     </v-card>
 
     <v-card v-else class="elevation-15">
-      <v-card-title primary-title>
+      <v-card-title primary-title class="pt-1 pb-1">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
         </div>

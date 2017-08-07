@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-layout pl-3 pr-3 pb-3 pt-1>
+    <v-layout pl-3 pr-3 pb-3 pt-2>
       <v-flex xs12 sm8 offset-sm2>
         <v-card class="elevation-15">
           <v-card-title primary-title>
