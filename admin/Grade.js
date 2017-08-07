@@ -62,10 +62,11 @@ questionsRef.on("child_added", function(question, prevChildKey) {
                 console.log('CORRECT!')
                 let ref = usersRef.child(`${response.val().username}`)
                 ref.once('value').then((snapshot) => {
-                  ref.update({
+                  let up = {
                     'numCorrect': snapshot.val().numCorrect + 1,
                     'score': snapshot.val().score + questions[response.val().questionId].points
-                  })
+                  }
+                  ref.update(up)
                 })
 
                 questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
