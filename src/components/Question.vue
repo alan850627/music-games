@@ -147,7 +147,6 @@
       <v-card-actions v-else>
         <h6>Correct!</h6>
       </v-card-actions>
-      <div v-on:keyup.enter="submitGuess(newResponse)"></div>
     </v-card>
 
     <v-alert error dismissible v-model="usernamealert">
