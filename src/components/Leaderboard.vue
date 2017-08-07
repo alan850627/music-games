@@ -55,7 +55,7 @@ export default {
           text: 'Users',
           align: 'left',
           sortable: false,
-          value: 'name'
+          value: '.key'
         },
         { text: 'Rank', value: 'rank' },
         { text: 'Score', value: 'score' },

@@ -124,21 +124,30 @@
 
       </v-card-text>
       <v-card-actions v-if="!gotCorrectAlready">
+
         <v-flex xs9 pt-3>
-          <v-text-field
-            class="mt-0 mb-0"
-            name="guess"
-            label="Your guess here"
-            v-model="newResponse">
-          </v-text-field>
+          <div type="" @keyup.enter="submitGuess(newResponse)">
+            <v-text-field
+              class="mt-0 mb-0"
+              name="guess"
+              label="Your guess here"
+              v-model="newResponse">
+            </v-text-field>
+          </div>
         </v-flex>
+
         <v-flex xs3>
-          <v-btn v-on:click.native="submitGuess(newResponse)" flat right block class="orange--text">Submit</v-btn>
+          <v-btn
+            v-on:click.native="submitGuess(newResponse)"
+            flat right block class="orange--text">
+            Submit
+          </v-btn>
         </v-flex>
       </v-card-actions>
       <v-card-actions v-else>
         <h6>Correct!</h6>
       </v-card-actions>
+      <div v-on:keyup.enter="submitGuess(newResponse)"></div>
     </v-card>
 
     <v-alert error dismissible v-model="usernamealert">
