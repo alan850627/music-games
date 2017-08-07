@@ -9,8 +9,8 @@
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
       <v-card-text>
-        <h6 class="mb-0">{{description}}</h6>
-
+        <h6 class="">{{description}}</h6>
+        <h6>Solution: <strong>{{solution}}</strong></h6>
         <div v-if="Object.keys(responses).length === 0">
           <h6 class="">No Responses :(</h6>
         </div>
@@ -24,7 +24,7 @@
                     none
                   </span>
                   <div v-for="r in correctResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -38,7 +38,7 @@
                     none
                   </span>
                   <div v-for="r in incorrectResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -52,7 +52,7 @@
                     none
                   </span>
                   <div v-for="r in pendingResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -86,7 +86,7 @@
                     none
                   </span>
                   <div v-for="r in correctResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -100,7 +100,7 @@
                     none
                   </span>
                   <div v-for="r in incorrectResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -114,7 +114,7 @@
                     none
                   </span>
                   <div v-for="r in pendingResponses">
-                    {{r.username}}
+                    {{ellipsizeText(r.username, 11)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -153,6 +153,7 @@
 <script>
 import moment from 'moment'
 import Firebase from 'firebase'
+import ellipsize from 'ellipsize'
 import _ from 'lodash'
 
 // Accessing the data reference
@@ -223,6 +224,9 @@ export default {
   },
 
   methods: {
+    ellipsizeText: function (text, len) {
+      return ellipsize(text, len)
+    },
     submitGuess: function (newRes) {
       // Response cannot be empty
       // Correct responses cannot be submitted again

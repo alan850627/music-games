@@ -19,7 +19,7 @@
     </v-layout>
 
     <div>
-      <v-layout mr-5 ml-5 mt-3 row-md column child-flex-sm wrap>
+      <v-layout mr-3 ml-3 mt-3 row-md column child-flex-sm wrap>
         <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
           <question
             :link="q.link"
