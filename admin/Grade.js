@@ -57,8 +57,8 @@ questionsRef.on("child_added", function(question, prevChildKey) {
               if (common.length > 0) {
                 // answer correct!
                 console.log('\n')
-                console.log(`Grading ${questions[response.val().questionId].solution}:`)
-                console.log(`${response.val().username} answered ${response.val().response}`)
+                console.log(`Grading \"${questions[response.val().questionId].solution}\":`)
+                console.log(`${response.val().username} answered \"${response.val().response}\"`)
                 console.log('CORRECT!')
                 let ref = usersRef.child(`${response.val().username}`)
                 ref.once('value').then((snapshot) => {
@@ -75,8 +75,8 @@ questionsRef.on("child_added", function(question, prevChildKey) {
               } else {
                 // answer incorrect
                 console.log('\n')
-                console.log(`Grading ${questions[response.val().questionId].solution}:`)
-                console.log(`${response.val().username} answered ${response.val().response}`)
+                console.log(`Grading \"${questions[response.val().questionId].solution}\":`)
+                console.log(`${response.val().username} answered \"${response.val().response}\"`)
                 console.log('INCORRECT!')
                 questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
                   'status': 'incorrect'
@@ -86,6 +86,7 @@ questionsRef.on("child_added", function(question, prevChildKey) {
           })
         }
       })
+      console.log('READY')
     }, 10000);
   }
 })
