@@ -1,5 +1,23 @@
 <template>
   <div>
+    <v-layout pa-3>
+      <v-flex xs12 sm8 offset-sm2>
+        <v-card class="elevation-15">
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">Read before play:</h3>
+              <div>
+                * This site is very much in beta still, so any feedback welcome.
+                <br>* Please enter your username by clicking the Login button. Everything should be pretty self explanatory.
+                <br>* I did not thorougly test autograder, so if anything seems fishy, message me.
+                <br>* The autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-flex>
+    </v-layout>
+
     <div>
       <v-layout mr-5 ml-5 mt-3 row-md column child-flex-sm wrap>
         <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
