@@ -15,11 +15,11 @@
           <h6 class="">No Responses :(</h6>
         </div>
         <div v-else>
-          <v-layout row>
+          <v-layout row fluid>
             <v-flex xs-4>
               <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
-                  <b>Correct</b>
+                  <b>Correct:</b>
                   <span v-if="correctResponses.length === 0">
                     none
                   </span>
@@ -33,7 +33,7 @@
             <v-flex xs-4>
               <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
-                  <b>Incorrect</b>
+                  <b>Incorrect:</b>
                   <span v-if="incorrectResponses.length === 0">
                     none
                   </span>
@@ -47,7 +47,7 @@
             <v-flex xs-4>
               <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
-                  <b>Pending</b>
+                  <b>Pending:</b>
                   <span v-if="pendingResponses.length === 0">
                     none
                   </span>
@@ -81,7 +81,7 @@
             <v-flex xs-4>
               <v-card class="elevation-0">
                 <v-card-text>
-                  <b>Correct</b>
+                  <b>Correct:</b>
                   <span v-if="correctResponses.length === 0">
                     none
                   </span>
@@ -95,7 +95,7 @@
             <v-flex xs-4>
               <v-card class="elevation-0">
                 <v-card-text>
-                  <b>Incorrect</b>
+                  <b>Incorrect:</b>
                   <span v-if="incorrectResponses.length === 0">
                     none
                   </span>
@@ -109,7 +109,7 @@
             <v-flex xs-4>
               <v-card class="elevation-0">
                 <v-card-text>
-                  <b>Pending</b>
+                  <b>Pending:</b>
                   <span v-if="pendingResponses.length === 0">
                     none
                   </span>

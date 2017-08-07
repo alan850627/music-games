@@ -17,7 +17,9 @@
           <span class="headline">Username</span>
         </v-card-title>
         <v-card-text>
+          <div type="" @keyup.enter="dialogSave">
           <slot name='input'></slot>
+        </div>
           <small>
             *Enable cookies to save for next visit.
           </small>

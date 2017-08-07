@@ -10,7 +10,8 @@
                 * This site is very much in beta still, so any feedback welcome.
                 <br>* Please enter your username by clicking the Login button. Everything should be pretty self explanatory.
                 <br>* I did not thorougly test autograder, so if anything seems fishy, message me.
-                <br>* The autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
+                <br>* Autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
+                <br>* You get infinite number of guesses, but every guess will be logged.
               </div>
             </div>
           </v-card-title>
