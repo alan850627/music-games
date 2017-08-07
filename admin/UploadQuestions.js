@@ -35,7 +35,8 @@ prompt.get(schema, (err, result) => {
       expireTime: file[key].expireHours * 60 * 60 * 1000 + Date.now(),
       createdTime: Date.now(),
       responses: {},
-      id: uuidv4()
+      id: uuidv4(),
+      op: 'alanolen'
     }
     console.log(`Uploading ${key}...`)
     questionsRef.push().update(question)

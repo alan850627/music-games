@@ -2,15 +2,18 @@
   <span class="question">
     <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
       <v-card-title primary-title>
+        <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
+          Uploaded by {{ellipsizeText(op, 11)}}
+        </div>
         <div>
           <h3 class="headline mb-0">{{points}} point(s)</h3>
-          Question closed {{timeLeft}}
+          Question closed {{timeLeft}}.
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
       <v-card-text>
         <h6 class="">{{description}}</h6>
-        <h6>Solution: <strong>{{solution}}</strong></h6>
+        <h6>Solution: <b>{{solution}}</b></h6>
         <div v-if="Object.keys(responses).length === 0">
           <h6 class="">No Responses :(</h6>
         </div>
@@ -64,9 +67,12 @@
 
     <v-card v-else class="elevation-15">
       <v-card-title primary-title>
+        <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
+          Uploaded by {{ellipsizeText(op, 11)}}
+        </div>
         <div>
           <h3 class="headline pb-0 mb-0">{{points}} point(s)</h3>
-          Question closing {{timeLeft}}
+          Question closing {{timeLeft}}.
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
@@ -184,7 +190,8 @@ export default {
       type: String,
       default: ''
     },
-    id: String
+    id: String,
+    op: String
   },
 
   computed: {

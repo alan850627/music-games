@@ -11,7 +11,7 @@
                 <br>* Please enter your username by clicking the Login button. Everything should be pretty self explanatory.
                 <br>* I did not thorougly test autograder, so if anything seems fishy, message me.
                 <br>* Autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
-                <br>* You get infinite number of guesses, but every guess will be logged.
+                <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
               </div>
             </div>
           </v-card-title>
@@ -31,7 +31,8 @@
             :isExpired="false"
             :responses="q.responses"
             :id="q['.key']"
-            :username="username">
+            :username="username"
+            :op="q.op">
           </question>
         </v-flex>
       </v-layout>
@@ -49,7 +50,8 @@
             :isExpired="true"
             :responses="q.responses"
             :id="q['.key']"
-            :username="username">
+            :username="username"
+            :op="q.op">
           </question>
         </v-flex>
       </v-layout>
