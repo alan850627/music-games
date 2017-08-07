@@ -1,6 +1,6 @@
 <template>
   <span class="question">
-    <v-card v-if="isExpired" class="grey lighten-3">
+    <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
       <v-card-title primary-title>
         <div>
           <h3 class="headline mb-0">{{points}} point(s)</h3>
@@ -17,7 +17,7 @@
         <div v-else>
           <v-layout row>
             <v-flex xs-4>
-              <v-card class="elevation-0">
+              <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
                   <b>Correct</b>
                   <span v-if="correctResponses.length === 0">
@@ -31,7 +31,7 @@
             </v-flex>
 
             <v-flex xs-4>
-              <v-card class="elevation-0">
+              <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
                   <b>Incorrect</b>
                   <span v-if="incorrectResponses.length === 0">
@@ -45,7 +45,7 @@
             </v-flex>
 
             <v-flex xs-4>
-              <v-card class="elevation-0">
+              <v-card class="elevation-0 grey lighten-2">
                 <v-card-text>
                   <b>Pending</b>
                   <span v-if="pendingResponses.length === 0">

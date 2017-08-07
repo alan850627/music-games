@@ -19,19 +19,21 @@
 
     </div>
     <div>
-      <span v-for="q in closedQuestions">
-        <question
-          :link="q.link"
-          :solution="q.solution"
-          :description="q.description"
-          :points="q.points"
-          :expireTime="q.expireTime"
-          :isExpired="true"
-          :responses="q.responses"
-          :id="q['.key']"
-          :username="username">
-        </question>
-      </span>
+      <v-layout mr-5 ml-5 mt-3 row-md column child-flex-sm wrap>
+        <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
+          <question
+            :link="q.link"
+            :solution="q.solution"
+            :description="q.description"
+            :points="q.points"
+            :expireTime="q.expireTime"
+            :isExpired="true"
+            :responses="q.responses"
+            :id="q['.key']"
+            :username="username">
+          </question>
+        </v-flex>
+      </v-layout>
     </div>
   </div>
 </template>
