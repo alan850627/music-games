@@ -246,7 +246,8 @@ export default {
           updateResponse[this.id] = false
           this.userRef.child('responses').update(updateResponse)
           this.userRef.update({
-            'numGuesses': snapshot.val().numGuesses + 1
+            'numGuesses': snapshot.val().numGuesses + 1,
+            'lastUpdateTime': Date.now()
           })
         } else {
           // User doesn't exist. Crazy way to create dyanmic keys.
@@ -254,6 +255,7 @@ export default {
           newuser[this.username] = {
             'score': 0,
             'createdTime': Date.now(),
+            'lastUpdateTime': Date.now(),
             'numGuesses': 1,
             'numCorrect': 0,
             'responses': {}
@@ -267,7 +269,8 @@ export default {
         'username': this.username,
         'response': newRes,
         'timestamp': Date.now(),
-        'status': 'pending'
+        'status': 'pending',
+        questionId: this.id
       }
       this.responseRef.push(temp)
       this.newResponse = ''
