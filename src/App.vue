@@ -39,6 +39,9 @@
 
     computed: {
       username: function () {
+        if (!this.rawUsername) {
+          return ''
+        }
         return this.rawUsername.trim()
       }
     },
