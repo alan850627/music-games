@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-layout pa-3>
+    <v-layout pl-3 pr-3 pb-3 pt-1>
       <v-flex xs12 sm8 offset-sm2>
         <v-card class="elevation-15">
           <v-card-title primary-title>
@@ -20,7 +20,7 @@
     </v-layout>
 
     <div>
-      <v-layout mr-3 ml-3 mt-3 row-md column child-flex-sm wrap>
+      <v-layout mr-3 ml-3 mt-3 row wrap>
         <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
           <question
             :link="q.link"

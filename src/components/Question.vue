@@ -3,10 +3,11 @@
     <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
       <v-card-title primary-title>
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
-          Uploaded by {{ellipsizeText(op, 11)}}
+          Uploaded by {{ellipsizeText(op, 10)}}
         </div>
         <div>
-          <h3 class="headline mb-0">{{points}} point(s)</h3>
+          <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
+          <h3 v-else class="headline mb-0">{{points}} points</h3>
           Question closed {{timeLeft}}.
         </div>
       </v-card-title>
@@ -27,7 +28,7 @@
                     none
                   </span>
                   <div v-for="r in correctResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -41,7 +42,7 @@
                     none
                   </span>
                   <div v-for="r in incorrectResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -55,7 +56,7 @@
                     none
                   </span>
                   <div v-for="r in pendingResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -68,10 +69,11 @@
     <v-card v-else class="elevation-15">
       <v-card-title primary-title>
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
-          Uploaded by {{ellipsizeText(op, 11)}}
+          Uploaded by {{ellipsizeText(op, 10)}}
         </div>
         <div>
-          <h3 class="headline pb-0 mb-0">{{points}} point(s)</h3>
+          <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
+          <h3 v-else class="headline mb-0">{{points}} points</h3>
           Question closing {{timeLeft}}.
         </div>
       </v-card-title>
@@ -92,7 +94,7 @@
                     none
                   </span>
                   <div v-for="r in correctResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -106,7 +108,7 @@
                     none
                   </span>
                   <div v-for="r in incorrectResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
@@ -120,7 +122,7 @@
                     none
                   </span>
                   <div v-for="r in pendingResponses">
-                    {{ellipsizeText(r.username, 11)}}
+                    {{ellipsizeText(r.username, 10)}}
                   </div>
                 </v-card-text>
               </v-card>
