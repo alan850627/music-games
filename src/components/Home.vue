@@ -62,6 +62,7 @@
 <script>
 import Question from './Question'
 import Firebase from 'firebase'
+import _ from 'lodash'
 // Initialize Firebase
 
 const app = Firebase.app()
@@ -88,14 +89,16 @@ export default {
 
   computed: {
     openQuestions: function () {
-      return this.questions.filter((question) => {
+      let presort = this.questions.filter((question) => {
         return question.expireTime >= Date.now()
       })
+      return _.sortBy(presort, 'createdTime')
     },
     closedQuestions: function () {
-      return this.questions.filter((question) => {
+      let presort = this.questions.filter((question) => {
         return question.expireTime < Date.now()
       })
+      return _.sortBy(presort, 'expireTime')
     }
   },
 
