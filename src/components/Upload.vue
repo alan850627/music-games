@@ -1,5 +1,8 @@
 <template>
   <div id="upload">
+    <v-alert success dismissible v-model="successalert">
+      Upload success!
+    </v-alert>
     <v-alert error dismissible v-model="usernamealert">
       Username cannot be blank!
     </v-alert>
@@ -96,6 +99,7 @@ export default {
 
   data () {
     return {
+      successalert: false,
       usernamealert: false,
       linkalert: false,
       solutionalert: false,
@@ -126,29 +130,44 @@ export default {
       if (this.username === '') {
         // Username Cannot be empty
         this.usernamealert = true
+        this.successalert = false
         return
+      } else {
+        this.usernamealert = false
       }
       if (this.link.trim() === '' || !this.checkURL(this.link)) {
         // link
         this.linkalert = true
+        this.successalert = false
         return
+      } else {
+        this.linkalert = false
       }
       if (this.solution.trim() === '') {
         // solution
         this.solutionalert = true
+        this.successalert = false
         return
+      } else {
+        this.solutionalert = false
       }
       let pt = parseInt(this.points)
       if (!Number.isInteger(pt)) {
         // points
         this.pointsalert = true
+        this.successalert = false
         return
+      } else {
+        this.pointsalert = false
       }
       let ti = parseInt(this.expireDuration)
       if (!Number.isInteger(ti)) {
         // expire time
         this.expiretimealert = true
+        this.successalert = false
         return
+      } else {
+        this.expiretimealert = false
       }
       let question = {
         link: this.link,
@@ -165,6 +184,7 @@ export default {
       }
       questionsRef.push().update(question)
       this.toDefault()
+      this.successalert = true
     },
     toDefault: function () {
       this.link = ''
