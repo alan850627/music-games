@@ -29,6 +29,7 @@
           :total-guess-time="totalGuessTime"
           :user-response-data="userResponseData"
           :num-revealed="numRevealed"
+          :showMore="true"
           :time-to-correct-resp-total="timeToCorrectRespTotal">
         </question-details>
       </v-card-text>
@@ -62,6 +63,7 @@
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
+            :showMore="gotCorrectAlready"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
