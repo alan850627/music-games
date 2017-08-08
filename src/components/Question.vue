@@ -8,7 +8,7 @@
         <div>
           <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
           <h3 v-else class="headline mb-0">{{points}} points</h3>
-          Question closed {{timeLeft}}.
+          Question closed {{timeAgo}}.
         </div>
       </v-card-title>
       <img :src="link" height="100%" width="100%"/>
@@ -40,7 +40,7 @@
           <span v-if="userResponseData.revealTime">
             <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
             <h3 v-else class="headline mb-0">{{points}} points</h3>
-            Question closing {{timeLeft}}.
+            Question closing in {{timeLeft}}.
           </span>
           <span v-else>
             <h3 class="headline">New {{points}} point question!</h3>
@@ -83,7 +83,7 @@
           </v-flex>
         </v-card-actions>
         <v-card-actions v-else>
-          <h6>You got it correct already!</h6>
+          <h6>Correct.</h6>
         </v-card-actions>
       </span>
       <span v-else>
@@ -145,8 +145,11 @@ export default {
   },
 
   computed: {
-    timeLeft: function () {
+    timeAgo: function () {
       return moment(this.expireTime).fromNow()
+    },
+    timeLeft: function () {
+      return `${moment.duration(this.expireTime - this.now).asSeconds()} secs`
     },
     questionRef: function () {
       return db.ref(`questions/${this.id}`)
@@ -166,11 +169,15 @@ export default {
     return {
       newResponse: '',
       usernamealert: false,
-      responsealert: false
+      responsealert: false,
+      now: Date.now()
     }
   },
 
   mounted () {
+    window.setInterval(() => {
+      this.now = Date.now()
+    }, 491)
   },
 
   methods: {
@@ -178,6 +185,7 @@ export default {
       return ellipsize(text, len)
     },
     revealQuestion: function () {
+      let DATENOW = Date.now()
       if (this.username === '') {
         // Username Cannot be empty
         this.usernamealert = true
@@ -188,7 +196,7 @@ export default {
           // User exists, so we update.
           let updateResponse = {}
           updateResponse[this.id] = {
-            'revealTime': Date.now(),
+            'revealTime': DATENOW,
             'status': 'pending',
             'numGuesses': 0
           }
@@ -198,15 +206,15 @@ export default {
           let newuser = {}
           newuser[this.username] = {
             'score': 0,
-            'createdTime': Date.now(),
-            'lastUpdateTime': Date.now(),
+            'createdTime': DATENOW,
+            'lastUpdateTime': DATENOW,
             'numGuesses': 0,
             'numCorrect': 0,
             'totalGuessTime': 0,
             'responses': {}
           }
           newuser[this.username].responses[this.id] = {
-            'revealTime': Date.now(),
+            'revealTime': DATENOW,
             'status': 'pending',
             'numGuesses': 0
           }
@@ -223,6 +231,7 @@ export default {
       })
     },
     submitGuess: function (newRes) {
+      let DATENOW = Date.now()
       if (this.username === '') {
         // Username Cannot be empty
         this.usernamealert = true
@@ -238,19 +247,19 @@ export default {
           // We assume user exists, so we update.
           this.userRef.child(`responses/${this.id}`).update({
             'numGuesses': snapshot.val().responses[this.id].numGuesses + 1,
-            'mostRecentGuessTime': Date.now()
+            'mostRecentGuessTime': DATENOW
           })
           this.userRef.update({
             'numGuesses': snapshot.val().numGuesses + 1,
-            'lastUpdateTime': Date.now(),
-            'totalGuessTime': snapshot.val().totalGuessTime + (Date.now() - snapshot.val().responses[this.id].revealTime)
+            'lastUpdateTime': DATENOW,
+            'totalGuessTime': snapshot.val().totalGuessTime + (DATENOW - snapshot.val().responses[this.id].revealTime)
           })
         }
       })
       this.questionRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
           this.questionRef.update({
-            'totalGuessTime': snapshot.val().totalGuessTime + (Date.now() - this.userResponseData.revealTime)
+            'totalGuessTime': snapshot.val().totalGuessTime + (DATENOW - this.userResponseData.revealTime)
           })
         }
       })
@@ -258,7 +267,7 @@ export default {
       let temp = {
         'username': this.username,
         'response': newRes,
-        'timestamp': Date.now(),
+        'timestamp': DATENOW,
         'status': 'pending',
         questionId: this.id
       }

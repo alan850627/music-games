@@ -42,7 +42,7 @@
 
     </div>
     <div>
-      <v-layout mr-5 ml-5 mt-3 row-md column child-flex-sm wrap>
+      <v-layout mr-3 ml-3 mt-3 row wrap>
         <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
           <question
             :link="q.link"
@@ -104,10 +104,10 @@ export default {
         if (!this.userResponseData[q['.key']]) {
           return true
         }
-        return this.getExpireTime(q) >= Date.now()
+        return this.getExpireTime(q) >= this.now
       })
       return _.sortBy(presort, (o) => {
-        return this.getRevealTime(o)
+        return o.createdTime
       })
     },
     closedQuestions: function () {
@@ -115,10 +115,10 @@ export default {
         if (!this.userResponseData[q['.key']]) {
           return false
         }
-        return this.getExpireTime(q) < Date.now()
+        return this.getExpireTime(q) < this.now
       })
       return _.sortBy(presort, (o) => {
-        return this.getExpireTime(o)
+        return 0 - this.getExpireTime(o)
       })
     },
     userResponseData: function () {
@@ -133,6 +133,7 @@ export default {
 
   data () {
     return {
+      now: Date.now()
     }
   },
 
@@ -156,6 +157,9 @@ export default {
   mounted () {
     this.login('default@gmail.com', 'password')
     this.$bindAsArray('questions', questionsRef.orderByChild('createdTime'))
+    window.setInterval(() => {
+      this.now = Date.now()
+    }, 491)
   }
 }
 </script>

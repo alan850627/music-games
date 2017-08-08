@@ -32,7 +32,7 @@ prompt.get(schema, (err, result) => {
       solution: file[key].solution,
       description: file[key].description,
       points: file[key].points,
-      expireDuration: file[key].expireHours * 60 * 60 * 1000,
+      expireDuration: file[key].expireMinutes * 60 * 1000,
       createdTime: Date.now(),
       responses: {},
       numRevealed: 0,

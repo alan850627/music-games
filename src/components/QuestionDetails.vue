@@ -3,7 +3,7 @@
     <v-btn v-if="!moreDetails"
       v-on:click.native="setMoreDetails(true)"
       flat block class="black--text">
-      view more
+      Details
     </v-btn>
     <v-btn v-if="moreDetails"
       v-on:click.native="setMoreDetails(false)"
