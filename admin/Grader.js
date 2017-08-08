@@ -59,8 +59,8 @@ questionsRef.on("child_added", function(question, prevChildKey) {
             })
 
             // Now compare if ansVids AND respVids have anything in common
-            let common = _.intersection(ansVids, respVids)
-            if (common.length > 0) {
+            let common = compareTwoArraysIgnoreNull(ansVids, respVids)
+            if (common) {
               // answer correct!
               console.log('\n')
               console.log(`Grading \"${questions[response.val().questionId].solution}\":`)
@@ -108,3 +108,18 @@ questionsRef.on("child_added", function(question, prevChildKey) {
     console.log(`*DEBUG* ${question.val().solution} READY`)
   }, 10000);
 })
+
+function compareTwoArraysIgnoreNull(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i]) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (arr2[j]) {
+          if (arr1[i] === arr2[j]) {
+            return true
+          }
+        }
+      }
+    }
+  }
+  return false
+}
