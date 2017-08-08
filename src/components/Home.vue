@@ -108,7 +108,7 @@ export default {
         return this.getExpireTime(q) >= Date.now()
       })
       return _.sortBy(presort, (o) => {
-        return this.getExpireTime(o)
+        return this.getRevealTime(o)
       })
     },
     closedQuestions: function () {
@@ -144,10 +144,13 @@ export default {
       })
     },
     getExpireTime: function (q) {
+      return this.getRevealTime(q) + q.expireDuration
+    },
+    getRevealTime: function (q) {
       if (!this.userResponseData || !this.userResponseData[q['.key']]) {
         return Date.now() + q.expireDuration
       }
-      return this.userResponseData[q['.key']].revealTime + q.expireDuration
+      return this.userResponseData[q['.key']].revealTime
     },
     debug: function () {
       console.log(this.userResponseData)

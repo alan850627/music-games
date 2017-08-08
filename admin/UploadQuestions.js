@@ -38,7 +38,8 @@ prompt.get(schema, (err, result) => {
       numRevealed: 0,
       totalGuessTime: 0,
       id: uuidv4(),
-      op: 'alanolen'
+      op: 'alanolen',
+      timeToCorrectRespTotal: 0
     }
     console.log(`Uploading ${key}...`)
     questionsRef.push().update(question)

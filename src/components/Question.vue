@@ -72,89 +72,104 @@
           Uploaded by {{ellipsizeText(op, 10)}}
         </div>
         <div>
-          <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
-          <h3 v-else class="headline mb-0">{{points}} points</h3>
-          Question closing {{timeLeft}}.
+          <span v-if="userResponseData.revealTime">
+            <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
+            <h3 v-else class="headline mb-0">{{points}} points</h3>
+            Question closing {{timeLeft}}.
+          </span>
+          <span v-else>
+            <h3 class="headline">New {{points}} point question!</h3>
+          </span>
         </div>
       </v-card-title>
-      <img :src="link" height="100%" width="100%"/>
-      <v-card-text>
-        <h6 class="">{{description}}</h6>
+      <span v-if="userResponseData.revealTime">
+        <img :src="link" height="100%" width="100%"/>
+        <v-card-text>
+          <h6 class="">{{description}}</h6>
 
-        <div v-if="Object.keys(responses).length === 0">
-          <h6 class="">No Responses :(</h6>
-        </div>
-        <div v-else>
-          <v-layout row fluid>
-            <v-flex xs-4>
-              <v-card class="elevation-0">
-                <v-card-text>
-                  <b>Correct:</b>
-                  <span v-if="correctResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in correctResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-
-            <v-flex xs-4>
-              <v-card class="elevation-0">
-                <v-card-text>
-                  <b>Incorrect:</b>
-                  <span v-if="incorrectResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in incorrectResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-
-            <v-flex xs-4>
-              <v-card class="elevation-0">
-                <v-card-text>
-                  <b>Pending:</b>
-                  <span v-if="pendingResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in pendingResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </div>
-
-      </v-card-text>
-      <v-card-actions v-if="!gotCorrectAlready">
-
-        <v-flex xs9 pt-3>
-          <div type="" @keyup.enter="submitGuess(newResponse)">
-            <v-text-field
-              class="mt-0 mb-0"
-              name="guess"
-              label="Your guess here"
-              v-model="newResponse">
-            </v-text-field>
+          <div v-if="Object.keys(responses).length === 0">
+            <h6 class="">No Responses :(</h6>
           </div>
-        </v-flex>
+          <div v-else>
+            <v-layout row fluid>
+              <v-flex xs-4>
+                <v-card class="elevation-0">
+                  <v-card-text>
+                    <b>Correct:</b>
+                    <span v-if="correctResponses.length === 0">
+                      none
+                    </span>
+                    <div v-for="r in correctResponses">
+                      {{ellipsizeText(r.username, 10)}}
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
 
-        <v-flex xs3>
-          <v-btn
-            v-on:click.native="submitGuess(newResponse)"
-            flat right block class="orange--text">
-            Submit
-          </v-btn>
-        </v-flex>
-      </v-card-actions>
-      <v-card-actions v-else>
-        <h6>Correct!</h6>
-      </v-card-actions>
+              <v-flex xs-4>
+                <v-card class="elevation-0">
+                  <v-card-text>
+                    <b>Incorrect:</b>
+                    <span v-if="incorrectResponses.length === 0">
+                      none
+                    </span>
+                    <div v-for="r in incorrectResponses">
+                      {{ellipsizeText(r.username, 10)}}
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+
+              <v-flex xs-4>
+                <v-card class="elevation-0">
+                  <v-card-text>
+                    <b>Pending:</b>
+                    <span v-if="pendingResponses.length === 0">
+                      none
+                    </span>
+                    <div v-for="r in pendingResponses">
+                      {{ellipsizeText(r.username, 10)}}
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </div>
+
+        </v-card-text>
+
+        <v-card-actions v-if="!gotCorrectAlready">
+
+          <v-flex xs9 pt-3>
+            <div type="" @keyup.enter="submitGuess(newResponse)">
+              <v-text-field
+                class="mt-0 mb-0"
+                name="guess"
+                label="Your guess here"
+                v-model="newResponse">
+              </v-text-field>
+            </div>
+          </v-flex>
+
+          <v-flex xs3>
+            <v-btn
+              v-on:click.native="submitGuess(newResponse)"
+              flat right block class="orange--text">
+              Submit
+            </v-btn>
+          </v-flex>
+        </v-card-actions>
+        <v-card-actions v-else>
+          <h6>Correct!</h6>
+        </v-card-actions>
+      </span>
+      <span v-else>
+        <v-btn
+          v-on:click.native="revealQuestion()"
+          flat block class="orange--text">
+          Click here to view
+        </v-btn>
+      </span>
     </v-card>
 
     <v-alert error dismissible v-model="usernamealert">
@@ -240,7 +255,8 @@ export default {
     return {
       newResponse: '',
       usernamealert: false,
-      responsealert: false
+      responsealert: false,
+      showOtherResponses: false
     }
   },
 
@@ -263,7 +279,6 @@ export default {
           let updateResponse = {}
           updateResponse[this.id] = {
             'revealTime': Date.now(),
-            'revealed': true,
             'status': 'pending',
             'numGuesses': 0
           }
@@ -282,7 +297,6 @@ export default {
           }
           newuser[this.username].responses[this.id] = {
             'revealTime': Date.now(),
-            'revealed': true,
             'status': 'pending',
             'numGuesses': 0
           }

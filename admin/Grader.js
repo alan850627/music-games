@@ -26,7 +26,7 @@ questionsRef.on("child_added", function(question, prevChildKey) {
     return res.status === "pending"
   })
 
-  if (pendingq.length > 0 || question.val().expireTime > Date.now()) {
+  if (pendingq.length > 0 || question.val().expireDuration + question.val().createdTime > Date.now()) {
     questions[question.key] = question.val()
     youTube.search(question.val().solution, 10, function(error, result) {
       if (error) {
@@ -67,9 +67,19 @@ questionsRef.on("child_added", function(question, prevChildKey) {
                     'score': snapshot.val().score + questions[response.val().questionId].points
                   }
                   ref.update(up)
+
+                  // track average time it takes ot get question correct
+                  questionsRef.child(`${response.val().questionId}`).once('value').then((qsnapshot) => {
+                    questionsRef.child(`${response.val().questionId}`).update({
+                      'timeToCorrectRespTotal': qsnapshot.val().timeToCorrectRespTotal + response.val().timestamp - snapshot.val().responses[response.val().questionId].revealTime
+                    })
+                  })
                 })
 
                 questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
+                  'status': 'correct'
+                })
+                ref.child(`responses/${response.val().questionId}`).update({
                   'status': 'correct'
                 })
               } else {
@@ -79,6 +89,9 @@ questionsRef.on("child_added", function(question, prevChildKey) {
                 console.log(`${response.val().username} answered \"${response.val().response}\"`)
                 console.log('INCORRECT!')
                 questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
+                  'status': 'incorrect'
+                })
+                usersRef.child(`${response.val().username}/responses/${response.val().questionId}`).update({
                   'status': 'incorrect'
                 })
               }
