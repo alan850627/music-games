@@ -2,12 +2,12 @@
   <span class="questionDetails">
     <v-btn v-if="!moreDetails"
       v-on:click.native="setMoreDetails(true)"
-      flat block class="black--text">
+      flat block class="black--text ml-0">
       Details
     </v-btn>
     <v-btn v-if="moreDetails"
       v-on:click.native="setMoreDetails(false)"
-      flat block class="black--text">
+      flat block class="black--text ml-0">
       view less
     </v-btn>
     <div v-if="moreDetails">

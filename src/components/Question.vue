@@ -91,7 +91,7 @@
       <span v-else>
         <v-btn
           v-on:click.native="revealQuestion()"
-          flat block class="orange--text">
+          flat block class="orange--text ml-0">
           Click here to view
         </v-btn>
       </span>
