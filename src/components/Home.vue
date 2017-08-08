@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout pl-3 pr-3 pb-3 pt-2>
-      <v-flex xs12 sm8 offset-sm2>
+      <v-flex xs12 sm10 offset-sm1>
         <v-card class="elevation-15">
           <v-card-title primary-title>
             <div>
@@ -11,8 +11,8 @@
                 <br>* Please enter your username by clicking the Login button. Everything should be pretty self explanatory.
                 <br>* Autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
                 <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
-                <br>* The timer for each question starts when you click to view the question. Each user will have his/her own start and end time.
-                <br>* Upload your own questions <a href="/#/Upload">here (TBD)</a>
+                <br>* The timer in each question starts when you view the question. Each user will have his/her own start and end time.
+                <br>* Upload your own questions <a href="/#/Upload">here</a>.
               </div>
             </div>
           </v-card-title>
@@ -20,7 +20,8 @@
       </v-flex>
     </v-layout>
 
-    <div>
+    <div v-if="openQuestions.length > 0">
+      <h4 class="ml-3 mt-3">Open Questions</h4>
       <v-layout mr-3 ml-3 mt-3 row wrap>
         <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
           <question
@@ -29,6 +30,8 @@
             :description="q.description"
             :points="q.points"
             :expireTime="getExpireTime(q)"
+            :expireDuration="q.expireDuration"
+            :myQuestion="false"
             :isExpired="false"
             :responses="q.responses"
             :id="q['.key']"
@@ -41,17 +44,20 @@
           </question>
         </v-flex>
       </v-layout>
-
+      <v-divider class="mt-5"></v-divider>
     </div>
-    <div>
+    <div v-if="opQuestions.length > 0">
+      <h4 class="ml-3 mt-3">My Questions</h4>
       <v-layout mr-3 ml-3 mt-3 row wrap>
-        <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
+        <v-flex xs12 sm8 md4 pa-2 v-for="q in opQuestions">
           <question
             :link="q.link"
             :solution="q.solution"
             :description="q.description"
             :points="q.points"
             :expireTime="getExpireTime(q)"
+            :expireDuration="q.expireDuration"
+            :myQuestion="true"
             :isExpired="true"
             :responses="q.responses"
             :id="q['.key']"
@@ -64,6 +70,33 @@
           </question>
         </v-flex>
       </v-layout>
+      <v-divider class="mt-5"></v-divider>
+    </div>
+    <div v-if="closedQuestions.length > 0">
+      <h4 class="ml-3 mt-3">Closed Questions</h4>
+      <v-layout mr-3 ml-3 mt-3 row wrap>
+        <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
+          <question
+            :link="q.link"
+            :solution="q.solution"
+            :description="q.description"
+            :points="q.points"
+            :expireTime="getExpireTime(q)"
+            :expireDuration="q.expireDuration"
+            :myQuestion="false"
+            :isExpired="true"
+            :responses="q.responses"
+            :id="q['.key']"
+            :username="username"
+            :op="q.op"
+            :total-guess-time="q.totalGuessTime"
+            :time-to-correct-resp-total="q.timeToCorrectRespTotal"
+            :num-revealed="q.numRevealed"
+            :user-response-data="userResponseData[q['.key']]">
+          </question>
+        </v-flex>
+      </v-layout>
+      <v-divider class="mt-5"></v-divider>
     </div>
   </div>
 </template>
@@ -104,13 +137,16 @@ export default {
   computed: {
     openQuestions: function () {
       let presort = this.questions.filter((q) => {
+        if (q.op === this.username) {
+          return false
+        }
         if (!this.userResponseData[q['.key']]) {
           return true
         }
         return this.getExpireTime(q) >= this.now
       })
       return _.sortBy(presort, (o) => {
-        return o.createdTime
+        return 0 - o.createdTime
       })
     },
     closedQuestions: function () {
@@ -118,10 +154,21 @@ export default {
         if (!this.userResponseData[q['.key']]) {
           return false
         }
+        if (q.op === this.username) {
+          return false
+        }
         return this.getExpireTime(q) < this.now
       })
       return _.sortBy(presort, (o) => {
         return 0 - this.getExpireTime(o)
+      })
+    },
+    opQuestions: function () {
+      let presort = this.questions.filter((q) => {
+        return q.op === this.username
+      })
+      return _.sortBy(presort, (o) => {
+        return 0 - o.createdTime
       })
     },
     userResponseData: function () {
@@ -151,7 +198,7 @@ export default {
     },
     getRevealTime: function (q) {
       if (!this.userResponseData || !this.userResponseData[q['.key']]) {
-        return Date.now() + q.expireDuration
+        return Date.now()
       }
       return this.userResponseData[q['.key']].revealTime
     }
