@@ -120,7 +120,10 @@ export default {
       if (t === 0 || isNaN(t)) {
         return 'no data'
       }
-      return `${(moment.duration(t).asSeconds()).toFixed(3)} sec`
+      if (t > 60 * 1000) {
+        return `${moment.duration(t).asMinutes().toFixed(1)} mins`
+      }
+      return `${(moment.duration(t).asSeconds()).toFixed(0)} secs`
     }
   },
 

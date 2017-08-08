@@ -152,7 +152,10 @@ export default {
       return moment(this.expireTime).fromNow()
     },
     timeLeft: function () {
-      return `${moment.duration(this.expireTime - this.now).asSeconds()} secs`
+      if (this.expireTime - this.now > 60 * 1000) {
+        return `${moment.duration(this.expireTime - this.now).asMinutes().toFixed(0)} minutes`
+      }
+      return `${moment.duration(this.expireTime - this.now).asSeconds().toFixed(0)} secs`
     },
     questionRef: function () {
       return db.ref(`questions/${this.id}`)

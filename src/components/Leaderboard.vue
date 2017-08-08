@@ -44,7 +44,11 @@ export default {
       let users = _.cloneDeep(this.usersRaw)
       for (let i = 0; i < users.length; i++) {
         users[i]['rank'] = users.length - i
-        users[i]['avgResponseTime'] = users[i].totalGuessTime / users[i].numGuesses
+        if (isNaN(users[i].totalGuessTime / users[i].numGuesses)) {
+          users[i]['avgResponseTime'] = Infinity
+        } else {
+          users[i]['avgResponseTime'] = users[i].totalGuessTime / users[i].numGuesses
+        }
       }
       return users
     }
@@ -74,10 +78,13 @@ export default {
       return moment(time).fromNow()
     },
     getReadableDuration: function (t) {
-      if (t === 0 || isNaN(t)) {
+      if (t === 0 || isNaN(t) || t === Infinity) {
         return 'no data'
       }
-      return `${(moment.duration(t).asSeconds()).toFixed(3)} sec`
+      if (t > 60 * 1000) {
+        return `${moment.duration(t).asMinutes().toFixed(1)} mins`
+      }
+      return `${(moment.duration(t).asSeconds()).toFixed(0)} secs`
     }
   },
 
