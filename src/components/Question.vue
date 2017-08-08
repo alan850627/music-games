@@ -11,7 +11,7 @@
           Question closed {{timeAgo}}.
         </div>
       </v-card-title>
-      <img :src="link" height="100%" width="100%"/>
+      <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
       <v-card-text>
         <h6 class="">{{description}}</h6>
         <h6>Solution: <b>{{solution}}</b></h6>
@@ -49,7 +49,7 @@
         </div>
       </v-card-title>
       <span v-if="userResponseData.revealTime">
-        <img :src="link" height="100%" width="100%"/>
+        <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
         <v-card-text>
           <h6 class="">{{description}}</h6>
 
