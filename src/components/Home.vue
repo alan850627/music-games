@@ -13,6 +13,8 @@
                 <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
                 <br>* The timer in each question starts when you view the question. Each user will have his/her own start and end time.
                 <br>* Upload your own questions <a href="/#/Upload">here</a>.
+                <br>
+                <br>Tip: You can view individual responses by hovering your mouse over the usernames.
               </div>
             </div>
           </v-card-title>
