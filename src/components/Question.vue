@@ -1,7 +1,7 @@
 <template>
   <span class="question">
     <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
-      <v-card-title primary-title class="pt-1 pb-1">
+      <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
         </div>
@@ -19,55 +19,20 @@
           <h6 class="">No Responses :(</h6>
         </div>
         <div v-else>
-          <v-layout row fluid>
-            <v-flex xs-4>
-              <v-card class="elevation-0 grey lighten-2">
-                <v-card-text>
-                  <b>Correct:</b>
-                  <span v-if="correctResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in correctResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-
-            <v-flex xs-4>
-              <v-card class="elevation-0 grey lighten-2">
-                <v-card-text>
-                  <b>Incorrect:</b>
-                  <span v-if="incorrectResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in incorrectResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-
-            <v-flex xs-4>
-              <v-card class="elevation-0 grey lighten-2">
-                <v-card-text>
-                  <b>Pending:</b>
-                  <span v-if="pendingResponses.length === 0">
-                    none
-                  </span>
-                  <div v-for="r in pendingResponses">
-                    {{ellipsizeText(r.username, 10)}}
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
+          <question-details
+            :responses="responses"
+            :username="username"
+            :id="id"
+            :total-guess-time="totalGuessTime"
+            :user-response-data="userResponseData"
+            :time-to-correct-resp-total="timeToCorrectRespTotal">
+          </question-details>
         </div>
       </v-card-text>
     </v-card>
 
     <v-card v-else class="elevation-15">
-      <v-card-title primary-title class="pt-1 pb-1">
+      <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
         </div>
@@ -87,59 +52,18 @@
         <v-card-text>
           <h6 class="">{{description}}</h6>
 
-          <div v-if="Object.keys(responses).length === 0">
-            <h6 class="">No Responses :(</h6>
-          </div>
-          <div v-else>
-            <v-layout row fluid>
-              <v-flex xs-4>
-                <v-card class="elevation-0">
-                  <v-card-text>
-                    <b>Correct:</b>
-                    <span v-if="correctResponses.length === 0">
-                      none
-                    </span>
-                    <div v-for="r in correctResponses">
-                      {{ellipsizeText(r.username, 10)}}
-                    </div>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-
-              <v-flex xs-4>
-                <v-card class="elevation-0">
-                  <v-card-text>
-                    <b>Incorrect:</b>
-                    <span v-if="incorrectResponses.length === 0">
-                      none
-                    </span>
-                    <div v-for="r in incorrectResponses">
-                      {{ellipsizeText(r.username, 10)}}
-                    </div>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-
-              <v-flex xs-4>
-                <v-card class="elevation-0">
-                  <v-card-text>
-                    <b>Pending:</b>
-                    <span v-if="pendingResponses.length === 0">
-                      none
-                    </span>
-                    <div v-for="r in pendingResponses">
-                      {{ellipsizeText(r.username, 10)}}
-                    </div>
-                  </v-card-text>
-                </v-card>
-              </v-flex>
-            </v-layout>
-          </div>
+          <question-details
+            :responses="responses"
+            :username="username"
+            :id="id"
+            :total-guess-time="totalGuessTime"
+            :user-response-data="userResponseData"
+            :time-to-correct-resp-total="timeToCorrectRespTotal">
+          </question-details>
 
         </v-card-text>
 
         <v-card-actions v-if="!gotCorrectAlready">
-
           <v-flex xs9 pt-3>
             <div type="" @keyup.enter="submitGuess(newResponse)">
               <v-text-field
@@ -150,7 +74,6 @@
               </v-text-field>
             </div>
           </v-flex>
-
           <v-flex xs3>
             <v-btn
               v-on:click.native="submitGuess(newResponse)"
@@ -160,7 +83,7 @@
           </v-flex>
         </v-card-actions>
         <v-card-actions v-else>
-          <h6>Correct!</h6>
+          <h6>You got it correct already!</h6>
         </v-card-actions>
       </span>
       <span v-else>
@@ -185,13 +108,17 @@
 import moment from 'moment'
 import Firebase from 'firebase'
 import ellipsize from 'ellipsize'
-import _ from 'lodash'
+import QuestionDetails from './QuestionDetails'
 
 // Accessing the data reference
 const app = Firebase.app()
 const db = app.database()
 
 export default {
+  components: {
+    QuestionDetails
+  },
+
   props: {
     link: String,
     solution: String,
@@ -209,6 +136,8 @@ export default {
     },
     id: String,
     op: String,
+    totalGuessTime: Number,
+    timeToCorrectRespTotal: Number,
     userResponseData: {
       type: Object,
       default: () => { return {} }
@@ -228,26 +157,8 @@ export default {
     userRef: function () {
       return db.ref(`users/${this.username}`)
     },
-    correctResponses: function () {
-      return _.filter(this.responses, (response) => {
-        return response.status === 'correct'
-      })
-    },
-    incorrectResponses: function () {
-      return _.filter(this.responses, (response) => {
-        return response.status === 'incorrect'
-      })
-    },
-    pendingResponses: function () {
-      return _.filter(this.responses, (response) => {
-        return response.status === 'pending'
-      })
-    },
     gotCorrectAlready: function () {
-      let arr = this.correctResponses.filter((res) => {
-        return res.username === this.username
-      })
-      return arr.length
+      return this.userResponseData.status === 'correct'
     }
   },
 
@@ -255,8 +166,7 @@ export default {
     return {
       newResponse: '',
       usernamealert: false,
-      responsealert: false,
-      showOtherResponses: false
+      responsealert: false
     }
   },
 

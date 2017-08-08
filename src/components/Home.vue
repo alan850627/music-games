@@ -18,11 +18,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <v-btn
-      v-on:click.native="debug()"
-      flat right block class="orange--text">
-      debug
-    </v-btn>
 
     <div>
       <v-layout mr-3 ml-3 mt-3 row wrap>
@@ -38,6 +33,8 @@
             :id="q['.key']"
             :username="username"
             :op="q.op"
+            :total-guess-time="q.totalGuessTime"
+            :time-to-correct-resp-total="q.timeToCorrectRespTotal"
             :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
@@ -58,6 +55,8 @@
             :id="q['.key']"
             :username="username"
             :op="q.op"
+            :total-guess-time="q.totalGuessTime"
+            :time-to-correct-resp-total="q.timeToCorrectRespTotal"
             :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
@@ -151,9 +150,6 @@ export default {
         return Date.now() + q.expireDuration
       }
       return this.userResponseData[q['.key']].revealTime
-    },
-    debug: function () {
-      console.log(this.userResponseData)
     }
   },
 

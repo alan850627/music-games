@@ -12,6 +12,7 @@
       <td class="text-xs-right">{{ props.item.score }}</td>
       <td class="text-xs-right">{{ props.item.numCorrect }}</td>
       <td class="text-xs-right">{{ props.item.numGuesses }}</td>
+      <td class="text-xs-right">{{ getReadableDuration(props.item.avgResponseTime) }}</td>
       <td class="text-xs-right">{{ timeAgo(props.item.lastUpdateTime) }}</td>
     </template>
   </v-data-table>
@@ -43,6 +44,7 @@ export default {
       let users = _.cloneDeep(this.usersRaw)
       for (let i = 0; i < users.length; i++) {
         users[i]['rank'] = users.length - i
+        users[i]['avgResponseTime'] = users[i].totalGuessTime / users[i].numGuesses
       }
       return users
     }
@@ -61,6 +63,7 @@ export default {
         { text: 'Score', value: 'score' },
         { text: 'Correct Guesses', value: 'numCorrect' },
         { text: 'Total Guesses', value: 'numGuesses' },
+        { text: 'Avg Response Time', value: 'avgResponseTime' },
         { text: 'Last Active', value: 'lastUpdateTime' }
       ]
     }
@@ -69,6 +72,12 @@ export default {
   methods: {
     timeAgo: function (time) {
       return moment(time).fromNow()
+    },
+    getReadableDuration: function (t) {
+      if (t === 0 || isNaN(t)) {
+        return 'no data'
+      }
+      return `${moment.duration(t).asSeconds()} sec`
     }
   },
 
