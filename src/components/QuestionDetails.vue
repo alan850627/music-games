@@ -11,7 +11,7 @@
       view less
     </v-btn>
     <div v-if="moreDetails">
-      <br>Attempted by {{numRevealed}} users
+      <br>Viewed by {{numRevealed}} users
       <br>Number of Responses: {{numResponses}}
       <br>Avg Response Time (all guesses): {{getReadableDuration(totalGuessTime/numResponses)}}
       <br>Avg Response Time (correct guesses only): {{getReadableDuration(timeToCorrectRespTotal/correctResponses.length)}}
