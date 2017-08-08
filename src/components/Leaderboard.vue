@@ -81,7 +81,7 @@ export default {
       if (t === 0 || isNaN(t) || t === Infinity) {
         return 'no data'
       }
-      if (t > 60 * 1000) {
+      if (t > 60000) {
         return `${moment.duration(t).asMinutes().toFixed(1)} mins`
       }
       return `${(moment.duration(t).asSeconds()).toFixed(0)} secs`

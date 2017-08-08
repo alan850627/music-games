@@ -152,8 +152,8 @@ export default {
       return moment(this.expireTime).fromNow()
     },
     timeLeft: function () {
-      if (this.expireTime - this.now > 60 * 1000) {
-        return `${moment.duration(this.expireTime - this.now).asMinutes().toFixed(0)} minutes`
+      if (this.expireTime - this.now > 60000) {
+        return `${(moment.duration(this.expireTime - this.now).minutes() + 1).toFixed(0)} minutes`
       }
       return `${moment.duration(this.expireTime - this.now).asSeconds().toFixed(0)} secs`
     },
@@ -204,7 +204,8 @@ export default {
           updateResponse[this.id] = {
             'revealTime': DATENOW,
             'status': 'pending',
-            'numGuesses': 0
+            'numGuesses': 0,
+            'lastUpdateTime': DATENOW
           }
           this.userRef.child('responses').update(updateResponse)
         } else {
