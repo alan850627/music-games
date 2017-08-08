@@ -18,7 +18,10 @@
       </v-card-title>
       <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
       <v-card-text>
-        <h6 class="">{{description}}</h6>
+        <b>{{description}}</b>
+        <br>Solution: {{solution}}
+        <br>
+        <br>
         <question-details
           :responses="responses"
           :username="username"

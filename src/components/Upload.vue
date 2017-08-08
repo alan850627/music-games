@@ -37,25 +37,25 @@
           label="Description"
           class="mt-5"
           v-model="description"
-          hint="Hints, info, description. (eg. Identify the composer given this excerpt)"
+          hint="Hints, info, description. (eg. Identify the composer given this excerpt.)"
           persistent-hint
         ></v-text-field>
         <v-text-field
           label="Points"
           class="mt-5"
           v-model="points"
-          hint="How many points is this question worth? (eg. 1 point)"
+          hint="How many points is this question worth? (eg. 1)"
           suffix="point(s)"
           required
           :rules="[rules.isInteger]"
           persistent-hint
         ></v-text-field>
         <v-text-field
-          label="Expire Time"
+          label="Expire Time in minutes"
           class="mt-5"
           v-model="expireDuration"
-          hint="How long will the question last after a user sees the question? (eg. 60 minutes)"
-          suffix="minutes"
+          hint="How many minutes will the question last after a user opens it? (eg. 60)"
+          suffix="minute(s)"
           required
           :rules="[rules.isInteger]"
           persistent-hint
