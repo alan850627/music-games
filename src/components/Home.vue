@@ -18,6 +18,11 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <v-btn
+      v-on:click.native="debug()"
+      flat right block class="orange--text">
+      debug
+    </v-btn>
 
     <div>
       <v-layout mr-3 ml-3 mt-3 row wrap>
@@ -27,7 +32,7 @@
             :solution="q.solution"
             :description="q.description"
             :points="q.points"
-            :expireTime="q.expireTime"
+            :expireTime="getExpireTime(q)"
             :isExpired="false"
             :responses="q.responses"
             :id="q['.key']"
@@ -47,7 +52,7 @@
             :solution="q.solution"
             :description="q.description"
             :points="q.points"
-            :expireTime="q.expireTime"
+            :expireTime="getExpireTime(q)"
             :isExpired="true"
             :responses="q.responses"
             :id="q['.key']"
@@ -85,7 +90,7 @@ export default {
 
   firebase: {
     questions: {
-      source: questionsRef.orderByChild('expireTime'),
+      source: questionsRef.orderByChild('createdTime'),
       default: []
     },
     users: {
@@ -96,20 +101,30 @@ export default {
 
   computed: {
     openQuestions: function () {
-      let presort = this.questions.filter((question) => {
-        return question.expireTime >= Date.now()
+      let presort = this.questions.filter((q) => {
+        if (!this.userResponseData[q['.key']]) {
+          return true
+        }
+        return this.getExpireTime(q) >= Date.now()
       })
-      return _.sortBy(presort, 'createdTime')
+      return _.sortBy(presort, (o) => {
+        return this.getExpireTime(o)
+      })
     },
     closedQuestions: function () {
-      let presort = this.questions.filter((question) => {
-        return question.expireTime < Date.now()
+      let presort = this.questions.filter((q) => {
+        if (!this.userResponseData[q['.key']]) {
+          return false
+        }
+        return this.getExpireTime(q) < Date.now()
       })
-      return _.sortBy(presort, 'expireTime')
+      return _.sortBy(presort, (o) => {
+        return this.getExpireTime(o)
+      })
     },
     userResponseData: function () {
       let usr = _.find(this.users, { '.key': this.username })
-      if (!usr) {
+      if (!usr || !usr.responses) {
         return {}
       } else {
         return usr.responses
@@ -127,12 +142,21 @@ export default {
       Firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => {
         console.err(err.message)
       })
+    },
+    getExpireTime: function (q) {
+      if (!this.userResponseData || !this.userResponseData[q['.key']]) {
+        return Date.now() + q.expireDuration
+      }
+      return this.userResponseData[q['.key']].revealTime + q.expireDuration
+    },
+    debug: function () {
+      console.log(this.userResponseData)
     }
   },
 
   mounted () {
     this.login('default@gmail.com', 'password')
-    this.$bindAsArray('questions', questionsRef.orderByChild('expireTime'))
+    this.$bindAsArray('questions', questionsRef.orderByChild('createdTime'))
   }
 }
 </script>
