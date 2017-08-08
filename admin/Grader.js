@@ -18,9 +18,8 @@ const usersRef = db.ref('users')
 const youTube = new YouTube()
 youTube.setKey('AIzaSyADtiS-UxkTMe6kpI920BURFww51d2YZY8');
 
+console.log('*DEBUG* Loading correct Answers from file')
 let correctAnswers = JSON.parse(fs.readFileSync('./admin/data.json', 'utf8'));
-console.log('*DEBUG* Current Correct Answers: ')
-console.log(JSON.stringify(correctAnswers, null, 2))
 let questions = {}
 
 questionsRef.on("child_added", function(question, prevChildKey) {
@@ -29,7 +28,7 @@ questionsRef.on("child_added", function(question, prevChildKey) {
     return res.status === "pending"
   })
   questions[question.key] = question.val()
-  if (pendingq.length > 0 || question.val().expireDuration + question.val().createdTime > Date.now()) {
+  if (pendingq.length > 0 || !correctAnswers[question.key]) {
     youTube.search(question.val().solution, 10, function(error, result) {
       if (error) {
         console.log(error)
@@ -38,7 +37,7 @@ questionsRef.on("child_added", function(question, prevChildKey) {
           return vid.id.videoId
         })
         fs.writeFileSync('./admin/data.json', JSON.stringify(correctAnswers, null, 2) , 'utf-8')
-        console.log('*DEBUG* UPDATE answers:')
+        console.log(`*DEBUG* Sourcing from Youtube for: ${question.val().solution}`)
         console.log(JSON.stringify(correctAnswers[question.key], null, 2))
       }
     })
