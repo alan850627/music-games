@@ -77,7 +77,7 @@ export default {
       if (t === 0 || isNaN(t)) {
         return 'no data'
       }
-      return `${moment.duration(t).asSeconds()} sec`
+      return `${(moment.duration(t).asSeconds()).toFixed(3)} sec`
     }
   },
 

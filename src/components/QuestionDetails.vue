@@ -11,6 +11,7 @@
       view less
     </v-btn>
     <div v-if="moreDetails">
+      <br>Attempted by {{numRevealed}} users
       <br>Number of Responses: {{numResponses}}
       <br>Avg Response Time (all guesses): {{getReadableDuration(totalGuessTime/numResponses)}}
       <br>Avg Response Time (correct guesses only): {{getReadableDuration(timeToCorrectRespTotal/correctResponses.length)}}
@@ -77,6 +78,7 @@ export default {
       type: String,
       default: ''
     },
+    numRevealed: Number,
     id: String,
     totalGuessTime: Number,
     timeToCorrectRespTotal: Number,
@@ -118,7 +120,7 @@ export default {
       if (t === 0 || isNaN(t)) {
         return 'no data'
       }
-      return `${moment.duration(t).asSeconds()} sec`
+      return `${(moment.duration(t).asSeconds()).toFixed(3)} sec`
     }
   },
 

@@ -35,6 +35,7 @@
             :op="q.op"
             :total-guess-time="q.totalGuessTime"
             :time-to-correct-resp-total="q.timeToCorrectRespTotal"
+            :num-revealed="q.numRevealed"
             :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
@@ -57,6 +58,7 @@
             :op="q.op"
             :total-guess-time="q.totalGuessTime"
             :time-to-correct-resp-total="q.timeToCorrectRespTotal"
+            :num-revealed="q.numRevealed"
             :user-response-data="userResponseData[q['.key']]">
           </question>
         </v-flex>
@@ -159,7 +161,7 @@ export default {
     this.$bindAsArray('questions', questionsRef.orderByChild('createdTime'))
     window.setInterval(() => {
       this.now = Date.now()
-    }, 491)
+    }, 1000)
   }
 }
 </script>

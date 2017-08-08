@@ -25,6 +25,7 @@
             :id="id"
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
+            :num-revealed="numRevealed"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
         </div>
@@ -58,6 +59,7 @@
             :id="id"
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
+            :num-revealed="numRevealed"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
@@ -126,6 +128,7 @@ export default {
     points: Number,
     expireTime: Number,
     isExpired: Boolean,
+    numRevealed: Number,
     responses: {
       type: Object,
       default: () => { return {} }
@@ -177,7 +180,7 @@ export default {
   mounted () {
     window.setInterval(() => {
       this.now = Date.now()
-    }, 491)
+    }, 1000)
   },
 
   methods: {
