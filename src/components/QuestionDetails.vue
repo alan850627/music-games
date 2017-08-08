@@ -2,12 +2,12 @@
   <span class="questionDetails">
     <v-btn v-if="!moreDetails"
       v-on:click.native="setMoreDetails(true)"
-      flat block class="black--text">
+      flat block class="black--text ml-0">
       Details
     </v-btn>
     <v-btn v-if="moreDetails"
       v-on:click.native="setMoreDetails(false)"
-      flat block class="black--text">
+      flat block class="black--text ml-0">
       view less
     </v-btn>
     <div v-if="moreDetails">
@@ -22,9 +22,12 @@
           <v-card-text>
             <b>Correct:</b>
             <span v-if="correctResponses.length === 0">
-              none
+              <br>none
             </span>
-            <div v-for="r in correctResponses">
+            <div v-for="r in correctResponses" v-if="showMore" :title="r.response">
+              {{ellipsizeText(r.username, 10)}}
+            </div>
+            <div v-for="r in correctResponses" v-if="!showMore">
               {{ellipsizeText(r.username, 10)}}
             </div>
           </v-card-text>
@@ -36,9 +39,12 @@
           <v-card-text>
             <b>Incorrect:</b>
             <span v-if="incorrectResponses.length === 0">
-              none
+              <br>none
             </span>
-            <div v-for="r in incorrectResponses">
+            <div v-for="r in incorrectResponses" v-if="showMore" :title="r.response">
+              {{ellipsizeText(r.username, 10)}}
+            </div>
+            <div v-for="r in incorrectResponses" v-if="!showMore">
               {{ellipsizeText(r.username, 10)}}
             </div>
           </v-card-text>
@@ -50,9 +56,12 @@
           <v-card-text>
             <b>Pending:</b>
             <span v-if="pendingResponses.length === 0">
-              none
+              <br>none
             </span>
-            <div v-for="r in pendingResponses">
+            <div v-for="r in pendingResponses" v-if="showMore" :title="r.response">
+              {{ellipsizeText(r.username, 10)}}
+            </div>
+            <div v-for="r in pendingResponses" v-if="!showMore">
               {{ellipsizeText(r.username, 10)}}
             </div>
           </v-card-text>
@@ -82,6 +91,7 @@ export default {
     id: String,
     totalGuessTime: Number,
     timeToCorrectRespTotal: Number,
+    showMore: Boolean,
     userResponseData: {
       type: Object,
       default: () => { return {} }

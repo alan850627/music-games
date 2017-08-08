@@ -8,27 +8,30 @@
         <div>
           <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
           <h3 v-else class="headline mb-0">{{points}} points</h3>
-          Question closed {{timeAgo}}.
+          <span v-if="myQuestion">
+            Duration: {{duration}}
+          </span>
+          <span v-else>
+            Question closed {{timeAgo}}.
+          </span>
         </div>
       </v-card-title>
       <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
       <v-card-text>
-        <h6 class="">{{description}}</h6>
-        <h6>Solution: <b>{{solution}}</b></h6>
-        <div v-if="Object.keys(responses).length === 0">
-          <h6 class="">No Responses :(</h6>
-        </div>
-        <div v-else>
-          <question-details
-            :responses="responses"
-            :username="username"
-            :id="id"
-            :total-guess-time="totalGuessTime"
-            :user-response-data="userResponseData"
-            :num-revealed="numRevealed"
-            :time-to-correct-resp-total="timeToCorrectRespTotal">
-          </question-details>
-        </div>
+        <b>{{description}}</b>
+        <br>Solution: {{solution}}
+        <br>
+        <br>
+        <question-details
+          :responses="responses"
+          :username="username"
+          :id="id"
+          :total-guess-time="totalGuessTime"
+          :user-response-data="userResponseData"
+          :num-revealed="numRevealed"
+          :showMore="true"
+          :time-to-correct-resp-total="timeToCorrectRespTotal">
+        </question-details>
       </v-card-text>
     </v-card>
 
@@ -60,6 +63,7 @@
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
+            :showMore="gotCorrectAlready"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
@@ -91,7 +95,7 @@
       <span v-else>
         <v-btn
           v-on:click.native="revealQuestion()"
-          flat block class="orange--text">
+          flat block class="orange--text ml-0">
           Click here to view
         </v-btn>
       </span>
@@ -129,6 +133,8 @@ export default {
     expireTime: Number,
     isExpired: Boolean,
     numRevealed: Number,
+    expireDuration: Number,
+    myQuestion: Boolean,
     responses: {
       type: Object,
       default: () => { return {} }
@@ -156,6 +162,9 @@ export default {
         return `${(moment.duration(this.expireTime - this.now).minutes() + 1).toFixed(0)} minutes`
       }
       return `${moment.duration(this.expireTime - this.now).asSeconds().toFixed(0)} secs`
+    },
+    duration: function () {
+      return `${(moment.duration(this.expireDuration).asMinutes()).toFixed(0)} minutes`
     },
     questionRef: function () {
       return db.ref(`questions/${this.id}`)
