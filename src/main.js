@@ -9,6 +9,7 @@ import 'vuetify/dist/vuetify.min.css'
 import App from './App'
 import Home from './components/Home'
 import Leaderboard from './components/Leaderboard'
+import Upload from './components/Upload'
 
 Vue.use(VueFire)
 Vue.use(Vuetify)
@@ -17,6 +18,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', name: 'home', component: Home },
   { path: '/Leaderboard', name: 'leaderboard', component: Leaderboard },
+  { path: '/Upload', name: 'upload', component: Upload },
   { path: '*', redirect: '/' }
 ]
 
