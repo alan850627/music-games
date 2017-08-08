@@ -41,10 +41,10 @@
             <span v-if="incorrectResponses.length === 0">
               <br>none
             </span>
-            <div v-for="r in incorrectResponses" v-if="showMore" :title="r.response">
+            <div v-for="r in incorrectResponses" v-if="showMore || r.username === username" :title="r.response">
               {{ellipsizeText(r.username, 10)}}
             </div>
-            <div v-for="r in incorrectResponses" v-if="!showMore">
+            <div v-for="r in incorrectResponses" v-if="!showMore && r.username !== username">
               {{ellipsizeText(r.username, 10)}}
             </div>
           </v-card-text>
@@ -58,10 +58,10 @@
             <span v-if="pendingResponses.length === 0">
               <br>none
             </span>
-            <div v-for="r in pendingResponses" v-if="showMore" :title="r.response">
+            <div v-for="r in pendingResponses" v-if="showMore || r.username === username" :title="r.response">
               {{ellipsizeText(r.username, 10)}}
             </div>
-            <div v-for="r in pendingResponses" v-if="!showMore">
+            <div v-for="r in pendingResponses" v-if="!showMore && r.username !== username">
               {{ellipsizeText(r.username, 10)}}
             </div>
           </v-card-text>
