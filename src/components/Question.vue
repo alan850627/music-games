@@ -1,6 +1,6 @@
 <template>
   <span class="question">
-    <v-card v-if="isExpired" class="grey lighten-2 elevation-15">
+    <v-card v-if="isExpired" class="qCard grey lighten-2 elevation-15">
       <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
@@ -16,7 +16,7 @@
           </span>
         </div>
       </v-card-title>
-      <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
+      <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
@@ -35,7 +35,7 @@
       </v-card-text>
     </v-card>
 
-    <v-card v-else class="elevation-15">
+    <v-card v-else class="qCard elevation-15">
       <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
@@ -52,7 +52,7 @@
         </div>
       </v-card-title>
       <span v-if="userResponseData.revealTime">
-        <a :href="link"><img :src="link" target="_blank" height="100%" width="100%"></a>
+        <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="">{{description}}</h6>
 
@@ -295,4 +295,13 @@ export default {
 </script>
 
 <style scoped>
+  .qImage {
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    margin: auto;
+  }
+
+  .qCard{
+  }
 </style>
