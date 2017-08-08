@@ -159,12 +159,12 @@ export default {
     },
     timeLeft: function () {
       if (this.expireTime - this.now > 60000) {
-        return `${(moment.duration(this.expireTime - this.now).minutes() + 1).toFixed(0)} minutes`
+        return `${Math.floor(moment.duration(this.expireTime - this.now).asMinutes())} minutes`
       }
-      return `${moment.duration(this.expireTime - this.now).asSeconds().toFixed(0)} secs`
+      return `${Math.floor(moment.duration(this.expireTime - this.now).asSeconds())} secs`
     },
     duration: function () {
-      return `${(moment.duration(this.expireDuration).asMinutes()).toFixed(0)} minutes`
+      return `${Math.floor(moment.duration(this.expireDuration).asMinutes())} minutes`
     },
     questionRef: function () {
       return db.ref(`questions/${this.id}`)
