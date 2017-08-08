@@ -7,7 +7,7 @@
       Username cannot be blank!
     </v-alert>
     <v-alert error dismissible v-model="linkalert">
-      Invalid link! Make sure the link is a direct link to an image (aka link ending in .jpeg, .jpg, .gif, or .png)
+      Invalid link! Make sure the link is a direct link to an image (eg. a link ending in .jpeg, .jpg, .gif, or .png)!
     </v-alert>
     <v-alert error dismissible v-model="solutionalert">
       Invalid solution!
