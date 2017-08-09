@@ -27,7 +27,7 @@
         <div slot="header" class="">
           <h4 class="mt-3">Open Questions</h4>
         </div>
-        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-4">
+        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
             <question
               :link="q.link"
@@ -57,7 +57,7 @@
         <div slot="header" class="">
           <h4 class="mt-3">My Questions</h4>
         </div>
-        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-4">
+        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-for="q in opQuestions">
             <question
               :link="q.link"
@@ -87,7 +87,7 @@
         <div slot="header" class="">
           <h4 class="mt-3">Closed Questions</h4>
         </div>
-        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-4">
+        <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
             <question
               :link="q.link"
