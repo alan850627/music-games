@@ -41,7 +41,6 @@ prompt.get(schema, (err, result) => {
       responses: {},
       numRevealed: 0,
       totalGuessTime: 0,
-      id: uuidv4(),
       op: 'alanolen',
       timeToCorrectRespTotal: 0
     }

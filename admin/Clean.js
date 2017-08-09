@@ -13,6 +13,7 @@ var users = db.users
 clean()
 setupNewStructure()
 cleanResponsesQ()
+cleanResponsesU()
 setupReveal()
 
 const newDB = {
@@ -26,6 +27,7 @@ function clean () {
     questions[qk].numRevealed = 0
     questions[qk].timeToCorrectRespTotal = 0
     questions[qk].totalGuessTime = 0
+    delete questions[qk].id
   })
   Object.keys(users).forEach((uk) => {
     users[uk].numCorrect = 0
@@ -64,6 +66,16 @@ function setupReveal() {
         questions[qk].numRevealed++
       }
     })
+  })
+}
+
+function cleanResponsesU() {
+  Object.keys(users).forEach((uk) => {
+    Object.keys(users[uk].responses).forEach((qk) => {
+      if (!questions[qk]) {
+        delete users[uk].responses[qk]
+      }
+    }
   })
 }
 
