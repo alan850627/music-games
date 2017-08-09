@@ -1,6 +1,10 @@
+/*
+ This assumes autograder made correct judgements.
+ It takes json input, outputs the correct server calculations.
+*/
+
 const _ = require('lodash')
 const fs = require('fs')
-
 
 const db = JSON.parse(fs.readFileSync('./data/music-games-export.json', 'utf-8'))
 var questions = db.questions
@@ -83,6 +87,8 @@ function cleanResponsesQ() {
           users[r.username].responses[qk].status = 'correct'
           users[r.username].score += questions[qk].points
         }
+      } else if (r.status === 'incorrect'){
+        users[r.username].responses[qk].status = 'incorrect'
       }
     })
   })

@@ -1,3 +1,7 @@
+/*
+  for uploading questions over CLI
+*/
+
 const firebase = require('firebase-admin')
 const path = require('path')
 const prompt = require('prompt')
