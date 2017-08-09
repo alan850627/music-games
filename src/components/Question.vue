@@ -1,6 +1,6 @@
 <template>
   <span class="question">
-    <v-card v-if="isExpired" class="qCard grey lighten-2 elevation-15">
+    <v-card v-if="isExpired" class="qCard elevation-15">
       <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
