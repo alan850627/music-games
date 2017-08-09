@@ -67,10 +67,19 @@ questionsRef.on("child_added", function(question, prevChildKey) {
               console.log('CORRECT!')
               let ref = usersRef.child(`${response.val().username}`)
               ref.once('value').then((snapshot) => {
-                let up = {
-                  'numCorrect': snapshot.val().numCorrect + 1,
-                  'score': snapshot.val().score + questions[response.val().questionId].points
+                let up = {}
+                if (snapshot.val().responses[response.val().questionId].status === 'correct') {
+                  // Don't increment score if user already got the question correct but answered twice.
+                  up = {
+                    'numCorrect': snapshot.val().numCorrect + 1
+                  }
+                } else {
+                  let up = {
+                    'numCorrect': snapshot.val().numCorrect + 1,
+                    'score': snapshot.val().score + questions[response.val().questionId].points
+                  }
                 }
+
                 ref.update(up)
 
                 // track average time it takes ot get question correct
