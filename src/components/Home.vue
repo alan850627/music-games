@@ -8,10 +8,11 @@
               <h3 class="headline mb-0">Read before play:</h3>
               <div>
                 * This site is very much in beta still, so any feedback welcome.
-                <br>* Please enter your username by clicking the Login button. Everything should be pretty self explanatory.
+                <br>* Please enter your username by clicking the Login button.
+                <br>* Once you log in, you will be able to participate in the music games.
+                <br>* Once you reveal a question, you will have a certain amount of time to answer it before it expires and the solution is shown to you
                 <br>* Autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
                 <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
-                <br>* The timer in each question starts when you view the question. Each user will have his/her own start and end time.
                 <br>* Upload your own questions <a href="/#/Upload">here</a>.
                 <br>
                 <br>Tip: You can view individual responses by hovering your mouse over the usernames.

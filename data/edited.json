@@ -75,8 +75,8 @@
         }
       },
       "solution": "Stravinsky: Rite of Spring",
-      "timeToCorrectRespTotal": -50928,
-      "totalGuessTime": -257342,
+      "timeToCorrectRespTotal": 210226,
+      "totalGuessTime": 787274,
       "viewedUsers": {
         "Dren": true,
         "Flutey": true,
@@ -5163,7 +5163,7 @@
         "-Kr-QrJwa38tgtQuWkPp": {
           "mostRecentGuessTime": 1502205076643,
           "numGuesses": 4,
-          "revealTime": 1502205026789,
+          "revealTime": 1502204765635,
           "status": "correct"
         },
         "-Kr-QrK4B8P7cV0wnsWv": {
@@ -5217,7 +5217,7 @@
         }
       },
       "score": 14,
-      "totalGuessTime": -310295
+      "totalGuessTime": 734321
     }
   }
 }
