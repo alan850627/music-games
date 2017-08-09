@@ -21,14 +21,12 @@
         <v-card class="elevation-0">
           <v-card-text>
             <b>Correct:</b>
-            <span v-if="correctResponses.length === 0">
-              <br>none
-            </span>
-            <div v-for="r in correctResponses" v-if="showMore" :title="r.response">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-if="correctResponses.length === 0">
+              <div>none</div>
             </div>
-            <div v-for="r in correctResponses" v-if="!showMore">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-for="r in correctResponses">
+              <div v-if="showMore" :title="r.response">{{ellipsizeText(r.username, 10)}}</div>
+              <div v-if="!showMore">{{ellipsizeText(r.username, 10)}}</div>
             </div>
           </v-card-text>
         </v-card>
@@ -38,14 +36,12 @@
         <v-card class="elevation-0">
           <v-card-text>
             <b>Incorrect:</b>
-            <span v-if="incorrectResponses.length === 0">
-              <br>none
-            </span>
-            <div v-for="r in incorrectResponses" v-if="showMore || r.username === username" :title="r.response">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-if="incorrectResponses.length === 0">
+              <div>none</div>
             </div>
-            <div v-for="r in incorrectResponses" v-if="!showMore && r.username !== username">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-for="r in incorrectResponses">
+              <div v-if="showMore || r.username === username" :title="r.response">{{ellipsizeText(r.username, 10)}}</div>
+              <div v-if="!showMore && r.username !== username">{{ellipsizeText(r.username, 10)}}</div>
             </div>
           </v-card-text>
         </v-card>
@@ -55,14 +51,12 @@
         <v-card class="elevation-0">
           <v-card-text>
             <b>Pending:</b>
-            <span v-if="pendingResponses.length === 0">
-              <br>none
-            </span>
-            <div v-for="r in pendingResponses" v-if="showMore || r.username === username" :title="r.response">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-if="pendingResponses.length === 0">
+              <div>none</div>
             </div>
-            <div v-for="r in pendingResponses" v-if="!showMore && r.username !== username">
-              {{ellipsizeText(r.username, 10)}}
+            <div v-for="r in pendingResponses">
+              <div v-if="showMore || r.username === username" :title="r.response">{{ellipsizeText(r.username, 10)}}</div>
+              <div v-if="!showMore && r.username !== username">{{ellipsizeText(r.username, 10)}}</div>
             </div>
           </v-card-text>
         </v-card>
