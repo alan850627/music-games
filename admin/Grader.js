@@ -74,7 +74,7 @@ questionsRef.on("child_added", function(question, prevChildKey) {
                     'numCorrect': snapshot.val().numCorrect + 1
                   }
                 } else {
-                  let up = {
+                  up = {
                     'numCorrect': snapshot.val().numCorrect + 1,
                     'score': snapshot.val().score + questions[response.val().questionId].points
                   }
@@ -88,14 +88,15 @@ questionsRef.on("child_added", function(question, prevChildKey) {
                     'timeToCorrectRespTotal': qsnapshot.val().timeToCorrectRespTotal + response.val().timestamp - snapshot.val().responses[response.val().questionId].revealTime
                   })
                 })
+
+                questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
+                  'status': 'correct'
+                })
+                ref.child(`responses/${response.val().questionId}`).update({
+                  'status': 'correct'
+                })
               })
 
-              questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
-                'status': 'correct'
-              })
-              ref.child(`responses/${response.val().questionId}`).update({
-                'status': 'correct'
-              })
             } else {
               // answer incorrect
               console.log('\n')
