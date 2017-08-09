@@ -124,7 +124,7 @@ export default {
 
   methods: {
     checkURL: function (url) {
-      return (url.match(/\.(jpeg|jpg|gif|png)$/) != null)
+      return (url.match(/\.(jpeg|jpg|gif|png)$/i) != null)
     },
     upload: function () {
       if (this.username === '') {
