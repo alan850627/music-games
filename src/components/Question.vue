@@ -213,8 +213,7 @@ export default {
           updateResponse[this.id] = {
             'revealTime': DATENOW,
             'status': 'pending',
-            'numGuesses': 0,
-            'lastUpdateTime': DATENOW
+            'numGuesses': 0
           }
           this.userRef.child('responses').update(updateResponse)
         } else {
