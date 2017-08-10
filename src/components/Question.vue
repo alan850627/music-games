@@ -1,6 +1,6 @@
 <template>
   <span class="question">
-    <v-card v-if="isExpired" class="qCard elevation-15">
+    <v-card v-if="isExpired" :class="qCardClass">
       <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
@@ -36,7 +36,7 @@
       </v-card-text>
     </v-card>
 
-    <v-card v-else class="qCard elevation-15">
+    <v-card v-else :class="qCardClass">
       <v-card-title primary-title class="">
         <div style="position: absolute; top: 5px; right: 7px; width: 100px; text-align:right;">
           Uploaded by {{ellipsizeText(op, 10)}}
@@ -183,6 +183,24 @@ export default {
     },
     gotCorrectAlready: function () {
       return this.userResponseData.status === 'correct'
+    },
+    qCardClass: function () {
+      if (!this.userResponseData.revealTime) {
+        return 'qCard elevation-15'
+      }
+      if (!this.isExpired) {
+        if (this.gotCorrectAlready) {
+          return 'qCard elevation-15 light-green lighten-4'
+        } else {
+          return 'qCard elevation-15 yellow lighten-4'
+        }
+      } else {
+        if (this.gotCorrectAlready) {
+          return 'qCard elevation-15 light-green lighten-4'
+        } else {
+          return 'qCard elevation-15 deep-orange lighten-4'
+        }
+      }
     }
   },
 
