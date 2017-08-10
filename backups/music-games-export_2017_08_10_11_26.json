@@ -1515,7 +1515,7 @@
       "description": "Identify the work given this excerpt.",
       "expireDuration": 3600000,
       "link": "http://i.imgur.com/6y6cKE7.jpg",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "person man",
       "points": 3,
       "responses": {
@@ -1559,6 +1559,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -1760,7 +1761,7 @@
       "description": "Name the composer.",
       "expireDuration": 3600000,
       "link": "http://i.imgur.com/JywzaNN.png",
-      "numRevealed": 12,
+      "numRevealed": 13,
       "op": "matcha",
       "points": 3,
       "responses": {
@@ -1840,11 +1841,18 @@
           "status": "correct",
           "timestamp": 1502311494868,
           "username": "nshei0227"
+        },
+        "-KrAOpvtBK4ky9eiCTCW": {
+          "questionId": "-Kr2QtzyuXJzG7fIzHR6",
+          "response": "Stockhausen",
+          "status": "correct",
+          "timestamp": 1502356134286,
+          "username": "djc"
         }
       },
       "solution": "Stockhausen",
-      "timeToCorrectRespTotal": 3659964,
-      "totalGuessTime": 3763781,
+      "timeToCorrectRespTotal": 3701541,
+      "totalGuessTime": 3805358,
       "viewedUsers": {
         "Flutey": true,
         "Jeth": true,
@@ -1852,6 +1860,7 @@
         "Praetor": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "nshei0227": true,
         "person man": true,
@@ -1865,7 +1874,7 @@
       "description": "Identify this piece for unaccompanied cello.",
       "expireDuration": 3600000,
       "link": "http://i.imgur.com/FlMMGh4.png",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "Wolle",
       "points": 8,
       "responses": {
@@ -1907,6 +1916,7 @@
         "Piyush Jindal": true,
         "Praetor": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -2079,7 +2089,7 @@
       "description": "Identify the piece that this Bass excerpt is taken from.",
       "expireDuration": 1800000,
       "link": "https://image.prntscr.com/image/rwD4pwzVT6OhTQ1OXBXjUg.png",
-      "numRevealed": 16,
+      "numRevealed": 17,
       "op": "Praetor",
       "points": 1,
       "responses": {
@@ -2144,6 +2154,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "javierapl12": true,
         "matcha": true,
@@ -2479,7 +2490,7 @@
       "description": "Identify the work from the excerpt",
       "expireDuration": 3600000,
       "link": "http://i.imgur.com/hHpytvI.png",
-      "numRevealed": 16,
+      "numRevealed": 17,
       "op": "Jeth",
       "points": 7,
       "responses": {
@@ -2669,6 +2680,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "javierapl12": true,
         "matcha": true,
@@ -2686,7 +2698,7 @@
       "description": "Identify the piece given this orgasm.",
       "expireDuration": 3600000,
       "link": "http://i.imgur.com/1z7TlR5.png",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "Wolle",
       "points": 4,
       "responses": {
@@ -2737,6 +2749,7 @@
         "RandolphTheOffWhite": true,
         "The Assoluta Voice in Opera": true,
         "alanolen": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -2802,7 +2815,7 @@
       "description": "Identify this chanson.",
       "expireDuration": 35580000,
       "link": "http://i.imgur.com/GSfkpUC.png",
-      "numRevealed": 13,
+      "numRevealed": 14,
       "op": "hftf",
       "points": 5,
       "responses": {
@@ -2832,6 +2845,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "matcha": true,
         "nshei0227": true,
         "person man": true,
@@ -2916,7 +2930,7 @@
       "description": "Identify the piece.",
       "expireDuration": 9600000,
       "link": "http://i.imgur.com/URJJEDo.png",
-      "numRevealed": 13,
+      "numRevealed": 14,
       "op": "hftf",
       "points": 2,
       "responses": {
@@ -2967,6 +2981,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "matcha": true,
         "nshei0227": true,
         "person man": true,
@@ -2980,7 +2995,7 @@
       "description": "Identify the piece.",
       "expireDuration": 14400000,
       "link": "http://i.imgur.com/zDmeqAC.jpg",
-      "numRevealed": 13,
+      "numRevealed": 14,
       "op": "hftf",
       "points": 2,
       "responses": {
@@ -3003,6 +3018,7 @@
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
+        "djc": true,
         "matcha": true,
         "nshei0227": true,
         "person man": true,
@@ -3016,7 +3032,7 @@
       "description": "The soundtrack of \"Sherlock Holmes: A Game of the Shadows\" quotes a famous opera. What is this opera?",
       "expireDuration": 3600000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/06.PNG",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "alanolen",
       "points": 3,
       "responses": {
@@ -3101,6 +3117,7 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -3116,7 +3133,7 @@
       "description": "\"You're a Good Man Charlie Brown\", the musical, quotes a famous classical piece. What is this classical piece?",
       "expireDuration": 1800000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/07.PNG",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "alanolen",
       "points": 3,
       "responses": {
@@ -3243,6 +3260,7 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -3258,7 +3276,7 @@
       "description": "The new Aladdin musical quotes a much older musical. Name the composer and that older musical.",
       "expireDuration": 3600000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/08.PNG",
-      "numRevealed": 12,
+      "numRevealed": 13,
       "op": "alanolen",
       "points": 5,
       "responses": {
@@ -3308,6 +3326,7 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "nshei0227": true,
         "person man": true,
@@ -3462,7 +3481,7 @@
       "description": "This is a love theme from a movie. Name the movie.",
       "expireDuration": 3600000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/10.PNG",
-      "numRevealed": 12,
+      "numRevealed": 13,
       "op": "alanolen",
       "points": 5,
       "responses": {
@@ -3521,11 +3540,18 @@
           "status": "correct",
           "timestamp": 1502322489807,
           "username": "nshei0227"
+        },
+        "-KrAPXHCQwgxaBMMl7qU": {
+          "questionId": "-Kr47XPy6iOp2wkh0xiU",
+          "response": "The Godfather",
+          "status": "correct",
+          "timestamp": 1502356315931,
+          "username": "djc"
         }
       },
       "solution": "The Godfather",
-      "timeToCorrectRespTotal": 1563948,
-      "totalGuessTime": 1622175,
+      "timeToCorrectRespTotal": 1646292,
+      "totalGuessTime": 1704519,
       "viewedUsers": {
         "Flutey": true,
         "Jeth": true,
@@ -3533,6 +3559,7 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "nshei0227": true,
         "person man": true,
@@ -3546,7 +3573,7 @@
       "description": "What movie is this from?",
       "expireDuration": 3600000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/11.PNG",
-      "numRevealed": 13,
+      "numRevealed": 15,
       "op": "alanolen",
       "points": 3,
       "responses": {
@@ -3624,11 +3651,13 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
         "person man": true,
         "shoestakovich": true,
+        "test_user": true,
         "ysaye": true,
         "zerasaw": true
       }
@@ -3638,7 +3667,7 @@
       "description": "PDQ Bach's Moose String Quartet quotes another piece. What is the piece he's quoting here?",
       "expireDuration": 3600000,
       "link": "https://raw.githubusercontent.com/alan850627/music-games/master/img/12.PNG",
-      "numRevealed": 13,
+      "numRevealed": 14,
       "op": "alanolen",
       "points": 5,
       "responses": {
@@ -3667,6 +3696,7 @@
         "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "matcha": true,
         "nshei0227": true,
@@ -3932,7 +3962,7 @@
       "description": "Identify the piece.",
       "expireDuration": 7800000,
       "link": "http://i.imgur.com/kGJoIsH.jpg",
-      "numRevealed": 12,
+      "numRevealed": 13,
       "op": "hftf",
       "points": 3,
       "responses": {
@@ -3991,15 +4021,23 @@
           "status": "correct",
           "timestamp": 1502329800307,
           "username": "alanolen"
+        },
+        "-Kr9uWSsbCw21K1u0kbI": {
+          "questionId": "-Kr6wFQ3jfXQRkAzR-ND",
+          "response": "Romeo and Juliet Overture",
+          "status": "incorrect",
+          "timestamp": 1502347922896,
+          "username": "Praetor"
         }
       },
       "solution": "Mozart: Symphony No. 40",
       "timeToCorrectRespTotal": 425205,
-      "totalGuessTime": 441817,
+      "totalGuessTime": 473183,
       "viewedUsers": {
         "Flutey": true,
         "Jeth": true,
         "Piyush Jindal": true,
+        "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
@@ -4016,7 +4054,7 @@
       "description": "Identify the piece.",
       "expireDuration": 25800000,
       "link": "http://i.imgur.com/PbVK6Ol.jpg",
-      "numRevealed": 13,
+      "numRevealed": 14,
       "op": "hftf",
       "points": 3,
       "responses": {
@@ -4075,15 +4113,23 @@
           "status": "incorrect",
           "timestamp": 1502323381294,
           "username": "nshei0227"
+        },
+        "-Kr9uNPAv04h5nBFFDIt": {
+          "questionId": "-Kr6xAd3K5vtO-j0cDqJ",
+          "response": "Holst Planets",
+          "status": "incorrect",
+          "timestamp": 1502347885797,
+          "username": "Praetor"
         }
       },
       "solution": "Brahms: Symphony No. 4, IV. Finale",
       "timeToCorrectRespTotal": 2598095,
-      "totalGuessTime": 19964799,
+      "totalGuessTime": 20012283,
       "viewedUsers": {
         "Flutey": true,
         "Jeth": true,
         "Piyush Jindal": true,
+        "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
@@ -4101,7 +4147,7 @@
       "description": "Identify the piece.",
       "expireDuration": 21600000,
       "link": "http://i.imgur.com/SYZJv4R.jpg",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "hftf",
       "points": 4,
       "responses": {
@@ -4141,6 +4187,7 @@
         "Flutey": true,
         "Jeth": true,
         "Piyush Jindal": true,
+        "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
@@ -4159,7 +4206,7 @@
       "description": "Identify the composer of this song based on an anonymous text.",
       "expireDuration": 20400000,
       "link": "http://i.imgur.com/cugwFAx.png",
-      "numRevealed": 14,
+      "numRevealed": 15,
       "op": "hftf",
       "points": 5,
       "responses": {
@@ -4213,6 +4260,7 @@
         "Flutey": true,
         "Jeth": true,
         "Piyush Jindal": true,
+        "Praetor": true,
         "The Assoluta Voice in Opera": true,
         "Wolle": true,
         "alanolen": true,
@@ -4609,7 +4657,7 @@
       "description": "Identify this piece by a prolific composer of symphonies.",
       "expireDuration": 19200000,
       "link": "http://i.imgur.com/w5kdkoS.png",
-      "numRevealed": 10,
+      "numRevealed": 12,
       "op": "hftf",
       "points": 6,
       "responses": {
@@ -4626,16 +4674,53 @@
           "status": "correct",
           "timestamp": 1502323760888,
           "username": "Jeth"
+        },
+        "-Kr9suaxcRox9h87lY10": {
+          "questionId": "-Kr7M8hOCd-cU5p7Jpwb",
+          "response": "Beethiven",
+          "status": "incorrect",
+          "timestamp": 1502347501595,
+          "username": "Praetor"
+        },
+        "-Kr9sw-xBqRYJVIyRurs": {
+          "questionId": "-Kr7M8hOCd-cU5p7Jpwb",
+          "response": "Beethoven",
+          "status": "incorrect",
+          "timestamp": 1502347507356,
+          "username": "Praetor"
+        },
+        "-Kr9sx91zjJNMv4c6JVa": {
+          "questionId": "-Kr7M8hOCd-cU5p7Jpwb",
+          "response": "Tchaikovsky",
+          "status": "incorrect",
+          "timestamp": 1502347512032,
+          "username": "Praetor"
+        },
+        "-Kr9sxpO1fKhP8t2UiT-": {
+          "questionId": "-Kr7M8hOCd-cU5p7Jpwb",
+          "response": "Brahms",
+          "status": "incorrect",
+          "timestamp": 1502347514808,
+          "username": "Praetor"
+        },
+        "-Kr9u9cKR9rq3y478lwD": {
+          "questionId": "-Kr7M8hOCd-cU5p7Jpwb",
+          "response": "Mozart",
+          "status": "incorrect",
+          "timestamp": 1502347829362,
+          "username": "Praetor"
         }
       },
       "solution": "Myaskovsky: Symphony No. 22",
       "timeToCorrectRespTotal": 26439,
-      "totalGuessTime": 53909,
+      "totalGuessTime": 1745437,
       "viewedUsers": {
+        "ComicSaëns": true,
         "Derber": true,
         "Flutey": true,
         "Jeth": true,
         "Piyush Jindal": true,
+        "Praetor": true,
         "Wolle": true,
         "alanolen": true,
         "kwulhu": true,
@@ -4649,7 +4734,7 @@
       "description": "Identify the piece.",
       "expireDuration": 23700000,
       "link": "http://i.imgur.com/EMwaeEh.png",
-      "numRevealed": 11,
+      "numRevealed": 12,
       "op": "hftf",
       "points": 5,
       "responses": {
@@ -4672,6 +4757,7 @@
       "timeToCorrectRespTotal": 9505014,
       "totalGuessTime": 9505014,
       "viewedUsers": {
+        "ComicSaëns": true,
         "Derber": true,
         "Flutey": true,
         "Jeth": true,
@@ -4772,7 +4858,7 @@
       "description": "Identify the piece.",
       "expireDuration": 2580000,
       "link": "http://i.imgur.com/7AZONHj.gif",
-      "numRevealed": 12,
+      "numRevealed": 13,
       "op": "hftf",
       "points": 2,
       "responses": {
@@ -4795,6 +4881,7 @@
       "timeToCorrectRespTotal": 0,
       "totalGuessTime": 58301,
       "viewedUsers": {
+        "ComicSaëns": true,
         "Derber": true,
         "Flutey": true,
         "Jeth": true,
@@ -4904,7 +4991,7 @@
       "description": "The relative major of A minor is _________.",
       "expireDuration": 600000,
       "link": "https://i.imgur.com/7RLfprs.png",
-      "numRevealed": 9,
+      "numRevealed": 11,
       "op": "alanolen",
       "points": 1,
       "responses": {
@@ -4963,21 +5050,37 @@
           "status": "correct",
           "timestamp": 1502335987400,
           "username": "kwulhu"
+        },
+        "-Kr9P9vSHSGF3mYnJCUo": {
+          "questionId": "-Kr8P6hgtVgWDkN30DXs",
+          "response": "c major",
+          "status": "correct",
+          "timestamp": 1502339445638,
+          "username": "test_user"
+        },
+        "-KrAPf0k7_PhBzgTeq2O": {
+          "questionId": "-Kr8P6hgtVgWDkN30DXs",
+          "response": "C major",
+          "status": "correct",
+          "timestamp": 1502356351747,
+          "username": "djc"
         }
       },
       "solution": "C major",
-      "timeToCorrectRespTotal": 101066,
-      "totalGuessTime": 101066,
+      "timeToCorrectRespTotal": 123528,
+      "totalGuessTime": 123528,
       "viewedUsers": {
         "Derber": true,
         "Flutey": true,
         "Jeth": true,
         "RandolphTheOffWhite": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "kwulhu": true,
         "nshei0227": true,
-        "shoestakovich": true
+        "shoestakovich": true,
+        "test_user": true
       }
     },
     "-Kr8V8aB9ywG0swNXx3t": {
@@ -4985,7 +5088,7 @@
       "description": "A couple of measures before the last movement of Beethoven Symphony No. 5, most of the orchestra plays a dominant chord (V7), but which instruments drone the tonic?",
       "expireDuration": 3600000,
       "link": "https://i.imgur.com/7RLfprs.png",
-      "numRevealed": 9,
+      "numRevealed": 10,
       "op": "alanolen",
       "points": 4,
       "responses": {
@@ -5132,6 +5235,7 @@
         "Jeth": true,
         "RandolphTheOffWhite": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "kwulhu": true,
         "nshei0227": true,
@@ -5143,17 +5247,63 @@
       "description": "Identify the composer and work: This famous symphony's last movement starts on the dominant chord, and resolves into tonic by first having both the dominant and tonic chords play at the same time, then the dominant chord switches to tonic as the main melody comes in.",
       "expireDuration": 3600000,
       "link": "https://i.imgur.com/7RLfprs.png",
-      "numRevealed": 9,
+      "numRevealed": 11,
       "op": "alanolen",
       "points": 7,
+      "responses": {
+        "-Kr9rkiwCuW5VyhBIpRT": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Beethoven 9",
+          "status": "incorrect",
+          "timestamp": 1502347198999,
+          "username": "Praetor"
+        },
+        "-Kr9rm46CdpluVJCql1T": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Beethoven 5",
+          "status": "incorrect",
+          "timestamp": 1502347204513,
+          "username": "Praetor"
+        },
+        "-Kr9rpld8I-PXodM6IJB": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Tchaikovsky 5",
+          "status": "incorrect",
+          "timestamp": 1502347219651,
+          "username": "Praetor"
+        },
+        "-Kr9rrFGqAlGDGQQ3zDK": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Tchaikovsky 6",
+          "status": "incorrect",
+          "timestamp": 1502347225707,
+          "username": "Praetor"
+        },
+        "-Kr9sqmugsiVnzceSg1X": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Beethoven 6",
+          "status": "correct",
+          "timestamp": 1502347485971,
+          "username": "Praetor"
+        },
+        "-KrAPopF35xZyCnJtte9": {
+          "questionId": "-Kr8WdT_N8DS5_cWb37Z",
+          "response": "Beethoven Symphony 5",
+          "status": "incorrect",
+          "timestamp": 1502356391907,
+          "username": "djc"
+        }
+      },
       "solution": "Beethoven Symphony no. 6",
-      "timeToCorrectRespTotal": 0,
-      "totalGuessTime": 0,
+      "timeToCorrectRespTotal": 317442,
+      "totalGuessTime": 509838,
       "viewedUsers": {
         "Derber": true,
         "Flutey": true,
         "Jeth": true,
+        "Praetor": true,
         "Wolle": true,
+        "djc": true,
         "hftf": true,
         "kwulhu": true,
         "nshei0227": true,
@@ -5166,55 +5316,704 @@
       "description": "Identify the piece.",
       "expireDuration": 11820000,
       "link": "http://i.imgur.com/ky1jDPY.png",
-      "numRevealed": 0,
+      "numRevealed": 6,
       "op": "hftf",
       "points": 4,
       "solution": "Poulenc: Trois Mouvements Perpétuels",
       "timeToCorrectRespTotal": 0,
       "totalGuessTime": 0,
-      "viewedUsers": {}
+      "viewedUsers": {
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
     },
     "-Kr9MkJJEyParhBjTQFd": {
       "createdTime": 1502338811175,
       "description": "Identify the piece.",
       "expireDuration": 11640000,
       "link": "http://i.imgur.com/UMseCeU.png",
-      "numRevealed": 0,
+      "numRevealed": 6,
       "op": "hftf",
       "points": 4,
+      "responses": {
+        "-Kr9aR3Ryc0DvEfe9vo-": {
+          "questionId": "-Kr9MkJJEyParhBjTQFd",
+          "response": "Faure Kitty Waltz",
+          "status": "correct",
+          "timestamp": 1502342659849,
+          "username": "Flutey"
+        }
+      },
       "solution": "Fauré: Dolly Suite - Kitty-Valse",
-      "timeToCorrectRespTotal": 0,
-      "totalGuessTime": 0,
-      "viewedUsers": {}
+      "timeToCorrectRespTotal": 11003,
+      "totalGuessTime": 11003,
+      "viewedUsers": {
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
     },
     "-Kr9Ms6N2_CoDLHfaoYy": {
       "createdTime": 1502338843118,
       "description": "Identify the piece.",
       "expireDuration": 11700000,
       "link": "http://i.imgur.com/r5qvZCl.png",
-      "numRevealed": 0,
+      "numRevealed": 7,
       "op": "hftf",
       "points": 3,
+      "responses": {
+        "-Kr9aNN8ixGK8MRUNnVi": {
+          "questionId": "-Kr9Ms6N2_CoDLHfaoYy",
+          "response": "William Tell Overture",
+          "status": "correct",
+          "timestamp": 1502342644728,
+          "username": "Flutey"
+        },
+        "-KrAoP-Yw4NfIwaQ3bkc": {
+          "questionId": "-Kr9Ms6N2_CoDLHfaoYy",
+          "response": "Military Symphony",
+          "status": "incorrect",
+          "timestamp": 1502363099181,
+          "username": "nshei0227"
+        },
+        "-KrAoUnmh2i782dcr9tk": {
+          "questionId": "-Kr9Ms6N2_CoDLHfaoYy",
+          "response": "Mahler Symphony 4",
+          "status": "incorrect",
+          "timestamp": 1502363122940,
+          "username": "nshei0227"
+        }
+      },
       "solution": "Rossini: William Tell Overture",
-      "timeToCorrectRespTotal": 0,
-      "totalGuessTime": 0,
-      "viewedUsers": {}
+      "timeToCorrectRespTotal": 74921,
+      "totalGuessTime": 3995036,
+      "viewedUsers": {
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "djc": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
     },
     "-Kr9N-uehQn6dD3f-xcK": {
       "createdTime": 1502338879168,
       "description": "Identify the piece.",
       "expireDuration": 11760000,
       "link": "http://i.imgur.com/x7phuTL.jpg",
-      "numRevealed": 0,
+      "numRevealed": 7,
       "op": "hftf",
       "points": 4,
+      "responses": {
+        "-Kr9aXMztnM5WphGK-rv": {
+          "questionId": "-Kr9N-uehQn6dD3f-xcK",
+          "response": "Brahms Double Concerto",
+          "status": "correct",
+          "timestamp": 1502342682279,
+          "username": "Jeth"
+        }
+      },
       "solution": "Brahms: Double Concerto in A minor",
+      "timeToCorrectRespTotal": 154569,
+      "totalGuessTime": 154569,
+      "viewedUsers": {
+        "ComicSaëns": true,
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-Kr9QwnyHGMfnn1EfLSJ": {
+      "createdTime": 1502339910930,
+      "description": "Identify the main work this famous piece comes from.",
+      "expireDuration": 19320000,
+      "link": "http://i.imgur.com/rfhXYbT.png",
+      "numRevealed": 8,
+      "op": "hftf",
+      "points": 5,
+      "responses": {
+        "-Kr9_yo-_4IZr73x1Nh1": {
+          "questionId": "-Kr9QwnyHGMfnn1EfLSJ",
+          "response": "Copland Rodeo",
+          "status": "incorrect",
+          "timestamp": 1502342540000,
+          "username": "Flutey"
+        },
+        "-Kr9ac0bODlIM35RtXnl": {
+          "questionId": "-Kr9QwnyHGMfnn1EfLSJ",
+          "response": "Rodeo",
+          "status": "incorrect",
+          "timestamp": 1502342708801,
+          "username": "Flutey"
+        },
+        "-Kr9adXit8hhF-hGJOZU": {
+          "questionId": "-Kr9QwnyHGMfnn1EfLSJ",
+          "response": "Appalachian Spring",
+          "status": "incorrect",
+          "timestamp": 1502342715020,
+          "username": "Flutey"
+        },
+        "-Kr9nD_gJgWmAap2D7w5": {
+          "questionId": "-Kr9QwnyHGMfnn1EfLSJ",
+          "response": "orpheus in the underworld overture",
+          "status": "correct",
+          "timestamp": 1502346014147,
+          "username": "alanolen"
+        },
+        "-Kr9qBeGqYOefIJi1wQj": {
+          "questionId": "-Kr9QwnyHGMfnn1EfLSJ",
+          "response": "Gustave Holst The Planets",
+          "status": "incorrect",
+          "timestamp": 1502346789098,
+          "username": "Praetor"
+        }
+      },
+      "solution": "Offenbach: Orpheus in the Underworld",
+      "timeToCorrectRespTotal": 138734,
+      "totalGuessTime": 590073,
+      "viewedUsers": {
+        "ComicSaëns": true,
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "alanolen": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-Kr9SuwjtzG9tn9N5EWi": {
+      "createdTime": 1502340423660,
+      "description": "Name the piece from the excerpt",
+      "expireDuration": 7200000,
+      "link": "http://i.imgur.com/DgM8NWK.png",
+      "numRevealed": 9,
+      "op": "Jeth",
+      "points": 4,
+      "responses": {
+        "-Kr9WgXzCr1et1n91J9u": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "mahler symphony",
+          "status": "incorrect",
+          "timestamp": 1502341417171,
+          "username": "hftf"
+        },
+        "-Kr9WiJN4JCQecPAK2JH": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "mahler symphony 9",
+          "status": "incorrect",
+          "timestamp": 1502341424427,
+          "username": "hftf"
+        },
+        "-Kr9Wvod8evj9dBwynS2": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "oh oops this is viennese school",
+          "status": "incorrect",
+          "timestamp": 1502341479741,
+          "username": "hftf"
+        },
+        "-Kr9Y6Jb2wpXji_u42mI": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "wozzeck",
+          "status": "incorrect",
+          "timestamp": 1502341788986,
+          "username": "hftf"
+        },
+        "-Kr9Y6uQy8eJ8sHshDaf": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "lulu",
+          "status": "incorrect",
+          "timestamp": 1502341791409,
+          "username": "hftf"
+        },
+        "-Kr9YfkH6ArSvgi47Wp9": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "berg wozzeck",
+          "status": "incorrect",
+          "timestamp": 1502341938216,
+          "username": "hftf"
+        },
+        "-Kr9Yg9PcUvZUDgo3YBi": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "berg lulu",
+          "status": "correct",
+          "timestamp": 1502341939888,
+          "username": "hftf"
+        },
+        "-Kr9aANK4ULtWp3drW5n": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "William Tell Overture",
+          "status": "incorrect",
+          "timestamp": 1502342591488,
+          "username": "Flutey"
+        },
+        "-Kr9aCNt0ntb1O5GVZhm": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "William Tell",
+          "status": "incorrect",
+          "timestamp": 1502342599720,
+          "username": "Flutey"
+        },
+        "-Kr9aGLsDHTqtKxdwfgk": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Rossini William Tell",
+          "status": "incorrect",
+          "timestamp": 1502342615975,
+          "username": "Flutey"
+        },
+        "-Kr9aIlPiQeNtjqd5wGx": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "William Tell Overture",
+          "status": "incorrect",
+          "timestamp": 1502342625865,
+          "username": "Flutey"
+        },
+        "-Kr9aK99trp29w6GBY78": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Rossini William Tell Overture",
+          "status": "incorrect",
+          "timestamp": 1502342631545,
+          "username": "Flutey"
+        },
+        "-KrAjcjiKXF7_EFN8QS4": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Mahler Symphony 5",
+          "status": "incorrect",
+          "timestamp": 1502361848830,
+          "username": "nshei0227"
+        },
+        "-KrAkR1MgKrXlsU2b5f6": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Mahler Symphony 8",
+          "status": "incorrect",
+          "timestamp": 1502362058916,
+          "username": "nshei0227"
+        },
+        "-KrAkSBpFiHHmGUWziqR": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Lulu",
+          "status": "incorrect",
+          "timestamp": 1502362063692,
+          "username": "nshei0227"
+        },
+        "-KrAkbloAfwHWwrpk1B9": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Film Music Interlude",
+          "status": "incorrect",
+          "timestamp": 1502362107012,
+          "username": "nshei0227"
+        },
+        "-KrAlPs_xTTrXsu7Q4Ex": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Lulu",
+          "status": "incorrect",
+          "timestamp": 1502362316738,
+          "username": "Wolle"
+        },
+        "-KrAlRvQLmzz1IUHAIxA": {
+          "questionId": "-Kr9SuwjtzG9tn9N5EWi",
+          "response": "Alban Berg - Lulu",
+          "status": "correct",
+          "timestamp": 1502362325113,
+          "username": "Wolle"
+        }
+      },
+      "solution": "Berg - Lulu",
+      "timeToCorrectRespTotal": 879382,
+      "totalGuessTime": 4386640,
+      "viewedUsers": {
+        "ComicSaëns": true,
+        "Flutey": true,
+        "Praetor": true,
+        "Wolle": true,
+        "alanolen": true,
+        "djc": true,
+        "hftf": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-Kr9TPVZoLKmN7Lx39-8": {
+      "createdTime": 1502340552926,
+      "description": "Identify the piece from the excerpt",
+      "expireDuration": 7200000,
+      "link": "http://i.imgur.com/V7HYQI3.png",
+      "numRevealed": 8,
+      "op": "Jeth",
+      "points": 4,
+      "responses": {
+        "-Kr9X8BBoSu0EjszOb9-": {
+          "questionId": "-Kr9TPVZoLKmN7Lx39-8",
+          "response": "boulez piano sonata",
+          "status": "incorrect",
+          "timestamp": 1502341534496,
+          "username": "hftf"
+        },
+        "-Kr9XUn7tOSSXaOK7JHR": {
+          "questionId": "-Kr9TPVZoLKmN7Lx39-8",
+          "response": "messiaen",
+          "status": "incorrect",
+          "timestamp": 1502341627100,
+          "username": "hftf"
+        },
+        "-Kr9Z8ORAt-5IZMPjShV": {
+          "questionId": "-Kr9TPVZoLKmN7Lx39-8",
+          "response": "Vingt regards sur l'enfant-Jésus",
+          "status": "correct",
+          "timestamp": 1502342059629,
+          "username": "hftf"
+        },
+        "-KrAmQeSpzg5T9SAuT1n": {
+          "questionId": "-Kr9TPVZoLKmN7Lx39-8",
+          "response": "berg lyric suite",
+          "status": "incorrect",
+          "timestamp": 1502362582074,
+          "username": "Wolle"
+        },
+        "-KrAml4nigHx7yjx9K6U": {
+          "questionId": "-Kr9TPVZoLKmN7Lx39-8",
+          "response": "Scriabin piano sonata 9",
+          "status": "incorrect",
+          "timestamp": 1502362669841,
+          "username": "Wolle"
+        }
+      },
+      "solution": "Messiaen - Vingt Régards",
+      "timeToCorrectRespTotal": 573525,
+      "totalGuessTime": 1748184,
+      "viewedUsers": {
+        "ComicSaëns": true,
+        "Flutey": true,
+        "Praetor": true,
+        "Wolle": true,
+        "alanolen": true,
+        "hftf": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-Kr9WUONAydJ1CFfHSJ-": {
+      "createdTime": 1502341359379,
+      "description": "Bonus points if you can describe the structural feature the two previous excerpts have in common.",
+      "expireDuration": 7200000,
+      "link": "https://i.imgur.com/7RLfprs.png",
+      "numRevealed": 9,
+      "op": "Jeth",
+      "points": 5,
+      "responses": {
+        "-Kr9XH7qI4hEqOAevJkf": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "maybe they're like palindromes or something",
+          "status": "incorrect",
+          "timestamp": 1502341571145,
+          "username": "hftf"
+        },
+        "-Kr9XaJuwGyDUZaIaxnW": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "palindrome",
+          "status": "correct",
+          "timestamp": 1502341653836,
+          "username": "hftf"
+        },
+        "-Kr9pdmDD6_TDdGQ-x-K": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "8va",
+          "status": "incorrect",
+          "timestamp": 1502346646237,
+          "username": "Praetor"
+        },
+        "-Kr9piic0Bw9ijIJ68Mz": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "retrograde",
+          "status": "incorrect",
+          "timestamp": 1502346666498,
+          "username": "Praetor"
+        },
+        "-KrAko-URjq0mkrtlnMt": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "12 tone music",
+          "status": "incorrect",
+          "timestamp": 1502362157499,
+          "username": "Wolle"
+        },
+        "-KrAkp-xdoMuGpNnj92g": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "tone rows",
+          "status": "incorrect",
+          "timestamp": 1502362161627,
+          "username": "Wolle"
+        },
+        "-KrAlY_ixNqfvHZuMuTM": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "serialism",
+          "status": "incorrect",
+          "timestamp": 1502362352396,
+          "username": "Wolle"
+        },
+        "-KrAlbngRHdJvoDbvGVP": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "inversion",
+          "status": "incorrect",
+          "timestamp": 1502362369672,
+          "username": "Wolle"
+        },
+        "-KrAle955dYkhybTYuCA": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "crab",
+          "status": "incorrect",
+          "timestamp": 1502362379296,
+          "username": "Wolle"
+        },
+        "-KrAmLqbBjTPlXQ8UCq9": {
+          "questionId": "-Kr9WUONAydJ1CFfHSJ-",
+          "response": "retrograde",
+          "status": "incorrect",
+          "timestamp": 1502362562370,
+          "username": "Wolle"
+        }
+      },
+      "solution": "Palindrome",
+      "timeToCorrectRespTotal": 125251,
+      "totalGuessTime": 1556906,
+      "viewedUsers": {
+        "ComicSaëns": true,
+        "Flutey": true,
+        "Praetor": true,
+        "Wolle": true,
+        "alanolen": true,
+        "djc": true,
+        "hftf": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-Kr9_WuIaiSXefvV7olc": {
+      "createdTime": 1502342423317,
+      "description": "Identify the piece in this comic. (Comic from \"Don't Shoot the Pianist\")",
+      "expireDuration": 3600000,
+      "link": "https://i.imgur.com/cNDZIF9.png",
+      "numRevealed": 9,
+      "op": "test_user",
+      "points": 4,
+      "responses": {
+        "-Kr9pJlc8H7sIVE_fW2u": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Chopin Ballade 1",
+          "status": "correct",
+          "timestamp": 1502346560190,
+          "username": "Praetor"
+        },
+        "-KrAQ7TdHIcy8DDhgUuT": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Chopin Ballade No. 1",
+          "status": "correct",
+          "timestamp": 1502356472378,
+          "username": "djc"
+        },
+        "-KrAiPSmaqCsN5de1zzP": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Piano Concerto No. 2",
+          "status": "incorrect",
+          "timestamp": 1502361528196,
+          "username": "nshei0227"
+        },
+        "-KrAiot8XJgo6_vELUJU": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Chopin Ballade 1",
+          "status": "correct",
+          "timestamp": 1502361636439,
+          "username": "nshei0227"
+        },
+        "-KrAnd4T_q7yieH-fS31": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "schumann g minor sonata",
+          "status": "incorrect",
+          "timestamp": 1502362899195,
+          "username": "Wolle"
+        },
+        "-KrAne2p3gjsS950Dx-S": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Schumann piano sonata",
+          "status": "incorrect",
+          "timestamp": 1502362903186,
+          "username": "Wolle"
+        },
+        "-KrAng5_UHajkNvC-8iO": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "Schumann piano sonata g minor",
+          "status": "incorrect",
+          "timestamp": 1502362911554,
+          "username": "Wolle"
+        },
+        "-KrAnkN_Ba8i8kgSwUVb": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "chopin ballade g minor",
+          "status": "correct",
+          "timestamp": 1502362929089,
+          "username": "Wolle"
+        },
+        "-KrAsZHjo5nCJ4GFkV0e": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "ballade 4",
+          "status": "incorrect",
+          "timestamp": 1502364189891,
+          "username": "hftf"
+        },
+        "-KrAsfc-afL2cS43vaez": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "chopin ballade no 4",
+          "status": "incorrect",
+          "timestamp": 1502364219924,
+          "username": "hftf"
+        },
+        "-KrAssYeGHdJSN-eJyhV": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "chopin ballade 1",
+          "status": "correct",
+          "timestamp": 1502364272894,
+          "username": "hftf"
+        },
+        "-KrBDOCD91VI0S575xkN": {
+          "questionId": "-Kr9_WuIaiSXefvV7olc",
+          "response": "chopin ballade 1",
+          "status": "correct",
+          "timestamp": 1502369908760,
+          "username": "shoestakovich"
+        }
+      },
+      "solution": "Chopin - Ballade No. 1",
+      "timeToCorrectRespTotal": 2132376,
+      "totalGuessTime": 5043432,
+      "viewedUsers": {
+        "Flutey": true,
+        "Jeth": true,
+        "Praetor": true,
+        "Wolle": true,
+        "alanolen": true,
+        "djc": true,
+        "hftf": true,
+        "nshei0227": true,
+        "shoestakovich": true
+      }
+    },
+    "-KrBY9zwJKA53-0Ht6n4": {
+      "createdTime": 1502375358707,
+      "description": "Identify the piece given this excerpt.",
+      "expireDuration": 7200000,
+      "link": "http://i.imgur.com/spmXvzx.png",
+      "numRevealed": 1,
+      "op": "Wolle",
+      "points": 6,
+      "responses": {
+        "-KrBa73inXZHtGN6SKTi": {
+          "questionId": "-KrBY9zwJKA53-0Ht6n4",
+          "response": "bruckner symphony 7",
+          "status": "incorrect",
+          "timestamp": 1502376132932,
+          "username": "hftf"
+        },
+        "-KrBby4mIHFu4BLKn5g6": {
+          "questionId": "-KrBY9zwJKA53-0Ht6n4",
+          "response": "\"b minor\" \"allegro moderato\" \"cello\" -dvorak",
+          "status": "correct",
+          "timestamp": 1502376616328,
+          "username": "hftf"
+        }
+      },
+      "solution": "Davidoff - Cello Concerto 1",
+      "timeToCorrectRespTotal": 574319,
+      "totalGuessTime": 665242,
+      "viewedUsers": {
+        "hftf": true
+      }
+    },
+    "-KrB_-q47_wupDMfepaD": {
+      "createdTime": 1502375841404,
+      "description": "Identify the piece given this excerpt.",
+      "expireDuration": 3600000,
+      "link": "http://i.imgur.com/thehR5i.png",
+      "numRevealed": 1,
+      "op": "Wolle",
+      "points": 3,
+      "responses": {
+        "-KrBceE44AT5IgGXCIJi": {
+          "questionId": "-KrB_-q47_wupDMfepaD",
+          "response": "\"fugue\" \"quartet\" \"a minor\"",
+          "status": "incorrect",
+          "timestamp": 1502376797142,
+          "username": "hftf"
+        }
+      },
+      "solution": "Bach - St. Matthew Passion",
       "timeToCorrectRespTotal": 0,
-      "totalGuessTime": 0,
-      "viewedUsers": {}
+      "totalGuessTime": 785434,
+      "viewedUsers": {
+        "hftf": true
+      }
     }
   },
   "users": {
+    "ComicSaëns": {
+      "createdTime": 1502341587243,
+      "lastUpdateTime": 1502350684866,
+      "numCorrect": 0,
+      "numGuesses": 0,
+      "responses": {
+        "-Kr7M8hOCd-cU5p7Jpwb": {
+          "numGuesses": 0,
+          "revealTime": 1502341779691,
+          "status": "pending"
+        },
+        "-Kr7MKXli8XGakbm9O18": {
+          "numGuesses": 0,
+          "revealTime": 1502350238608,
+          "status": "pending"
+        },
+        "-Kr7ZcGmGIUogXgRB9Hj": {
+          "numGuesses": 0,
+          "revealTime": 1502350684866,
+          "status": "pending"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502341656401,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "numGuesses": 0,
+          "revealTime": 1502341648378,
+          "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "numGuesses": 0,
+          "revealTime": 1502341609940,
+          "status": "pending"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502341605386,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502341587243,
+          "status": "pending"
+        }
+      },
+      "score": 0,
+      "totalGuessTime": 0
+    },
     "Derber": {
       "createdTime": 1502325959420,
       "lastUpdateTime": 1502326119652,
@@ -5313,9 +6112,9 @@
     },
     "Flutey": {
       "createdTime": 1502235548974,
-      "lastUpdateTime": 1502334042371,
-      "numCorrect": 23,
-      "numGuesses": 65,
+      "lastUpdateTime": 1502342715020,
+      "numCorrect": 25,
+      "numGuesses": 75,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "numGuesses": 0,
@@ -5650,16 +6449,65 @@
           "numGuesses": 0,
           "revealTime": 1502333947273,
           "status": "pending"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502342662615,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "mostRecentGuessTime": 1502342659849,
+          "numGuesses": 1,
+          "revealTime": 1502342648846,
+          "status": "correct"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "mostRecentGuessTime": 1502342644728,
+          "numGuesses": 1,
+          "revealTime": 1502342569807,
+          "status": "correct"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502342530963,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "mostRecentGuessTime": 1502342715020,
+          "numGuesses": 3,
+          "revealTime": 1502342513419,
+          "status": "incorrect"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "mostRecentGuessTime": 1502342631545,
+          "numGuesses": 5,
+          "revealTime": 1502342489961,
+          "status": "incorrect"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502342477383,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502342471334,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "numGuesses": 0,
+          "revealTime": 1502342437435,
+          "status": "pending"
         }
       },
-      "score": 78,
-      "totalGuessTime": 26474620
+      "score": 85,
+      "totalGuessTime": 27598896
     },
     "Jeth": {
       "createdTime": 1502172140597,
-      "lastUpdateTime": 1502326273971,
-      "numCorrect": 26,
-      "numGuesses": 33,
+      "lastUpdateTime": 1502342682279,
+      "numCorrect": 27,
+      "numGuesses": 34,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "mostRecentGuessTime": 1502172152967,
@@ -5988,10 +6836,41 @@
           "numGuesses": 0,
           "revealTime": 1502324824846,
           "status": "pending"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502341991159,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "numGuesses": 0,
+          "revealTime": 1502342165031,
+          "status": "pending"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "numGuesses": 0,
+          "revealTime": 1502342199168,
+          "status": "pending"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "mostRecentGuessTime": 1502342682279,
+          "numGuesses": 1,
+          "revealTime": 1502342527710,
+          "status": "correct"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "numGuesses": 0,
+          "revealTime": 1502342684370,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "numGuesses": 0,
+          "revealTime": 1502342702350,
+          "status": "pending"
         }
       },
-      "score": 93,
-      "totalGuessTime": 16317168
+      "score": 97,
+      "totalGuessTime": 16471737
     },
     "Piyush Jindal": {
       "createdTime": 1502313448907,
@@ -6296,9 +7175,9 @@
     },
     "Praetor": {
       "createdTime": 1502172192168,
-      "lastUpdateTime": 1502313598264,
-      "numCorrect": 9,
-      "numGuesses": 57,
+      "lastUpdateTime": 1502347922896,
+      "numCorrect": 11,
+      "numGuesses": 73,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "mostRecentGuessTime": 1502172201285,
@@ -6507,6 +7386,28 @@
           "revealTime": 1502257811217,
           "status": "pending"
         },
+        "-Kr6wFQ3jfXQRkAzR-ND": {
+          "mostRecentGuessTime": 1502347922896,
+          "numGuesses": 1,
+          "revealTime": 1502347891530,
+          "status": "incorrect"
+        },
+        "-Kr6xAd3K5vtO-j0cDqJ": {
+          "mostRecentGuessTime": 1502347885797,
+          "numGuesses": 1,
+          "revealTime": 1502347838313,
+          "status": "incorrect"
+        },
+        "-Kr6xi20Es3evksanNq1": {
+          "numGuesses": 0,
+          "revealTime": 1502347776358,
+          "status": "pending"
+        },
+        "-Kr6zZkL6RB4HJttZyXm": {
+          "numGuesses": 0,
+          "revealTime": 1502347519149,
+          "status": "pending"
+        },
         "-Kr71ASfcEOUAdXBtYya": {
           "numGuesses": 0,
           "revealTime": 1502313607208,
@@ -6544,6 +7445,12 @@
           "revealTime": 1502313400605,
           "status": "incorrect"
         },
+        "-Kr7M8hOCd-cU5p7Jpwb": {
+          "mostRecentGuessTime": 1502347829362,
+          "numGuesses": 5,
+          "revealTime": 1502347234725,
+          "status": "incorrect"
+        },
         "-Kr7MKXli8XGakbm9O18": {
           "numGuesses": 0,
           "revealTime": 1502313626168,
@@ -6570,10 +7477,64 @@
           "numGuesses": 2,
           "revealTime": 1502313274922,
           "status": "incorrect"
+        },
+        "-Kr8WdT_N8DS5_cWb37Z": {
+          "mostRecentGuessTime": 1502347485971,
+          "numGuesses": 5,
+          "revealTime": 1502347168529,
+          "status": "correct"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502347159322,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "numGuesses": 0,
+          "revealTime": 1502347149923,
+          "status": "pending"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "numGuesses": 0,
+          "revealTime": 1502347064662,
+          "status": "pending"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502347796334,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "mostRecentGuessTime": 1502346789098,
+          "numGuesses": 1,
+          "revealTime": 1502346761323,
+          "status": "incorrect"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "numGuesses": 0,
+          "revealTime": 1502346579804,
+          "status": "pending"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502346577098,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "mostRecentGuessTime": 1502346666498,
+          "numGuesses": 2,
+          "revealTime": 1502346568098,
+          "status": "incorrect"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502346560190,
+          "numGuesses": 1,
+          "revealTime": 1502346110858,
+          "status": "correct"
         }
       },
-      "score": 34,
-      "totalGuessTime": 67383191
+      "score": 45,
+      "totalGuessTime": 70299411
     },
     "RandolphTheOffWhite": {
       "createdTime": 1502231755401,
@@ -6812,9 +7773,9 @@
     },
     "Wolle": {
       "createdTime": 1502202658672,
-      "lastUpdateTime": 1502325042145,
-      "numCorrect": 16,
-      "numGuesses": 82,
+      "lastUpdateTime": 1502375841408,
+      "numCorrect": 18,
+      "numGuesses": 96,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "numGuesses": 0,
@@ -7115,16 +8076,65 @@
           "numGuesses": 0,
           "revealTime": 1502325060178,
           "status": "pending"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502361957200,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "numGuesses": 0,
+          "revealTime": 1502361963175,
+          "status": "pending"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "numGuesses": 0,
+          "revealTime": 1502361991642,
+          "status": "pending"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502362179796,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "numGuesses": 0,
+          "revealTime": 1502362205160,
+          "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "mostRecentGuessTime": 1502362325113,
+          "numGuesses": 2,
+          "revealTime": 1502362028194,
+          "status": "correct"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "mostRecentGuessTime": 1502362669841,
+          "numGuesses": 2,
+          "revealTime": 1502362133322,
+          "status": "incorrect"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "mostRecentGuessTime": 1502362562370,
+          "numGuesses": 6,
+          "revealTime": 1502362128384,
+          "status": "incorrect"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502362929089,
+          "numGuesses": 4,
+          "revealTime": 1502362075312,
+          "status": "correct"
         }
       },
-      "score": 60,
-      "totalGuessTime": 153220475
+      "score": 68,
+      "totalGuessTime": 159345541
     },
     "alanolen": {
       "createdTime": 1502212643453,
-      "lastUpdateTime": 1502330424935,
-      "numCorrect": 16,
-      "numGuesses": 39,
+      "lastUpdateTime": 1502346014147,
+      "numCorrect": 17,
+      "numGuesses": 40,
       "responses": {
         "-Kr1qJaC0LGm7BpZSdKa": {
           "mostRecentGuessTime": 1502212653299,
@@ -7369,16 +8379,42 @@
           "numGuesses": 0,
           "revealTime": 1502329274454,
           "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "mostRecentGuessTime": 1502346014147,
+          "numGuesses": 1,
+          "revealTime": 1502345875413,
+          "status": "correct"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "numGuesses": 0,
+          "revealTime": 1502345812535,
+          "status": "pending"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502345809346,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502345802675,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "numGuesses": 0,
+          "revealTime": 1502342463827,
+          "status": "pending"
         }
       },
-      "score": 57,
-      "totalGuessTime": 36449449
+      "score": 62,
+      "totalGuessTime": 36588183
     },
     "djc": {
       "createdTime": 1502306023940,
-      "lastUpdateTime": 1502306334727,
-      "numCorrect": 4,
-      "numGuesses": 4,
+      "lastUpdateTime": 1502356480064,
+      "numCorrect": 8,
+      "numGuesses": 9,
       "responses": {
         "-Kr-QrK4B8P7cV0wnsWv": {
           "numGuesses": 0,
@@ -7417,6 +8453,11 @@
           "revealTime": 1502306288710,
           "status": "pending"
         },
+        "-Kr2Q-1piBEO8hep3gfO": {
+          "numGuesses": 0,
+          "revealTime": 1502356148440,
+          "status": "pending"
+        },
         "-Kr2Q4qU5TyY_Ao06ty0": {
           "numGuesses": 0,
           "revealTime": 1502306274421,
@@ -7427,11 +8468,83 @@
           "revealTime": 1502306278779,
           "status": "pending"
         },
+        "-Kr2QtzyuXJzG7fIzHR6": {
+          "mostRecentGuessTime": 1502356134286,
+          "numGuesses": 1,
+          "revealTime": 1502356092709,
+          "status": "correct"
+        },
+        "-Kr2USfj19Zltqnd3HuP": {
+          "numGuesses": 0,
+          "revealTime": 1502356139207,
+          "status": "pending"
+        },
+        "-Kr2XJ3iRkJZyuJN4s5e": {
+          "numGuesses": 0,
+          "revealTime": 1502355992264,
+          "status": "pending"
+        },
         "-Kr2Z9x56zoK2UZqkMew": {
           "mostRecentGuessTime": 1502306266367,
           "numGuesses": 1,
           "revealTime": 1502306176558,
           "status": "correct"
+        },
+        "-Kr2_t5gey7X2UQPqE_B": {
+          "numGuesses": 0,
+          "revealTime": 1502356012397,
+          "status": "pending"
+        },
+        "-Kr2eo5lxHXpxJWbabco": {
+          "numGuesses": 0,
+          "revealTime": 1502356157112,
+          "status": "pending"
+        },
+        "-Kr3n8DJTFfIUAjHAeoo": {
+          "numGuesses": 0,
+          "revealTime": 1502356193410,
+          "status": "pending"
+        },
+        "-Kr3or_vz__J3X16szSZ": {
+          "numGuesses": 0,
+          "revealTime": 1502356217829,
+          "status": "pending"
+        },
+        "-Kr3ppax0NyK2FUXy_Az": {
+          "numGuesses": 0,
+          "revealTime": 1502356196017,
+          "status": "pending"
+        },
+        "-Kr45oL1OjDtzEeUKwtj": {
+          "numGuesses": 0,
+          "revealTime": 1502356222766,
+          "status": "pending"
+        },
+        "-Kr46TMM37sTqbMyEm3u": {
+          "numGuesses": 0,
+          "revealTime": 1502356225249,
+          "status": "pending"
+        },
+        "-Kr46pmrbCeIWnk7xszU": {
+          "numGuesses": 0,
+          "revealTime": 1502356228350,
+          "status": "pending"
+        },
+        "-Kr47XPy6iOp2wkh0xiU": {
+          "mostRecentGuessTime": 1502356315931,
+          "numGuesses": 1,
+          "revealTime": 1502356233587,
+          "status": "correct"
+        },
+        "-Kr47jtlzBeJko2oGzmn": {
+          "numGuesses": 0,
+          "revealTime": 1502356230486,
+          "status": "pending"
+        },
+        "-Kr49yFoWYgi86RDGmDa": {
+          "numGuesses": 0,
+          "revealTime": 1502356319656,
+          "status": "pending"
         },
         "-Kr6wFQ3jfXQRkAzR-ND": {
           "numGuesses": 0,
@@ -7473,10 +8586,48 @@
           "numGuesses": 1,
           "revealTime": 1502306058734,
           "status": "correct"
+        },
+        "-Kr8P6hgtVgWDkN30DXs": {
+          "mostRecentGuessTime": 1502356351747,
+          "numGuesses": 1,
+          "revealTime": 1502356332813,
+          "status": "correct"
+        },
+        "-Kr8V8aB9ywG0swNXx3t": {
+          "numGuesses": 0,
+          "revealTime": 1502356334209,
+          "status": "pending"
+        },
+        "-Kr8WdT_N8DS5_cWb37Z": {
+          "mostRecentGuessTime": 1502356391907,
+          "numGuesses": 1,
+          "revealTime": 1502356374265,
+          "status": "incorrect"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "numGuesses": 0,
+          "revealTime": 1502356420741,
+          "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "numGuesses": 0,
+          "revealTime": 1502356480064,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502356425978,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502356472378,
+          "numGuesses": 1,
+          "revealTime": 1502356430144,
+          "status": "correct"
         }
       },
-      "score": 25,
-      "totalGuessTime": 175066
+      "score": 38,
+      "totalGuessTime": 377797
     },
     "emperorjustin": {
       "createdTime": 1502299687207,
@@ -7500,9 +8651,9 @@
     },
     "hftf": {
       "createdTime": 1502172309149,
-      "lastUpdateTime": 1502335286975,
-      "numCorrect": 19,
-      "numGuesses": 48,
+      "lastUpdateTime": 1502376797142,
+      "numCorrect": 24,
+      "numGuesses": 66,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "mostRecentGuessTime": 1502172403391,
@@ -7736,10 +8887,46 @@
           "numGuesses": 0,
           "revealTime": 1502326831583,
           "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "mostRecentGuessTime": 1502341939888,
+          "numGuesses": 7,
+          "revealTime": 1502341357425,
+          "status": "correct"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "mostRecentGuessTime": 1502342059629,
+          "numGuesses": 3,
+          "revealTime": 1502341486104,
+          "status": "correct"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "mostRecentGuessTime": 1502341653836,
+          "numGuesses": 2,
+          "revealTime": 1502341528585,
+          "status": "correct"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502364272894,
+          "numGuesses": 3,
+          "revealTime": 1502364159163,
+          "status": "correct"
+        },
+        "-KrBY9zwJKA53-0Ht6n4": {
+          "mostRecentGuessTime": 1502376616328,
+          "numGuesses": 2,
+          "revealTime": 1502376042009,
+          "status": "correct"
+        },
+        "-KrB_-q47_wupDMfepaD": {
+          "mostRecentGuessTime": 1502376797142,
+          "numGuesses": 1,
+          "revealTime": 1502376011708,
+          "status": "incorrect"
         }
       },
-      "score": 65,
-      "totalGuessTime": 54292868
+      "score": 88,
+      "totalGuessTime": 59157351
     },
     "javierapl12": {
       "createdTime": 1502201344195,
@@ -8157,9 +9344,9 @@
     },
     "nshei0227": {
       "createdTime": 1502299706093,
-      "lastUpdateTime": 1502334839548,
-      "numCorrect": 15,
-      "numGuesses": 36,
+      "lastUpdateTime": 1502363122940,
+      "numCorrect": 16,
+      "numGuesses": 44,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "numGuesses": 0,
@@ -8494,10 +9681,58 @@
           "numGuesses": 0,
           "revealTime": 1502326689366,
           "status": "pending"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502362308975,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "numGuesses": 0,
+          "revealTime": 1502362243899,
+          "status": "pending"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "mostRecentGuessTime": 1502363122940,
+          "numGuesses": 2,
+          "revealTime": 1502361151003,
+          "status": "incorrect"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502362199237,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "numGuesses": 0,
+          "revealTime": 1502362152483,
+          "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "mostRecentGuessTime": 1502362107012,
+          "numGuesses": 4,
+          "revealTime": 1502361792481,
+          "status": "incorrect"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502361689604,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502361664784,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502361636439,
+          "numGuesses": 2,
+          "revealTime": 1502361196628,
+          "status": "correct"
         }
       },
-      "score": 55,
-      "totalGuessTime": 116954505
+      "score": 59,
+      "totalGuessTime": 122554525
     },
     "null": {
       "createdTime": 1502305423931,
@@ -8793,9 +10028,9 @@
     },
     "shoestakovich": {
       "createdTime": 1502183901052,
-      "lastUpdateTime": 1502331657252,
-      "numCorrect": 9,
-      "numGuesses": 12,
+      "lastUpdateTime": 1502369965463,
+      "numCorrect": 10,
+      "numGuesses": 13,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "numGuesses": 0,
@@ -9108,10 +10343,56 @@
           "numGuesses": 0,
           "revealTime": 1502331618528,
           "status": "pending"
+        },
+        "-Kr9Mca9XBtjqHtowZ-M": {
+          "numGuesses": 0,
+          "revealTime": 1502369965463,
+          "status": "pending"
+        },
+        "-Kr9MkJJEyParhBjTQFd": {
+          "numGuesses": 0,
+          "revealTime": 1502369962802,
+          "status": "pending"
+        },
+        "-Kr9Ms6N2_CoDLHfaoYy": {
+          "numGuesses": 0,
+          "revealTime": 1502369960643,
+          "status": "pending"
+        },
+        "-Kr9N-uehQn6dD3f-xcK": {
+          "numGuesses": 0,
+          "revealTime": 1502369954283,
+          "status": "pending"
+        },
+        "-Kr9QwnyHGMfnn1EfLSJ": {
+          "numGuesses": 0,
+          "revealTime": 1502369945802,
+          "status": "pending"
+        },
+        "-Kr9SuwjtzG9tn9N5EWi": {
+          "numGuesses": 0,
+          "revealTime": 1502369921379,
+          "status": "pending"
+        },
+        "-Kr9TPVZoLKmN7Lx39-8": {
+          "numGuesses": 0,
+          "revealTime": 1502369915139,
+          "status": "pending"
+        },
+        "-Kr9WUONAydJ1CFfHSJ-": {
+          "numGuesses": 0,
+          "revealTime": 1502369911922,
+          "status": "pending"
+        },
+        "-Kr9_WuIaiSXefvV7olc": {
+          "mostRecentGuessTime": 1502369908760,
+          "numGuesses": 1,
+          "revealTime": 1502369675269,
+          "status": "correct"
         }
       },
-      "score": 24,
-      "totalGuessTime": 2979277
+      "score": 28,
+      "totalGuessTime": 3212768
     },
     "smokey": {
       "createdTime": 1502222210926,
@@ -9242,9 +10523,9 @@
     },
     "test_user": {
       "createdTime": 1502172146268,
-      "lastUpdateTime": 1502292157202,
-      "numCorrect": 9,
-      "numGuesses": 12,
+      "lastUpdateTime": 1502342423324,
+      "numCorrect": 10,
+      "numGuesses": 13,
       "responses": {
         "-Kr-QrJwa38tgtQuWkPp": {
           "mostRecentGuessTime": 1502205076643,
@@ -9301,14 +10582,25 @@
           "revealTime": 1502291726909,
           "status": "correct"
         },
+        "-Kr47jtlzBeJko2oGzmn": {
+          "numGuesses": 0,
+          "revealTime": 1502341220133,
+          "status": "pending"
+        },
+        "-Kr8P6hgtVgWDkN30DXs": {
+          "mostRecentGuessTime": 1502339445638,
+          "numGuesses": 1,
+          "revealTime": 1502339442110,
+          "status": "correct"
+        },
         "-Kr8WdT_N8DS5_cWb37Z": {
           "numGuesses": 0,
           "revealTime": 1502337603516,
           "status": "pending"
         }
       },
-      "score": 14,
-      "totalGuessTime": 734321
+      "score": 15,
+      "totalGuessTime": 737849
     },
     "ysaye": {
       "createdTime": 1502301727774,
