@@ -6,7 +6,7 @@
 const _ = require('lodash')
 const fs = require('fs')
 
-const db = JSON.parse(fs.readFileSync('./data/music-games-export.json', 'utf-8'))
+const db = JSON.parse(fs.readFileSync('./backups/music-games-export.json', 'utf-8'))
 var questions = db.questions
 var users = db.users
 
@@ -20,7 +20,7 @@ const newDB = {
   questions: questions,
   users: users
 }
-fs.writeFileSync('./data/edited.json', JSON.stringify(newDB, null, 2) , 'utf-8')
+fs.writeFileSync('./backups/edited.json', JSON.stringify(newDB, null, 2) , 'utf-8')
 
 function clean () {
   Object.keys(questions).forEach((qk) => {
@@ -75,7 +75,7 @@ function cleanResponsesU() {
       if (!questions[qk]) {
         delete users[uk].responses[qk]
       }
-    }
+    })
   })
 }
 
