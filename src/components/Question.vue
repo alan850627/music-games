@@ -85,7 +85,7 @@
           <v-flex xs3>
             <v-btn
               v-on:click.native="submitGuess(newResponse)"
-              flat right block class="orange--text">
+              flat right block class="blue--text">
               Submit
             </v-btn>
           </v-flex>
@@ -192,7 +192,7 @@ export default {
         if (this.gotCorrectAlready) {
           return 'qCard elevation-15 light-green lighten-4'
         } else {
-          return 'qCard elevation-15 yellow lighten-4'
+          return 'qCard elevation-15 amber lighten-4'
         }
       } else {
         if (this.gotCorrectAlready) {
