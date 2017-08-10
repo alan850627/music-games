@@ -29,6 +29,7 @@
           :total-guess-time="totalGuessTime"
           :user-response-data="userResponseData"
           :num-revealed="numRevealed"
+          :viewed-users="viewedUsers"
           :showMore="true"
           :time-to-correct-resp-total="timeToCorrectRespTotal">
         </question-details>
@@ -64,6 +65,7 @@
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
             :showMore="gotCorrectAlready"
+            :viewed-users="viewedUsers"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
@@ -142,6 +144,10 @@ export default {
     username: {
       type: String,
       default: ''
+    },
+    viewedUsers: {
+      type: Object,
+      default: () => { return {} }
     },
     id: String,
     op: String,
@@ -242,6 +248,9 @@ export default {
           this.questionRef.update({
             'numRevealed': snapshot.val().numRevealed + 1
           })
+          let vu = {}
+          vu[this.username] = true
+          this.questionRef.child('viewedUsers').update(vu)
         }
       })
     },
