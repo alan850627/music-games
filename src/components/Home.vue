@@ -5,13 +5,12 @@
         <v-card class="elevation-5">
           <v-card-title primary-title>
             <div>
-              <h3 class="headline mb-0">Read before play:</h3>
+              <h3 class="headline mb-0">Please read before playing:</h3>
               <div>
                 * This site is very much in beta still, so any feedback welcome.
-                <br>* Please enter your username by clicking the Login button.
-                <br>* Once you log in, you will be able to participate in the music games.
-                <br>* Once you reveal a question, you will have a certain amount of time to answer it before it expires and the solution is shown to you
-                <br>* Autograder is only active when my computer is on, so don't freakout if your response is stuck in "pending".
+                <br>* Please enter your username by clicking the "login" button to participate in music games.
+                <br>* Once you reveal a question, you will have a certain amount of time to answer before it expires and the solution is shown to you
+                <br>* The autograder is only active when my computer is on, so don't worry if your response is stuck in "pending".
                 <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
                 <br>* Upload your own questions <a href="/#/Upload">here</a>.
                 <br>
@@ -35,10 +34,11 @@
               :solution="q.solution"
               :description="q.description"
               :points="q.points"
-              :expireTime="getExpireTime(q)"
-              :expireDuration="q.expireDuration"
-              :myQuestion="false"
-              :isExpired="false"
+              :expire-time="getExpireTime(q)"
+              :created-time="q.createdTime"
+              :expire-duration="q.expireDuration"
+              :my-question="false"
+              :is-expired="false"
               :responses="q.responses"
               :viewed-users="q.viewedUsers"
               :id="q['.key']"
@@ -66,10 +66,11 @@
               :solution="q.solution"
               :description="q.description"
               :points="q.points"
-              :expireTime="getExpireTime(q)"
-              :expireDuration="q.expireDuration"
-              :myQuestion="true"
-              :isExpired="true"
+              :expire-time="getExpireTime(q)"
+              :expire-duration="q.expireDuration"
+              :my-question="true"
+              :created-time="q.createdTime"
+              :is-expired="true"
               :responses="q.responses"
               :id="q['.key']"
               :username="username"
@@ -97,10 +98,11 @@
               :solution="q.solution"
               :description="q.description"
               :points="q.points"
-              :expireTime="getExpireTime(q)"
-              :expireDuration="q.expireDuration"
-              :myQuestion="false"
-              :isExpired="true"
+              :expire-time="getExpireTime(q)"
+              :expire-duration="q.expireDuration"
+              :my-question="false"
+              :created-time="q.createdTime"
+              :is-expired="true"
               :responses="q.responses"
               :id="q['.key']"
               :username="username"
