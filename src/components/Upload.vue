@@ -95,6 +95,9 @@ export default {
   },
 
   computed: {
+    userRef: function () {
+      return db.ref(`users/${this.username}`)
+    }
   },
 
   data () {
@@ -183,6 +186,9 @@ export default {
         timeToCorrectRespTotal: 0
       }
       questionsRef.push().update(question)
+      this.userRef.update({
+        'lastUpdateTime': Date.now()
+      })
       this.toDefault()
       this.successalert = true
     },

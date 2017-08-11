@@ -48,7 +48,8 @@
             Question closing in {{timeLeft}}.
           </span>
           <span v-else>
-            <h3 class="headline">New {{points}} point question!</h3>
+            <h3 class="headline mb-0">New {{points}} point question!</h3>
+            Uploaded {{createdTimeAgo}}
           </span>
         </div>
       </v-card-title>
@@ -134,6 +135,7 @@ export default {
     points: Number,
     expireTime: Number,
     isExpired: Boolean,
+    createdTime: Number,
     numRevealed: Number,
     expireDuration: Number,
     myQuestion: Boolean,
@@ -162,6 +164,9 @@ export default {
   computed: {
     timeAgo: function () {
       return moment(this.expireTime).fromNow()
+    },
+    createdTimeAgo: function () {
+      return moment(this.createdTime).fromNow()
     },
     timeLeft: function () {
       if (this.expireTime - this.now > 60000) {
@@ -222,6 +227,9 @@ export default {
             'numGuesses': 0
           }
           this.userRef.child('responses').update(updateResponse)
+          this.userRef.update({
+            'lastUpdateTime': DATENOW
+          })
         } else {
           // User doesn't exist. Crazy way to create dyanmic keys.
           let newuser = {}
