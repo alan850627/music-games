@@ -9,7 +9,7 @@
               <div>
                 * This site is very much in beta still, so any feedback welcome.
                 <br>* Please enter your username by clicking the "login" button to participate in music games.
-                <br>* Once you reveal a question, you will have a certain amount of time to answer before it expires and the solution is shown to you
+                <br>* Once you reveal a question, you will have a certain amount of time to answer before it expires and the solution is shown to you.
                 <br>* The autograder is only active when my computer is on, so don't worry if your response is stuck in "pending".
                 <br>* You get infinite number of guesses with no penalty, but every guess will be logged.
                 <br>* Upload your own questions <a href="/#/Upload">here</a>.
