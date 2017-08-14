@@ -11,7 +11,7 @@
         <v-btn flat v-on:click.native.stop="loginUser">Login</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-dialog v-model="loginDialog" persistent>
+    <v-dialog v-model="loginDialog" persistent style="display:none;">
       <v-card>
         <v-card-title>
           <span class="headline">Username</span>
