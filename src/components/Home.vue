@@ -23,12 +23,12 @@
     </v-layout>
 
     <v-expansion-panel v-if="openQuestions.length > 0" class="">
-      <v-expansion-panel-content class="">
+      <v-expansion-panel-content v-model="oqOpen" class="">
         <div slot="header" class="">
           <h4 class="mt-3">Open Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-for="q in openQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="oqOpen" v-for="q in openQuestions">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -55,12 +55,12 @@
     </v-expansion-panel>
 
     <v-expansion-panel v-if="opQuestions.length > 0" class="">
-      <v-expansion-panel-content class="">
+      <v-expansion-panel-content v-model="mqOpen"class="">
         <div slot="header" class="">
           <h4 class="mt-3">My Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-for="q in opQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="mqOpen" v-for="q in opQuestions">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -87,12 +87,12 @@
     </v-expansion-panel>
 
     <v-expansion-panel v-if="closedQuestions.length > 0" class="">
-      <v-expansion-panel-content class="">
+      <v-expansion-panel-content v-model="cqOpen"class="">
         <div slot="header" class="">
           <h4 class="mt-3">Closed Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-for="q in closedQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="cqOpen" v-for="q in closedQuestions">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -202,7 +202,10 @@ export default {
 
   data () {
     return {
-      now: Date.now()
+      now: Date.now(),
+      oqOpen: false,
+      mqOpen: false,
+      cqOpen: false
     }
   },
 
