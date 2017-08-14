@@ -7,7 +7,7 @@
       Username cannot be blank!
     </v-alert>
     <v-alert error dismissible v-model="linkalert">
-      Invalid link! Make sure the link is a direct link to an image (eg. a link ending in .jpeg, .jpg, .gif, or .png)!
+      Invalid link! Make sure the link is a direct link to an image!
     </v-alert>
     <v-alert error dismissible v-model="solutionalert">
       Invalid solution!
@@ -75,6 +75,7 @@
 
 <script>
 import Firebase from 'firebase'
+import mime from 'mime'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -127,7 +128,7 @@ export default {
 
   methods: {
     checkURL: function (url) {
-      return (url.match(/\.(jpeg|jpg|gif|png)$/i) != null)
+      return mime.lookup(url).match(/image/) !== null
     },
     upload: function () {
       if (this.username === '') {

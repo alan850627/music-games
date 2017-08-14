@@ -86,6 +86,9 @@ module.exports = {
       }
     ]
   },
+  node: {
+    fs: "empty"
+  },
   eslint: {
     formatter: require('eslint-friendly-formatter')
   },
