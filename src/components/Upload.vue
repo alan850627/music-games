@@ -57,7 +57,7 @@
           label="Expire Time in minutes"
           class="mt-5"
           v-model="expireDuration"
-          hint="How many minutes will the question last after a user opens it? (eg. 60)"
+          hint="How many minutes will the question last after a user opens it? (eg. 180)"
           suffix="minute(s)"
           required
           :rules="[rules.isInteger]"
@@ -113,7 +113,7 @@ export default {
       solution: '',
       description: '',
       points: 1,
-      expireDuration: 60,
+      expireDuration: 180,
       rules: {
         isInteger: (value) => {
           if (!isNaN(value)) {
@@ -195,7 +195,7 @@ export default {
       this.solution = ''
       this.description = ''
       this.points = 1
-      this.expireDuration = 60
+      this.expireDuration = 180
     }
   },
 
