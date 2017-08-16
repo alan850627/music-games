@@ -106,8 +106,13 @@ questionsRef.on("child_added", function(question, prevChildKey) {
               questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
                 'status': 'incorrect'
               })
-              usersRef.child(`${response.val().username}/responses/${response.val().questionId}`).update({
-                'status': 'incorrect'
+              let ref = usersRef.child(`${response.val().username}`)
+              ref.once('value').then((snapshot) => {
+                if (snapshot.val().responses[`${response.val().questionId}`].status !== "correct") {
+                  ref.child(`responses/${response.val().questionId}`).update({
+                    'status': 'incorrect'
+                  })
+                }
               })
             }
           }
