@@ -29,7 +29,7 @@
           required
         ></v-text-field>
         <v-text-field
-          label="Solution"
+          label="Answer"
           class="mt-5"
           v-model="solution"
           hint="Solution to your question. (eg. Tchaikovsky - Symphony No. 6)"
@@ -37,7 +37,7 @@
           required
         ></v-text-field>
         <v-text-field
-          label="Description"
+          label="Question Prompt"
           class="mt-5"
           v-model="description"
           hint="Hints, info, description. (eg. Identify the composer given this excerpt.)"
@@ -187,9 +187,6 @@ export default {
         timeToCorrectRespTotal: 0
       }
       questionsRef.push().update(question)
-      this.userRef.update({
-        'lastUpdateTime': Date.now()
-      })
       this.toDefault()
       this.successalert = true
     },
