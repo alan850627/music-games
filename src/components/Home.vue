@@ -7,7 +7,7 @@
             <div>
               <h3 class="headline mb-0">Please read before playing:</h3>
               <div>
-                * This site is very much in beta still, so any feedback welcome.
+                * <a href="https://discord.gg/Mmy8Ch5">Live chat</a>.
                 <br>* Please enter your username by clicking the "login" button to participate in music games.
                 <br>* Once you reveal a question, you will have a certain amount of time to answer before it expires and the solution is shown to you.
                 <br>* The autograder is only active when my computer is on, so don't worry if your response is stuck in "pending".
