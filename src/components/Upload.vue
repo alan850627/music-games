@@ -21,6 +21,13 @@
     <v-layout row>
       <v-flex xs8 offset-xs2>
         <v-text-field
+          label="Question Prompt"
+          class="mt-5"
+          v-model="description"
+          hint="Hints, info, description. (eg. Identify the composer given this excerpt.)"
+          persistent-hint
+        ></v-text-field>
+        <v-text-field
           label="Image link"
           class="mt-5"
           v-model="link"
@@ -35,13 +42,6 @@
           hint="Solution to your question. (eg. Tchaikovsky - Symphony No. 6)"
           persistent-hint
           required
-        ></v-text-field>
-        <v-text-field
-          label="Question Prompt"
-          class="mt-5"
-          v-model="description"
-          hint="Hints, info, description. (eg. Identify the composer given this excerpt.)"
-          persistent-hint
         ></v-text-field>
         <v-text-field
           label="Points"
@@ -128,6 +128,9 @@ export default {
 
   methods: {
     checkURL: function (url) {
+      if (url.match(/\/a\//g) !== null) {
+        return false
+      }
       return mime.lookup(url).match(/image/) !== null
     },
     upload: function () {
