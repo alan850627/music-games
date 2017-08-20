@@ -57,7 +57,7 @@
           label="Expire Time in minutes"
           class="mt-5"
           v-model="expireDuration"
-          hint="How many minutes will the question last after a user opens it? (eg. 180)"
+          hint="Time before revealing the answer for each individual user. (eg. 180)"
           suffix="minute(s)"
           required
           :rules="[rules.isInteger]"

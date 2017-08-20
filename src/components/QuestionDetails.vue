@@ -11,9 +11,7 @@
       view less
     </v-btn>
     <div v-if="moreDetails">
-      <div :title="getViewedUsers">Viewed by {{numRevealed}} users</div>
-      Number of Responses: {{numResponses}}
-      <br>Avg Response Time (all guesses): {{getReadableDuration(totalGuessTime/numResponses)}}
+      Avg Response Time (all guesses): {{getReadableDuration(totalGuessTime/numResponses)}}
       <br>Avg Response Time (correct guesses only): {{getReadableDuration(timeToCorrectRespTotal/correctResponses.length)}}
     </div>
     <v-layout v-if="moreDetails" row fluid>
@@ -81,10 +79,6 @@ export default {
       type: String,
       default: ''
     },
-    viewedUsers: {
-      type: Object,
-      default: () => { return {} }
-    },
     numRevealed: Number,
     id: String,
     totalGuessTime: Number,
@@ -114,20 +108,6 @@ export default {
     },
     numResponses: function () {
       return Object.keys(this.responses).length
-    },
-    getViewedUsers: function () {
-      let i = 0
-      return Object.keys(this.viewedUsers).sort((a, b) => {
-        return a.toLowerCase().localeCompare(b.toLowerCase())
-      }).map((o) => {
-        if (i === 5) {
-          i = 1
-          return '\n' + o
-        } else {
-          i++
-          return ' ' + o
-        }
-      })
     }
   },
 

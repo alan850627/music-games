@@ -10,9 +10,19 @@
           <h3 v-else class="headline mb-0">{{points}} points</h3>
           <span v-if="myQuestion">
             Duration: {{duration}}
+            <question-details-min
+              :responses="responses"
+              :num-revealed="numRevealed"
+              :viewed-users="viewedUsers">
+            </question-details-min>
           </span>
           <span v-else>
             Question closed {{timeAgo}}.
+            <question-details-min
+              :responses="responses"
+              :num-revealed="numRevealed"
+              :viewed-users="viewedUsers">
+            </question-details-min>
           </span>
         </div>
       </v-card-title>
@@ -29,7 +39,6 @@
           :total-guess-time="totalGuessTime"
           :user-response-data="userResponseData"
           :num-revealed="numRevealed"
-          :viewed-users="viewedUsers"
           :showMore="true"
           :time-to-correct-resp-total="timeToCorrectRespTotal">
         </question-details>
@@ -46,10 +55,20 @@
             <h3 v-if="points === 1" class="headline mb-0">{{points}} point</h3>
             <h3 v-else class="headline mb-0">{{points}} points</h3>
             Question closing in {{timeLeft}}.
+            <question-details-min
+              :responses="responses"
+              :num-revealed="numRevealed"
+              :viewed-users="viewedUsers">
+            </question-details-min>
           </span>
           <span v-else>
             <h3 class="headline mb-0">New {{points}} point question!</h3>
             Uploaded {{createdTimeAgo}}
+            <question-details-min
+              :responses="responses"
+              :num-revealed="numRevealed"
+              :viewed-users="viewedUsers">
+            </question-details-min>
           </span>
         </div>
       </v-card-title>
@@ -66,7 +85,6 @@
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
             :showMore="gotCorrectAlready"
-            :viewed-users="viewedUsers"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
@@ -118,6 +136,7 @@ import moment from 'moment'
 import Firebase from 'firebase'
 import ellipsize from 'ellipsize'
 import QuestionDetails from './QuestionDetails'
+import QuestionDetailsMin from './QuestionDetailsMin'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -125,7 +144,8 @@ const db = app.database()
 
 export default {
   components: {
-    QuestionDetails
+    QuestionDetails,
+    QuestionDetailsMin
   },
 
   props: {
