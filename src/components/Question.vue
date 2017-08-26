@@ -93,7 +93,7 @@
         </v-card-text>
 
         <v-card-actions v-if="!gotCorrectAlready && !manualRevealAnswer">
-          <v-flex xs9 pt-3>
+          <v-flex xs8>
             <div type="" @keyup.enter="submitGuess(newResponse)">
               <v-text-field
                 class="mt-0 mb-0"
@@ -103,24 +103,25 @@
               </v-text-field>
             </div>
           </v-flex>
-          <v-flex xs3 class="action-button">
+          <v-flex class="text-xs-right">
             <v-btn
               v-on:click.native="submitGuess(newResponse)"
-              flat right class="blue--text">
+              flat class="ma-0 blue--text action-button">
               Submit
             </v-btn>
+            <v-btn
+              v-on:click.native.stop="confirmReveal = true"
+              flat small class="ma-0 red--text action-button">
+              I GIVE UP
+            </v-btn>
           </v-flex>
-          <v-btn
-            v-on:click.native.stop="confirmReveal = true"
-            flat right class="action-button red--text">
-            I GIVE UP
-          </v-btn>
         </v-card-actions>
         <v-card-actions v-else class="pa-2">
           <h6 v-if="!manualRevealAnswer">Correct.</h6>
           <v-btn
             v-on:click.native="dismissQuestion()"
-            icon class="action-button">
+            icon class="action-button"
+            title="Manually close this question">
             <v-icon class="icon">cancel</v-icon>
           </v-btn>
         </v-card-actions>
