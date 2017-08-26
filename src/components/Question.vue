@@ -101,16 +101,26 @@
               </v-text-field>
             </div>
           </v-flex>
-          <v-flex xs3>
+          <v-flex xs3 class="action-button">
             <v-btn
               v-on:click.native="submitGuess(newResponse)"
-              flat right block class="blue--text">
+              flat right class="blue--text">
               Submit
             </v-btn>
           </v-flex>
+          <v-btn
+            v-on:click.native="revealAnswer()"
+            flat right class="action-button red--text">
+            I GIVE UP
+          </v-btn>
         </v-card-actions>
-        <v-card-actions v-else>
+        <v-card-actions v-else class="pa-2">
           <h6>Correct.</h6>
+          <v-btn
+            v-on:click.native="dismissQuestion()"
+            icon class="action-button">
+            <v-icon class="icon">cancel</v-icon>
+          </v-btn>
         </v-card-actions>
       </span>
       <span v-else>
@@ -248,6 +258,12 @@ export default {
     ellipsizeText: function (text, len) {
       return ellipsize(text, len)
     },
+    dismissQuestion: function () {
+
+    },
+    revealAnswer: function () {
+
+    },
     revealQuestion: function () {
       let DATENOW = Date.now()
       if (this.username === '') {
@@ -357,5 +373,10 @@ export default {
   }
 
   .qCard{
+  }
+
+  .action-button {
+    margin-left:auto;
+    margin-right:0;
   }
 </style>
