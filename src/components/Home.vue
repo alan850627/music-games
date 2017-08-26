@@ -162,6 +162,9 @@ export default {
         if (!this.userResponseData[q['.key']]) {
           return true
         }
+        if (this.userResponseData[q['.key']].manualDismiss) {
+          return false
+        }
         return this.getExpireTime(q) >= this.now
       })
       return _.sortBy(presort, (o) => {
@@ -175,6 +178,9 @@ export default {
         }
         if (q.op === this.username) {
           return false
+        }
+        if (this.userResponseData[q['.key']].manualDismiss) {
+          return true
         }
         return this.getExpireTime(q) < this.now
       })

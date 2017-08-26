@@ -17,7 +17,8 @@
             </question-details-min>
           </span>
           <span v-else>
-            Question closed {{timeAgo}}.
+            <span v-if="expireTime < now">Question closed {{timeAgo}}.</span>
+            <span v-else>{{timeLeft}} left in the timer.</span>
             <question-details-min
               :responses="responses"
               :num-revealed="numRevealed"
@@ -75,7 +76,8 @@
       <span v-if="userResponseData.revealTime">
         <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
-          <h6 class="">{{description}}</h6>
+          <h6 class="mb-1">{{description}}</h6>
+          <div v-if="manualRevealAnswer || gotCorrectAlready"><b>Solution: {{solution}}</b></div>
 
           <question-details
             :responses="responses"
@@ -84,13 +86,13 @@
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
-            :showMore="gotCorrectAlready"
+            :showMore="gotCorrectAlready || manualRevealAnswer"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
         </v-card-text>
 
-        <v-card-actions v-if="!gotCorrectAlready">
+        <v-card-actions v-if="!gotCorrectAlready && !manualRevealAnswer">
           <v-flex xs9 pt-3>
             <div type="" @keyup.enter="submitGuess(newResponse)">
               <v-text-field
@@ -101,16 +103,26 @@
               </v-text-field>
             </div>
           </v-flex>
-          <v-flex xs3>
+          <v-flex xs3 class="action-button">
             <v-btn
               v-on:click.native="submitGuess(newResponse)"
-              flat right block class="blue--text">
+              flat right class="blue--text">
               Submit
             </v-btn>
           </v-flex>
+          <v-btn
+            v-on:click.native.stop="confirmReveal = true"
+            flat right class="action-button red--text">
+            I GIVE UP
+          </v-btn>
         </v-card-actions>
-        <v-card-actions v-else>
-          <h6>Correct.</h6>
+        <v-card-actions v-else class="pa-2">
+          <h6 v-if="!manualRevealAnswer">Correct.</h6>
+          <v-btn
+            v-on:click.native="dismissQuestion()"
+            icon class="action-button">
+            <v-icon class="icon">cancel</v-icon>
+          </v-btn>
         </v-card-actions>
       </span>
       <span v-else>
@@ -121,6 +133,18 @@
         </v-btn>
       </span>
     </v-card>
+    <v-dialog v-model="confirmReveal">
+      <v-card>
+        <v-card-title class="headline">Are you sure?</v-card-title>
+        <v-card-text>Are you sure you want to give up?
+          <br>The answer will be revealed to you.</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="confirmReveal = false">No</v-btn>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="confirmReveal = false; revealAnswer()">Yes</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
     <v-alert error dismissible v-model="usernamealert">
       Username cannot be blank!
@@ -182,6 +206,12 @@ export default {
   },
 
   computed: {
+    manualRevealAnswer: function () {
+      if (this.userResponseData.manualRevealAnswer) {
+        return true
+      }
+      return false
+    },
     timeAgo: function () {
       return moment(this.expireTime).fromNow()
     },
@@ -234,7 +264,8 @@ export default {
       newResponse: '',
       usernamealert: false,
       responsealert: false,
-      now: Date.now()
+      now: Date.now(),
+      confirmReveal: false
     }
   },
 
@@ -247,6 +278,32 @@ export default {
   methods: {
     ellipsizeText: function (text, len) {
       return ellipsize(text, len)
+    },
+    dismissQuestion: function () {
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // We assume user exists, so we update.
+          this.userRef.child(`responses/${this.id}`).update({
+            'manualDismiss': true
+          })
+          this.userRef.update({
+            'lastUpdateTime': Date.now()
+          })
+        }
+      })
+    },
+    revealAnswer: function () {
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // We assume user exists, so we update.
+          this.userRef.child(`responses/${this.id}`).update({
+            'manualRevealAnswer': true
+          })
+          this.userRef.update({
+            'lastUpdateTime': Date.now()
+          })
+        }
+      })
     },
     revealQuestion: function () {
       let DATENOW = Date.now()
@@ -357,5 +414,10 @@ export default {
   }
 
   .qCard{
+  }
+
+  .action-button {
+    margin-left:auto;
+    margin-right:0;
   }
 </style>
