@@ -37,7 +37,6 @@
               :expire-time="getExpireTime(q)"
               :created-time="q.createdTime"
               :expire-duration="q.expireDuration"
-              :manual-reveal-answer="q.manualRevealAnswer"
               :my-question="false"
               :is-expired="false"
               :responses="q.responses"

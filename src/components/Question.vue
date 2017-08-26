@@ -75,7 +75,8 @@
       <span v-if="userResponseData.revealTime">
         <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
-          <h6 class="">{{description}}</h6>
+          <h6 class="mb-1">{{description}}</h6>
+          <div v-if="manualRevealAnswer || gotCorrectAlready"><b>Solution: {{solution}}</b></div>
 
           <question-details
             :responses="responses"
@@ -84,13 +85,13 @@
             :total-guess-time="totalGuessTime"
             :user-response-data="userResponseData"
             :num-revealed="numRevealed"
-            :showMore="gotCorrectAlready"
+            :showMore="gotCorrectAlready || manualRevealAnswer"
             :time-to-correct-resp-total="timeToCorrectRespTotal">
           </question-details>
 
         </v-card-text>
 
-        <v-card-actions v-if="!gotCorrectAlready">
+        <v-card-actions v-if="!gotCorrectAlready && !manualRevealAnswer">
           <v-flex xs9 pt-3>
             <div type="" @keyup.enter="submitGuess(newResponse)">
               <v-text-field
@@ -178,10 +179,6 @@ export default {
     expireTime: Number,
     isExpired: Boolean,
     createdTime: Number,
-    manualRevealAnswer: {
-      type: Boolean,
-      default: false
-    },
     numRevealed: Number,
     expireDuration: Number,
     myQuestion: Boolean,
@@ -208,6 +205,12 @@ export default {
   },
 
   computed: {
+    manualRevealAnswer: function () {
+      if (this.userResponseData.manualRevealAnswer) {
+        return true
+      }
+      return false
+    },
     timeAgo: function () {
       return moment(this.expireTime).fromNow()
     },
