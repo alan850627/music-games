@@ -109,13 +109,13 @@
             </v-btn>
           </v-flex>
           <v-btn
-            v-on:click.native="revealAnswer()"
+            v-on:click.native.stop="confirmReveal = true"
             flat right class="action-button red--text">
             I GIVE UP
           </v-btn>
         </v-card-actions>
         <v-card-actions v-else class="pa-2">
-          <h6>Correct.</h6>
+          <h6 v-if="!manualRevealAnswer">Correct.</h6>
           <v-btn
             v-on:click.native="dismissQuestion()"
             icon class="action-button">
@@ -131,6 +131,18 @@
         </v-btn>
       </span>
     </v-card>
+    <v-dialog v-model="confirmReveal">
+      <v-card>
+        <v-card-title class="headline">Are you sure?</v-card-title>
+        <v-card-text>Are you sure you want to give up?
+          <br>The answer will be revealed to you.</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="confirmReveal = false">No</v-btn>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="confirmReveal = false; revealAnswer()">Yes</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
     <v-alert error dismissible v-model="usernamealert">
       Username cannot be blank!
@@ -166,6 +178,10 @@ export default {
     expireTime: Number,
     isExpired: Boolean,
     createdTime: Number,
+    manualRevealAnswer: {
+      type: Boolean,
+      default: false
+    },
     numRevealed: Number,
     expireDuration: Number,
     myQuestion: Boolean,
@@ -244,7 +260,8 @@ export default {
       newResponse: '',
       usernamealert: false,
       responsealert: false,
-      now: Date.now()
+      now: Date.now(),
+      confirmReveal: false
     }
   },
 
@@ -259,10 +276,30 @@ export default {
       return ellipsize(text, len)
     },
     dismissQuestion: function () {
-
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // We assume user exists, so we update.
+          this.userRef.child(`responses/${this.id}`).update({
+            'manualDismiss': true
+          })
+          this.userRef.update({
+            'lastUpdateTime': Date.now()
+          })
+        }
+      })
     },
     revealAnswer: function () {
-
+      this.userRef.once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          // We assume user exists, so we update.
+          this.userRef.child(`responses/${this.id}`).update({
+            'manualRevealAnswer': true
+          })
+          this.userRef.update({
+            'lastUpdateTime': Date.now()
+          })
+        }
+      })
     },
     revealQuestion: function () {
       let DATENOW = Date.now()
