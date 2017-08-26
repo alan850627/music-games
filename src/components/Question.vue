@@ -17,7 +17,8 @@
             </question-details-min>
           </span>
           <span v-else>
-            Question closed {{timeAgo}}.
+            <span v-if="expireTime < now">Question closed {{timeAgo}}.</span>
+            <span v-else>{{timeLeft}} left in the timer.</span>
             <question-details-min
               :responses="responses"
               :num-revealed="numRevealed"
