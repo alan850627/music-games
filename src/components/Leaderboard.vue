@@ -41,7 +41,9 @@ export default {
 
   computed: {
     users: function () {
-      let users = _.cloneDeep(this.usersRaw)
+      let users = _.cloneDeep(this.usersRaw).filter((o) => {
+        return o.numGuesses > 0
+      })
       for (let i = 0; i < users.length; i++) {
         users[i]['rank'] = users.length - i
         if (isNaN(users[i].totalGuessTime / users[i].numGuesses)) {
