@@ -28,7 +28,7 @@
           <h4 class="mt-3">Open Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-if="oqOpen" v-for="q in openQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="oqOpen" v-for="q in openQuestionsChunk">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -51,6 +51,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(openQuestions.length / chunk_size) + 1" v-model="openQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -60,7 +63,7 @@
           <h4 class="mt-3">My Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-if="mqOpen" v-for="q in opQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="mqOpen" v-for="q in opQuestionsChunk">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -83,6 +86,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(opQuestions.length / chunk_size) + 1" v-model="opQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -92,7 +98,7 @@
           <h4 class="mt-3">Closed Questions</h4>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
-          <v-flex xs12 sm8 md4 pa-2 v-if="cqOpen" v-for="q in closedQuestions">
+          <v-flex xs12 sm8 md4 pa-2 v-if="cqOpen" v-for="q in closedQuestionsChunk">
             <question
               :link="q.link"
               :solution="q.solution"
@@ -115,6 +121,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(closedQuestions.length / chunk_size) + 1" v-model="closedQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </div>
@@ -130,6 +139,7 @@ const app = Firebase.app()
 const db = app.database()
 const questionsRef = db.ref('questions')
 const usersRef = db.ref('users')
+const CHUNK_SIZE = 3
 
 export default {
   name: 'app',
@@ -196,6 +206,15 @@ export default {
         return 0 - o.createdTime
       })
     },
+    openQuestionsChunk: function () {
+      return _.chunk(this.openQuestions, CHUNK_SIZE)[this.openQuestionsPageNum - 1]
+    },
+    opQuestionsChunk: function () {
+      return _.chunk(this.opQuestions, CHUNK_SIZE)[this.opQuestionsPageNum - 1]
+    },
+    closedQuestionsChunk: function () {
+      return _.chunk(this.closedQuestions, CHUNK_SIZE)[this.closedQuestionsPageNum - 1]
+    },
     userResponseData: function () {
       let usr = _.find(this.users, { '.key': this.username })
       if (!usr || !usr.responses) {
@@ -211,7 +230,11 @@ export default {
       now: Date.now(),
       oqOpen: false,
       mqOpen: false,
-      cqOpen: false
+      cqOpen: false,
+      closedQuestionsPageNum: 1,
+      opQuestionsPageNum: 1,
+      openQuestionsPageNum: 1,
+      chunk_size: CHUNK_SIZE
     }
   },
 
