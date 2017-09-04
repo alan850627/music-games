@@ -27,6 +27,9 @@
         <div slot="header" class="">
           <h4 class="mt-3">Open Questions</h4>
         </div>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(openQuestions.length / chunk_size) + 1" v-model="openQuestionsPageNum"></v-pagination>
+        </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="oqOpen" v-for="q in openQuestionsChunk">
             <question
@@ -51,9 +54,6 @@
             </question>
           </v-flex>
         </v-layout>
-        <div class="text-xs-center">
-          <v-pagination :length="parseInt(openQuestions.length / chunk_size) + 1" v-model="openQuestionsPageNum"></v-pagination>
-        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -61,6 +61,9 @@
       <v-expansion-panel-content v-model="mqOpen"class="">
         <div slot="header" class="">
           <h4 class="mt-3">My Questions</h4>
+        </div>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(opQuestions.length / chunk_size) + 1" v-model="opQuestionsPageNum"></v-pagination>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="mqOpen" v-for="q in opQuestionsChunk">
@@ -86,9 +89,6 @@
             </question>
           </v-flex>
         </v-layout>
-        <div class="text-xs-center">
-          <v-pagination :length="parseInt(opQuestions.length / chunk_size) + 1" v-model="opQuestionsPageNum"></v-pagination>
-        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -96,6 +96,9 @@
       <v-expansion-panel-content v-model="cqOpen"class="">
         <div slot="header" class="">
           <h4 class="mt-3">Closed Questions</h4>
+        </div>
+        <div class="text-xs-center">
+          <v-pagination :length="parseInt(closedQuestions.length / chunk_size) + 1" v-model="closedQuestionsPageNum"></v-pagination>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="cqOpen" v-for="q in closedQuestionsChunk">
@@ -121,9 +124,6 @@
             </question>
           </v-flex>
         </v-layout>
-        <div class="text-xs-center">
-          <v-pagination :length="parseInt(closedQuestions.length / chunk_size) + 1" v-model="closedQuestionsPageNum"></v-pagination>
-        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </div>
