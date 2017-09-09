@@ -131,7 +131,8 @@ export default {
       if (url.match(/\/a\//g) !== null) {
         return false
       }
-      return mime.lookup(url).match(/image/) !== null
+      return mime.lookup(url).match(/image/) !== null ||
+            mime.lookup(url).match(/audio/) !== null
     },
     upload: function () {
       if (this.username === '') {
@@ -186,6 +187,7 @@ export default {
         responses: {},
         numRevealed: 0,
         totalGuessTime: 0,
+        isAudio: mime.lookup(this.link).match(/audio/) !== null,
         op: this.username,
         timeToCorrectRespTotal: 0
       }

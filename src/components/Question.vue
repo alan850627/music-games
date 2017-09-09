@@ -27,7 +27,13 @@
           </span>
         </div>
       </v-card-title>
-      <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
+      <a :href="link" v-if="isAudio">
+        <audio controls class="audio">
+          <source :src="link" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </a>
+      <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
@@ -74,7 +80,13 @@
         </div>
       </v-card-title>
       <span v-if="userResponseData.revealTime">
-        <a :href="link"><img class="qImage" :src="link" target="_blank"></a>
+        <a :href="link" v-if="isAudio">
+          <audio controls class="audio">
+            <source :src="link" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </a>
+        <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="mb-1">{{description}}</h6>
           <div v-if="manualRevealAnswer || gotCorrectAlready"><b>Solution: {{solution}}</b></div>
@@ -195,6 +207,10 @@ export default {
     viewedUsers: {
       type: Object,
       default: () => { return {} }
+    },
+    isAudio: {
+      type: Boolean,
+      default: false
     },
     id: String,
     op: String,
@@ -420,5 +436,10 @@ export default {
   .action-button {
     margin-left:auto;
     margin-right:0;
+  }
+
+  .audio {
+    width: 100%;
+    margin: auto;
   }
 </style>

@@ -28,7 +28,7 @@
           <h4 class="mt-3">Open Questions</h4>
         </div>
         <div class="text-xs-center">
-          <v-pagination :length="parseInt(openQuestions.length / chunk_size) + 1" v-model="openQuestionsPageNum"></v-pagination>
+          <v-pagination :length="Math.ceil(openQuestions.length / chunk_size)" v-model="openQuestionsPageNum"></v-pagination>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="oqOpen" v-for="q in openQuestionsChunk">
@@ -41,6 +41,7 @@
               :created-time="q.createdTime"
               :expire-duration="q.expireDuration"
               :my-question="false"
+              :is-audio="q.isAudio"
               :is-expired="false"
               :responses="q.responses"
               :viewed-users="q.viewedUsers"
@@ -54,6 +55,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="Math.ceil(openQuestions.length / chunk_size)" v-model="openQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -63,7 +67,7 @@
           <h4 class="mt-3">My Questions</h4>
         </div>
         <div class="text-xs-center">
-          <v-pagination :length="parseInt(opQuestions.length / chunk_size) + 1" v-model="opQuestionsPageNum"></v-pagination>
+          <v-pagination :length="Math.ceil(opQuestions.length / chunk_size)" v-model="opQuestionsPageNum"></v-pagination>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="mqOpen" v-for="q in opQuestionsChunk">
@@ -77,6 +81,7 @@
               :my-question="true"
               :created-time="q.createdTime"
               :is-expired="true"
+              :is-audio="q.isAudio"
               :responses="q.responses"
               :id="q['.key']"
               :username="username"
@@ -89,6 +94,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="Math.ceil(opQuestions.length / chunk_size)" v-model="opQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
 
@@ -98,7 +106,7 @@
           <h4 class="mt-3">Closed Questions</h4>
         </div>
         <div class="text-xs-center">
-          <v-pagination :length="parseInt(closedQuestions.length / chunk_size) + 1" v-model="closedQuestionsPageNum"></v-pagination>
+          <v-pagination :length="Math.ceil(closedQuestions.length / chunk_size)" v-model="closedQuestionsPageNum"></v-pagination>
         </div>
         <v-layout mr-3 ml-3 mt-3 row wrap class="pb-5">
           <v-flex xs12 sm8 md4 pa-2 v-if="cqOpen" v-for="q in closedQuestionsChunk">
@@ -112,6 +120,7 @@
               :my-question="false"
               :created-time="q.createdTime"
               :is-expired="true"
+              :is-audio="q.isAudio"
               :responses="q.responses"
               :id="q['.key']"
               :username="username"
@@ -124,6 +133,9 @@
             </question>
           </v-flex>
         </v-layout>
+        <div class="text-xs-center">
+          <v-pagination :length="Math.ceil(closedQuestions.length / chunk_size)" v-model="closedQuestionsPageNum"></v-pagination>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </div>
@@ -139,7 +151,7 @@ const app = Firebase.app()
 const db = app.database()
 const questionsRef = db.ref('questions')
 const usersRef = db.ref('users')
-const CHUNK_SIZE = 3
+const CHUNK_SIZE = 9
 
 export default {
   name: 'app',
