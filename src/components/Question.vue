@@ -27,12 +27,10 @@
           </span>
         </div>
       </v-card-title>
-      <a :href="link" v-if="isAudio">
-        <audio controls class="audio">
-          <source :src="link" type="audio/mp3">
-          Your browser does not support the audio element.
-        </audio>
-      </a>
+      <audio v-if="isAudio" controls class="audio">
+        <source :src="link" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
       <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
@@ -80,12 +78,10 @@
         </div>
       </v-card-title>
       <span v-if="userResponseData.revealTime">
-        <a :href="link" v-if="isAudio">
-          <audio controls class="audio">
-            <source :src="link" type="audio/mp3">
-            Your browser does not support the audio element.
-          </audio>
-        </a>
+        <audio v-if="isAudio" controls class="audio">
+          <source :src="link" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
         <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="mb-1">{{description}}</h6>
