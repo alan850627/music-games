@@ -28,10 +28,10 @@
           persistent-hint
         ></v-text-field>
         <v-text-field
-          label="Image link"
+          label="Image/audio link"
           class="mt-5"
           v-model="link"
-          hint="Direct link to the question image. (eg. https://i.imgur.com/B52kpZE.png)"
+          hint="Direct link to the question image/audio. (eg. https://i.imgur.com/B52kpZE.png)"
           persistent-hint
           required
         ></v-text-field>
