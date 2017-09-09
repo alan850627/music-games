@@ -27,14 +27,14 @@
           </span>
         </div>
       </v-card-title>
-      <audio v-if="isAudio" controls class="audio">
-        <source :src="link" type="audio/mp3">
+      <audio v-if="isAudio" :src="link" controls class="audio">
         Your browser does not support the audio element.
       </audio>
       <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
+        <span v-if="additionalInfo.length">({{additionalInfo}})</span>
         <br>
         <br>
         <question-details
@@ -78,14 +78,16 @@
         </div>
       </v-card-title>
       <span v-if="userResponseData.revealTime">
-        <audio v-if="isAudio" controls class="audio">
-          <source :src="link" type="audio/mp3">
+        <audio v-if="isAudio" :src="link" controls class="audio">
           Your browser does not support the audio element.
         </audio>
         <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="mb-1">{{description}}</h6>
-          <div v-if="manualRevealAnswer || gotCorrectAlready"><b>Solution: {{solution}}</b></div>
+          <div v-if="manualRevealAnswer || gotCorrectAlready">
+            <b>Solution: {{solution}}</b>
+            <span v-if="additionalInfo.length">({{additionalInfo}})</span>
+          </div>
 
           <question-details
             :responses="responses"
@@ -184,6 +186,10 @@ export default {
   props: {
     link: String,
     solution: String,
+    additionalInfo: {
+      type: String,
+      default: ''
+    },
     description: String,
     points: Number,
     expireTime: Number,

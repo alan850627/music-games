@@ -36,12 +36,19 @@
           required
         ></v-text-field>
         <v-text-field
-          label="Answer"
+          label="Correct Answer"
           class="mt-5"
           v-model="solution"
           hint="Solution to your question. (eg. Tchaikovsky - Symphony No. 6)"
           persistent-hint
           required
+        ></v-text-field>
+        <v-text-field
+          label="Answer notes"
+          class="mt-5"
+          v-model="additionalInfo"
+          hint="Additional notes to your answer. This will not go into autograder. (eg. https://youtu.be/XxKWG1K29v0?t=1)"
+          persistent-hint
         ></v-text-field>
         <v-text-field
           label="Points"
@@ -109,6 +116,7 @@ export default {
       solutionalert: false,
       pointsalert: false,
       expiretimealert: false,
+      additionalInfo: '',
       link: '',
       solution: '',
       description: '',
@@ -187,6 +195,7 @@ export default {
         responses: {},
         numRevealed: 0,
         totalGuessTime: 0,
+        additionalInfo: this.additionalInfo,
         isAudio: mime.lookup(this.link).match(/audio/) !== null,
         op: this.username,
         timeToCorrectRespTotal: 0
@@ -201,6 +210,7 @@ export default {
       this.description = ''
       this.points = 1
       this.expireDuration = 180
+      this.additionalInfo = ''
     }
   },
 
