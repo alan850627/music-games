@@ -58,24 +58,28 @@ function setupNewStructure() {
 
 function setupReveal() {
   Object.keys(users).forEach((uk) => {
-    Object.keys(users[uk].responses).forEach((qk) => {
-      if (!questions[qk]) {
-        // question doesn't exist
-      } else {
-        questions[qk].viewedUsers[uk] = true
-        questions[qk].numRevealed++
-      }
-    })
+	if (users[uk].responses !== undefined && users[uk].responses !== null ) {
+	  Object.keys(users[uk].responses).forEach((qk) => {
+		if (!questions[qk]) {
+	    // question doesn't exist
+	    } else {
+	       questions[qk].viewedUsers[uk] = true
+	      questions[qk].numRevealed++
+	    }
+	  })
+	}
   })
 }
 
 function cleanResponsesU() {
   Object.keys(users).forEach((uk) => {
-    Object.keys(users[uk].responses).forEach((qk) => {
-      if (!questions[qk]) {
-        delete users[uk].responses[qk]
-      }
-    })
+	if (users[uk].responses !== undefined && users[uk].responses !== null ) {
+	  Object.keys(users[uk].responses).forEach((qk) => {
+        if (!questions[qk]) {
+          delete users[uk].responses[qk]
+        }
+	  })
+	}
   })
 }
 
