@@ -1,126 +1,113 @@
 const firebase = require('firebase-admin')
+const functions = require('firebase-functions')
 const path = require('path')
 const _ = require('lodash')
-const YouTube = require('youtube-node');
+const YouTube = require('youtube-node')
 const fs = require('fs')
 
 
-const serviceAccount = require(path.resolve(__dirname, 'firebase.json'));
-const app = firebase.initializeApp({
-  // Setup service account for this app.
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://music-games.firebaseio.com',
-})
+const app = firebase.initializeApp(functions.config().firebase)
 const db = app.database()
 const questionsRef = db.ref('questions')
 const usersRef = db.ref('users')
 const youTube = new YouTube()
 youTube.setKey('AIzaSyADtiS-UxkTMe6kpI920BURFww51d2YZY8');
 
-console.log('*DEBUG* Loading correct Answers from file')
-let correctAnswers = JSON.parse(fs.readFileSync('./admin/data.json', 'utf8'));
-let questions = {}
+exports.grader = functions.database.ref(`questions/{qid}/responses/{rid}`).onCreate(event => {
+	console.log(event.data.val())
+	console.log(event.data.key)
+	response = event.data.val()
+	key = event.data.key
+	if (response && key) {
+		grade(response, key);
+	}
+})
 
-questionsRef.on("child_added", function(question, prevChildKey) {
-  //TODO NEED TO FIND THE QUESTIONS WITH PENDING RESPONSES ONLY
-  let pendingq = _.filter(question.val().responses, (res) => {
-    return res.status === "pending"
-  })
-  questions[question.key] = question.val()
-  if (pendingq.length > 0 || !correctAnswers[question.key]) {
-    youTube.search(question.val().solution, 10, function(error, result) {
-      if (error) {
+function grade(res, rkey) {
+	console.log(`Grading ${res.username}'s response: ${res.response}`)
+
+	// 1) Get the correct answer
+	questionsRef.child(`${res.questionId}`).once('value').then((qsnapshot) => {
+
+    // 2) Search correct youtube list
+    youTube.search(qsnapshot.val().solution, 10, function(error, solution_result) {
+    	if (error) {
         console.log(error)
       } else {
-        correctAnswers[question.key] = result.items.map((vid) => {
+        solution_result = solution_result.items.map((vid) => {
           return vid.id.videoId
         })
-        fs.writeFileSync('./admin/data.json', JSON.stringify(correctAnswers, null, 2) , 'utf-8')
-        console.log(`*DEBUG* Sourcing from Youtube for: ${question.val().solution}`)
-        console.log(JSON.stringify(correctAnswers[question.key], null, 2))
       }
+
+      // 3) Search input youtube list
+      youTube.search(res.response, 10, function(error, input_result) {
+      	if (error) {
+	        console.log(error)
+	      } else {
+	        input_result = input_result.items.map((vid) => {
+	          return vid.id.videoId
+	        })
+	      }
+
+	      // 4) Compare two lists
+	      let common = compareTwoArraysIgnoreNull(input_result, solution_result)
+	      if (common) {
+	      	correct(res, rkey, qsnapshot.val())
+	      } else {
+	      	incorrect(res, rkey, qsnapshot.val())
+	      }
+      })
     })
-  }
+  })
+}
 
-  setTimeout(function () {
-    questionsRef.child(`${question.key}/responses`).on("child_added", function(response, prevChildKey) {
-      // Grade
-      if (response.val().status === "pending") {
-        let ansVids = correctAnswers[response.val().questionId]
-        let respVids
-        youTube.search(response.val().response, 10, function(error, result) {
-          if (error) {
-            console.log(error)
-          } else {
-            respVids = result.items.map((vid) => {
-              return vid.id.videoId
-            })
-
-            // Now compare if ansVids AND respVids have anything in common
-            let common = compareTwoArraysIgnoreNull(ansVids, respVids)
-            if (common) {
-              // answer correct!
-              console.log('\n')
-              console.log(`Grading \"${questions[response.val().questionId].solution}\":`)
-              console.log(`${response.val().username} answered \"${response.val().response}\"`)
-              console.log('CORRECT!')
-              let ref = usersRef.child(`${response.val().username}`)
-              ref.once('value').then((snapshot) => {
-                let up = {}
-                if (snapshot.val().responses[response.val().questionId].status === 'correct') {
-                  // Don't increment score if user already got the question correct but answered twice.
-                  up = {
-                    'numCorrect': snapshot.val().numCorrect + 1
-                  }
-                } else {
-                  up = {
-                    'numCorrect': snapshot.val().numCorrect + 1,
-                    'score': snapshot.val().score + questions[response.val().questionId].points
-                  }
-                }
-
-                ref.update(up)
-
-                // track average time it takes ot get question correct
-                questionsRef.child(`${response.val().questionId}`).once('value').then((qsnapshot) => {
-                  questionsRef.child(`${response.val().questionId}`).update({
-                    'timeToCorrectRespTotal': qsnapshot.val().timeToCorrectRespTotal + response.val().timestamp - snapshot.val().responses[response.val().questionId].revealTime
-                  })
-                })
-
-                questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
-                  'status': 'correct'
-                })
-                ref.child(`responses/${response.val().questionId}`).update({
-                  'status': 'correct'
-                })
-              })
-
-            } else {
-              // answer incorrect
-              console.log('\n')
-              console.log(`Grading \"${questions[response.val().questionId].solution}\":`)
-              console.log(`${response.val().username} answered \"${response.val().response}\"`)
-              console.log('INCORRECT!')
-              questionsRef.child(`${response.val().questionId}/responses/${response.key}`).update({
-                'status': 'incorrect'
-              })
-              let ref = usersRef.child(`${response.val().username}`)
-              ref.once('value').then((snapshot) => {
-                if (snapshot.val().responses[`${response.val().questionId}`].status !== "correct") {
-                  ref.child(`responses/${response.val().questionId}`).update({
-                    'status': 'incorrect'
-                  })
-                }
-              })
-            }
-          }
-        })
+function correct(res, rkey, q) {
+	console.log('Correct!')
+	let ref = usersRef.child(`${res.username}`)
+  ref.once('value').then((snapshot) => {
+    let up = {}
+    if (snapshot.val().responses[res.questionId].status === 'correct') {
+      // Don't increment score if user already got the question correct but answered twice.
+      up = {
+        'numCorrect': snapshot.val().numCorrect + 1
       }
+    } else {
+      up = {
+        'numCorrect': snapshot.val().numCorrect + 1,
+        'score': snapshot.val().score + q.points
+      }
+    }
+
+    ref.update(up)
+
+    // track average time it takes ot get question correct
+    questionsRef.child(`${res.questionId}`).update({
+      'timeToCorrectRespTotal': q.timeToCorrectRespTotal + res.timestamp - snapshot.val().responses[res.questionId].revealTime
     })
-    console.log(`*DEBUG* ${question.val().solution} READY`)
-  }, 10000);
-})
+
+    questionsRef.child(`${res.questionId}/responses/${rkey}`).update({
+      'status': 'correct'
+    })
+    ref.child(`responses/${res.questionId}`).update({
+      'status': 'correct'
+    })
+  })
+}
+
+function incorrect(res, rkey, q) {
+	console.log('Incorrect!')
+	questionsRef.child(`${res.questionId}/responses/${rkey}`).update({
+    'status': 'incorrect'
+  })
+  let ref = usersRef.child(`${res.username}`)
+  ref.once('value').then((snapshot) => {
+    if (snapshot.val().responses[`${res.questionId}`].status !== "correct") {
+      ref.child(`responses/${res.questionId}`).update({
+        'status': 'incorrect'
+      })
+    }
+  })
+}
 
 function compareTwoArraysIgnoreNull(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
