@@ -34,7 +34,7 @@
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
-        <span v-if="additionalInfo.length">({{additionalInfo}})</span>
+        <div v-html="additionalInfoWLinks" v-if="additionalInfo.length"></div>
         <br>
         <br>
         <question-details
@@ -86,7 +86,7 @@
           <h6 class="mb-1">{{description}}</h6>
           <div v-if="manualRevealAnswer || gotCorrectAlready">
             <b>Solution: {{solution}}</b>
-            <span v-if="additionalInfo.length">({{additionalInfo}})</span>
+            <div v-html="additionalInfoWLinks" v-if="additionalInfo.length"></div>
           </div>
 
           <question-details
@@ -172,6 +172,9 @@ import Firebase from 'firebase'
 import ellipsize from 'ellipsize'
 import QuestionDetails from './QuestionDetails'
 import QuestionDetailsMin from './QuestionDetailsMin'
+// import linkify from 'linkifyjs'
+// require('linkifyjs/plugins/hashtag')(linkify)
+import linkifyHtml from 'linkifyjs/html'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -225,6 +228,11 @@ export default {
   },
 
   computed: {
+    additionalInfoWLinks: function () {
+      return linkifyHtml(this.additionalInfo, {
+        defaultProtocol: 'https'
+      })
+    },
     manualRevealAnswer: function () {
       if (this.userResponseData.manualRevealAnswer) {
         return true
