@@ -30,11 +30,11 @@
       <audio v-if="isAudio" :src="link" controls class="audio">
         Your browser does not support the audio element.
       </audio>
-      <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
+      <a :href="link" target="_blank" v-else><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
-        <span v-if="additionalInfo.length">({{additionalInfo}})</span>
+        <div v-html="additionalInfoWLinks" v-if="additionalInfo.length"></div>
         <br>
         <br>
         <question-details
@@ -81,12 +81,12 @@
         <audio v-if="isAudio" :src="link" controls class="audio">
           Your browser does not support the audio element.
         </audio>
-        <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
+        <a :href="link" target="_blank" v-else><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="mb-1">{{description}}</h6>
           <div v-if="manualRevealAnswer || gotCorrectAlready">
             <b>Solution: {{solution}}</b>
-            <span v-if="additionalInfo.length">({{additionalInfo}})</span>
+            <div v-html="additionalInfoWLinks" v-if="additionalInfo.length"></div>
           </div>
 
           <question-details
@@ -172,6 +172,8 @@ import Firebase from 'firebase'
 import ellipsize from 'ellipsize'
 import QuestionDetails from './QuestionDetails'
 import QuestionDetailsMin from './QuestionDetailsMin'
+import linkifyHtml from 'linkifyjs/html'
+import sanitizeHtml from 'sanitize-html'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -225,6 +227,13 @@ export default {
   },
 
   computed: {
+    additionalInfoWLinks: function () {
+      return linkifyHtml(sanitizeHtml(this.additionalInfo, {
+        allowedTags: [ 'b', 'i', 'em', 'strong' ]
+      }), {
+        defaultProtocol: 'https'
+      })
+    },
     manualRevealAnswer: function () {
       if (this.userResponseData.manualRevealAnswer) {
         return true
