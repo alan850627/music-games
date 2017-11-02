@@ -30,7 +30,7 @@
       <audio v-if="isAudio" :src="link" controls class="audio">
         Your browser does not support the audio element.
       </audio>
-      <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
+      <a :href="link" target="_blank" v-else><img class="qImage" :src="link" target="_blank"></a>
       <v-card-text>
         <b>{{description}}</b>
         <br>Solution: {{solution}}
@@ -81,7 +81,7 @@
         <audio v-if="isAudio" :src="link" controls class="audio">
           Your browser does not support the audio element.
         </audio>
-        <a :href="link" v-else><img class="qImage" :src="link" target="_blank"></a>
+        <a :href="link" target="_blank" v-else><img class="qImage" :src="link" target="_blank"></a>
         <v-card-text>
           <h6 class="mb-1">{{description}}</h6>
           <div v-if="manualRevealAnswer || gotCorrectAlready">
