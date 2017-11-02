@@ -172,9 +172,8 @@ import Firebase from 'firebase'
 import ellipsize from 'ellipsize'
 import QuestionDetails from './QuestionDetails'
 import QuestionDetailsMin from './QuestionDetailsMin'
-// import linkify from 'linkifyjs'
-// require('linkifyjs/plugins/hashtag')(linkify)
 import linkifyHtml from 'linkifyjs/html'
+import sanitizeHtml from 'sanitize-html'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -229,7 +228,9 @@ export default {
 
   computed: {
     additionalInfoWLinks: function () {
-      return linkifyHtml(this.additionalInfo, {
+      return linkifyHtml(sanitizeHtml(this.additionalInfo, {
+        allowedTags: [ 'b', 'i', 'em', 'strong' ]
+      }), {
         defaultProtocol: 'https'
       })
     },

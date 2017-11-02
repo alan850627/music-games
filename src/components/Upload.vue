@@ -83,7 +83,6 @@
 <script>
 import Firebase from 'firebase'
 import mime from 'mime'
-import xss from 'xss'
 
 // Accessing the data reference
 const app = Firebase.app()
@@ -196,7 +195,7 @@ export default {
         responses: {},
         numRevealed: 0,
         totalGuessTime: 0,
-        additionalInfo: xss(this.additionalInfo),
+        additionalInfo: this.additionalInfo,
         isAudio: mime.lookup(this.link).match(/audio/) !== null,
         op: this.username,
         timeToCorrectRespTotal: 0
